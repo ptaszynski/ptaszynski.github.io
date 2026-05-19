@@ -184,12 +184,10 @@
 				<nav class="site-nav" role="navigation" aria-label="${escapeAttr(s.langLabel === 'Language' ? 'Main' : s.langLabel)}">${navHtml}</nav>
 				<div class="site-utility">
 					<button class="site-search-btn" type="button" aria-label="${escapeAttr(s.search)}" title="${escapeAttr(s.search)} ( / )">
-						<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 							<circle cx="11" cy="11" r="7"/>
 							<line x1="21" y1="21" x2="16.65" y2="16.65"/>
 						</svg>
-						<span class="site-search-btn__label">${s.search}</span>
-						<kbd class="site-search-btn__key">/</kbd>
 					</button>
 					<button class="theme-toggle" type="button" aria-label="${escapeAttr(s.themeToggle)}" title="${escapeAttr(s.themeToggle)}">
 						<svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">

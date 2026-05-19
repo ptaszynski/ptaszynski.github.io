@@ -2,6 +2,37 @@
 
 All notable changes to the personal homepage.
 
+## 2026-05-20 — Phase 8.2: Header fit + smartphone pass
+
+### Header / search
+
+- The labeled "Search" pill from 8.1 widened the utility cluster and
+  squeezed the centered nav, clipping it on both ends at medium widths.
+  Reverted the trigger to a **compact icon button** (same footprint as
+  the theme toggle). Clicking still opens the overlay — now with an
+  **expand/fade entrance animation** so it reads as "growing" from the
+  icon (respects `prefers-reduced-motion`).
+- Nav no longer clips on both sides: it's **left-aligned** (overflow now
+  only scrolls off the right, the natural affordance), with slightly
+  smaller item padding/font and a tighter header gap. Brand name
+  truncates with an ellipsis instead of forcing the row wider.
+
+### Smartphone pass
+
+- Base font drops to **16px under 600px**; page padding and big
+  headings tightened for phones.
+- **Secondary sticky bars go static on mobile** (≤820px): the
+  publications toolbar and profile TOC would otherwise tuck under the
+  taller two-row mobile header. They now scroll with the page, and the
+  sticky-only compress behavior is neutralized there. (`#main`-scoped
+  overrides so they beat the per-page inline base rules.)
+- Larger tap targets on phones: icon buttons 34 → 38px, bigger
+  language-switcher and nav hit areas; tip-jar buttons go full-width.
+- `html { overflow-x: clip }` guards against any stray horizontal
+  scroll without breaking the sticky header.
+
+---
+
 ## 2026-05-20 — Phase 8.1: UX polish, rotating portrait, tip-jar, contact
 
 ### Publications
