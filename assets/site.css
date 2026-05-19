@@ -165,16 +165,22 @@ a:focus-visible {
 .site-nav {
 	display: flex;
 	justify-content: center;
-	gap: .25rem;
-	flex-wrap: wrap;
+	gap: .1rem;
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	overflow-x: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
 }
+.site-nav::-webkit-scrollbar { display: none; }
 .site-nav a {
 	font-family: var(--font-sans);
-	font-size: .9rem;
+	font-size: .88rem;
 	color: var(--ink-soft);
-	padding: .35rem .7rem;
+	padding: .35rem .6rem;
 	border-radius: var(--radius);
 	border: 0;
+	flex-shrink: 0;
 }
 .site-nav a:hover {
 	color: var(--accent);
@@ -561,11 +567,9 @@ hr {
 	.site-nav {
 		grid-column: 1 / -1;
 		justify-content: flex-start;
-		overflow-x: auto;
-		flex-wrap: nowrap;
 		margin: 0 -.25rem;
 	}
-	.site-nav a { white-space: nowrap; }
+	.site-brand__role { display: none; }
 	.hero { grid-template-columns: 1fr; text-align: left; }
 	.hero__portrait img { width: 110px; height: 110px; }
 	.entrypoints { grid-template-columns: 1fr; }
