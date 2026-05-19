@@ -7,6 +7,8 @@
 	<meta name="author" content="Michal Ptaszynski">
 	<meta name="description" content="Live demos, datasets, models and code releases from Michal Ptaszynski's research — ML-Ask, POST-AL, YACIS, cyberbullying detection, and more.">
 	<link rel="alternate" hreflang="en" href="demos.htm">
+	<link rel="alternate" hreflang="ja" href="ja/demos.htm">
+	<link rel="alternate" hreflang="pl" href="pl/demos.htm">
 	<link rel="alternate" hreflang="x-default" href="demos.htm">
 
 	<link rel="icon" href="images/favico.ico" type="image/x-icon">
@@ -16,14 +18,14 @@
 	<style>
 		.demo-grid {
 			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-			gap: 1rem;
-			margin: 1rem 0 2.5rem;
+			grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+			gap: .65rem;
+			margin: .65rem 0 1.25rem;
 		}
 		.demo {
 			display: flex;
 			flex-direction: column;
-			padding: 1rem 1.1rem 1.1rem;
+			padding: .65rem .85rem .75rem;
 			background: var(--surface);
 			border: 1px solid var(--line);
 			border-radius: var(--radius-lg);
@@ -34,41 +36,41 @@
 			overflow: hidden;
 		}
 		.demo:hover {
-			transform: translateY(-3px);
+			transform: translateY(-2px);
 			border-color: var(--accent-soft);
 			box-shadow: 0 6px 20px rgba(0,0,0,0.05);
 			background: var(--surface);
 		}
 		.demo__kind {
 			font-family: var(--font-sans);
-			font-size: .68rem;
+			font-size: .65rem;
 			text-transform: uppercase;
 			letter-spacing: .12em;
 			color: var(--muted);
-			margin-bottom: .3rem;
+			margin-bottom: .15rem;
 		}
 		.demo__title {
 			font-family: var(--font-sans);
 			font-weight: 600;
 			color: var(--accent);
-			font-size: 1.02rem;
-			margin: 0 0 .4rem;
+			font-size: .96rem;
+			margin: 0 0 .2rem;
 			letter-spacing: -0.01em;
 			text-transform: none;
 		}
 		.demo__desc {
 			color: var(--ink-soft);
-			font-size: .88rem;
-			line-height: 1.5;
-			margin: 0 0 .7rem;
+			font-size: .83rem;
+			line-height: 1.4;
+			margin: 0 0 .4rem;
 			flex: 1;
 		}
 		.demo__links {
 			display: flex;
 			flex-wrap: wrap;
-			gap: .35rem .7rem;
+			gap: .15rem .55rem;
 			font-family: var(--font-sans);
-			font-size: .78rem;
+			font-size: .75rem;
 		}
 		.demo__links a {
 			color: var(--accent);
@@ -78,12 +80,12 @@
 
 		.demo-section {
 			font-family: var(--font-sans);
-			font-size: .8rem;
+			font-size: .78rem;
 			text-transform: uppercase;
 			letter-spacing: .14em;
 			color: var(--muted);
-			margin: 2.5rem 0 .75rem;
-			padding-bottom: .4rem;
+			margin: 1.5rem 0 .55rem;
+			padding-bottom: .3rem;
 			border-bottom: 1px solid var(--line);
 			position: relative;
 		}

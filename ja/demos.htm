@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ミハウ・プタシンスキ / デモ・リリース</title>
+	<meta name="author" content="ミハウ・プタシンスキ">
+	<meta name="description" content="ミハウ・プタシンスキの研究から生まれたオンラインデモ・データセット・モデル・コード公開物 — ML-Ask、POST-AL、YACIS、ネットいじめ検出など。">
+	<link rel="alternate" hreflang="en" href="../demos.htm">
+	<link rel="alternate" hreflang="ja" href="demos.htm">
+	<link rel="alternate" hreflang="pl" href="../pl/demos.htm">
+	<link rel="alternate" hreflang="x-default" href="../demos.htm">
+
+	<link rel="icon" href="../images/favico.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../assets/site.css">
+	<script src="../assets/site.js" defer></script>
+
+	<style>
+		.demo-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+			gap: .65rem;
+			margin: .65rem 0 1.25rem;
+		}
+		.demo {
+			display: flex;
+			flex-direction: column;
+			padding: .65rem .85rem .75rem;
+			background: var(--surface);
+			border: 1px solid var(--line);
+			border-radius: var(--radius-lg);
+			transition: transform .18s cubic-bezier(.2,.7,.3,1), border-color .18s, box-shadow .18s;
+			color: inherit;
+			border-bottom: 1px solid var(--line);
+			position: relative;
+			overflow: hidden;
+		}
+		.demo:hover {
+			transform: translateY(-2px);
+			border-color: var(--accent-soft);
+			box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+			background: var(--surface);
+		}
+		.demo__kind {
+			font-family: var(--font-sans);
+			font-size: .65rem;
+			text-transform: uppercase;
+			letter-spacing: .12em;
+			color: var(--muted);
+			margin-bottom: .15rem;
+		}
+		.demo__title {
+			font-family: var(--font-sans);
+			font-weight: 600;
+			color: var(--accent);
+			font-size: .96rem;
+			margin: 0 0 .2rem;
+			letter-spacing: -0.01em;
+			text-transform: none;
+		}
+		.demo__desc {
+			color: var(--ink-soft);
+			font-size: .83rem;
+			line-height: 1.55;
+			margin: 0 0 .4rem;
+			flex: 1;
+		}
+		.demo__links {
+			display: flex;
+			flex-wrap: wrap;
+			gap: .15rem .55rem;
+			font-family: var(--font-sans);
+			font-size: .75rem;
+		}
+		.demo__links a {
+			color: var(--accent);
+			border-bottom-color: transparent;
+		}
+		.demo__links a:hover { border-bottom-color: var(--accent); }
+
+		.demo-section {
+			font-family: var(--font-sans);
+			font-size: .78rem;
+			text-transform: uppercase;
+			letter-spacing: .14em;
+			color: var(--muted);
+			margin: 1.5rem 0 .55rem;
+			padding-bottom: .3rem;
+			border-bottom: 1px solid var(--line);
+			position: relative;
+		}
+		.demo-section::after {
+			content: "";
+			position: absolute;
+			bottom: -1px; left: 0;
+			width: 40px; height: 1px;
+			background: var(--accent);
+		}
+	</style>
+</head>
+<body>
+
+<div data-include="header"></div>
+
+<main id="main" class="page page--wide">
+
+	<h1 class="page-title">デモ・リリース</h1>
+	<p class="page-lede">
+		私の研究プロジェクトから公開しているオンラインデモ、データセット、コードの一覧です。
+		ほとんどは寛容なライセンスの下で公開されています。ご利用の際は対応する論文をご引用ください。
+	</p>
+
+	<!-- ============ LIVE DEMOS ============ -->
+	<h2 class="demo-section">🟢 オンラインデモ</h2>
+	<div class="demo-grid">
+
+		<a class="demo" href="https://mlask-official.streamlit.app/" rel="noopener">
+			<div class="demo__kind">Streamlit · 感情分析</div>
+			<h3 class="demo__title">ML-Ask オンライン版</h3>
+			<p class="demo__desc">日本語の文を入力すると、情緒的要素・感情タイプ・Russell の二次元感情空間上の位置を返します。</p>
+			<div class="demo__links"><span>デモを開く ↗</span></div>
+		</a>
+
+		<a class="demo" href="https://qwals-app.streamlit.app" rel="noopener">
+			<div class="demo__kind">Streamlit · 言語類似度</div>
+			<h3 class="demo__title">qWALS · 言語間転移学習</h3>
+			<p class="demo__desc">WALS の類型論的特徴に基づいて、任意の 2 言語間における転移学習の性能を予測します。</p>
+			<div class="demo__links">
+				<span>デモを開く ↗</span>
+				<a href="https://github.com/kit-tiplab/qwals">GitHub</a>
+				<a href="https://pypi.org/project/qwals/">PyPI</a>
+			</div>
+		</a>
+
+		<a class="demo" href="../repository/demo/postal/postal-demo.html">
+			<div class="demo__kind">ブラウザ上 · 品詞解析</div>
+			<h3 class="demo__title">POST-AL · アイヌ語品詞タガー</h3>
+			<p class="demo__desc">アイヌ語の文をブラウザ上で品詞解析できるツール。アイヌ語 NLP ツール群の一部として開発しました。</p>
+			<div class="demo__links"><span>デモを開く ↗</span></div>
+		</a>
+
+		<a class="demo" href="https://huggingface.co/ptaszynski" rel="noopener">
+			<div class="demo__kind">Hugging Face · モデル・Space</div>
+			<h3 class="demo__title">Hugging Face プロフィール</h3>
+			<p class="demo__desc">公開しているモデル・データセット・Space をまとめて閲覧できます。日本語の感情認識モデルや YACIS 由来の言語モデルを含みます。</p>
+			<div class="demo__links"><span>ハブを開く ↗</span></div>
+		</a>
+
+	</div>
+
+	<!-- ============ DATASETS & LEXICONS ============ -->
+	<h2 class="demo-section">📦 データセット・辞書</h2>
+	<div class="demo-grid">
+
+		<div class="demo">
+			<div class="demo__kind">辞書 · 約 2,100 語</div>
+			<h3 class="demo__title">ML-Ask 感情辞書（2024 年版）</h3>
+			<p class="demo__desc">日本語の情緒表現データベース。古典的な 10 感情タイプに分類済み。2024 年に大幅に拡張しました。ML-Ask の中核で、単独でも引用可能です。</p>
+			<div class="demo__links">
+				<a href="../repository/files/emotions_20240804.zip">ダウンロード（2.4 MB）↗</a>
+				<a href="research.htm#mlask">ML-Ask について</a>
+			</div>
+		</div>
+
+		<div class="demo">
+			<div class="demo__kind">辞書 · 108 パターン</div>
+			<h3 class="demo__title">CVS（日本語版）</h3>
+			<p class="demo__desc">Contextual Valence Shifters — Polanyi &amp; Zaenen (2006) を踏まえた日本語の否定・反転パターン 108 種。プレーンテキスト形式。</p>
+			<div class="demo__links">
+				<a href="../repository/files/cvs.txt">ダウンロード（2 kB）↗</a>
+			</div>
+		</div>
+
+		<div class="demo">
+			<div class="demo__kind">データベース · 10,000 種以上</div>
+			<h3 class="demo__title">CAO 顔文字データベース</h3>
+			<p class="demo__desc">CAO で用いた日本語顔文字（カオモジ）の全種を収録。目・口・両端のフレーミング部分への分解、要素ごとの感情頻度も付属。</p>
+			<div class="demo__links">
+				<a href="../repository/files/emoticons-sorted-by-length.txt">全顔文字 ↗</a>
+				<a href="../repository/files/emoticon-triplets.zip">三つ組 ZIP</a>
+				<a href="../repository/files/emoticon-eyes-stats.zip">目の統計</a>
+				<a href="../repository/files/emoticon-mouths-stats.zip">口の統計</a>
+			</div>
+		</div>
+
+		<div class="demo">
+			<div class="demo__kind">コーパス · 約 56 億語</div>
+			<h3 class="demo__title">YACIS · 日本語ブログコーパス</h3>
+			<p class="demo__desc">Yet Another Corpus of Internet Sentences — 日本語ブログ本文を ML-Ask と CAO で構文・情緒の両層にアノテーションした大規模コーパス。</p>
+			<div class="demo__links">
+				<a href="research.htm#yacis">YACIS について</a>
+				<a href="https://huggingface.co/ptaszynski" rel="noopener">YACIS で学習した HF モデル</a>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- ============ CODE RELEASES ============ -->
+	<h2 class="demo-section">⚙️ コード公開</h2>
+	<div class="demo-grid">
+
+		<a class="demo" href="https://github.com/ptaszynski/" rel="noopener">
+			<div class="demo__kind">GitHub · プロフィール</div>
+			<h3 class="demo__title">github.com/ptaszynski</h3>
+			<p class="demo__desc">メイン GitHub アカウント。qWALS、ML-Ask 関連、ネットいじめ検出ベンチマーク、アイヌ語 NLP の試作などが置いてあります。</p>
+			<div class="demo__links"><span>プロフィールを開く ↗</span></div>
+		</a>
+
+		<a class="demo" href="https://github.com/kit-tiplab/qwals" rel="noopener">
+			<div class="demo__kind">GitHub · KIT TIP Lab</div>
+			<h3 class="demo__title">qWALS</h3>
+			<p class="demo__desc">qWALS の参照実装 — WALS 特徴に基づく言語類似度の定量化ツール。2026 年の MLKE 論文で使用しました。</p>
+			<div class="demo__links">
+				<span>リポジトリを見る ↗</span>
+				<a href="https://pypi.org/project/qwals/">pip install qwals</a>
+			</div>
+		</a>
+
+		<div class="demo">
+			<div class="demo__kind">Perl · スクリプト</div>
+			<h3 class="demo__title">ML-Ask 4.3（Perl）</h3>
+			<p class="demo__desc">ML-Ask の参照実装。MeCab および mecab-perl バインディングが必要です。「simple」版（ブログ・文書向け）と通常版（会話向け）の 2 種類。</p>
+			<div class="demo__links">
+				<a href="../repository/files/mlask43-noregex.zip">ML-Ask 4.3</a>
+				<a href="../repository/files/mlask43-simple-noregex.zip">ML-Ask 4.3 simple</a>
+				<a href="research.htm#mlask">ドキュメント</a>
+			</div>
+		</div>
+
+		<div class="demo">
+			<div class="demo__kind">Perl · スクリプト</div>
+			<h3 class="demo__title">顔文字検出ツール（軽量版）</h3>
+			<p class="demo__desc">文字列中の顔文字（カオモジ）を検出するだけのシンプルなツール。CAO のマッチャーを簡略化したものです。</p>
+			<div class="demo__links">
+				<a href="../repository/files/emodetector.zip">ダウンロード（4 kB）↗</a>
+			</div>
+		</div>
+
+	</div>
+
+	<p class="muted small" style="margin-top:2rem">
+		ここに無いものをお探しの方は <a href="contact.htm">お問い合わせ</a> ください。
+		公開していない研究室内ツールも、多くは共有可能です。
+	</p>
+
+</main>
+
+<div data-include="footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="pl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Michał Ptaszyński / Profil</title>
+	<meta name="author" content="Michał Ptaszyński">
+	<meta name="description" content="Profil / CV Michała Ptaszyńskiego — wykształcenie, stanowiska akademickie, dydaktyka, granty, nagrody, członkostwa, działalność naukowa.">
+	<link rel="alternate" hreflang="en" href="../profile.htm">
+	<link rel="alternate" hreflang="ja" href="../ja/profile.htm">
+	<link rel="alternate" hreflang="pl" href="profile.htm">
+	<link rel="alternate" hreflang="x-default" href="../profile.htm">
+	<link rel="icon" href="../images/favico.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../assets/site.css">
+	<script src="../assets/site.js" defer></script>
+	<style>
+		.profile-meta { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: start; margin-bottom: 1rem; }
+		.profile-meta img { width: 100px; height: 100px; object-fit: cover; border-radius: 50%; box-shadow: var(--shadow); border: 3px solid var(--surface); }
+		.profile-meta dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: .2rem .9rem; font-family: var(--font-sans); font-size: .9rem; }
+		.profile-meta dt { color: var(--muted); font-weight: 600; }
+		.profile-meta dd { margin: 0; color: var(--ink); }
+
+		.profile-toc { position: sticky; top: 60px; margin: .75rem 0 1.1rem; padding: .65rem .9rem; background: var(--accent-bg); border: 1px solid var(--line); border-radius: var(--radius-lg); z-index: 5; }
+		.profile-toc strong { display: block; font-family: var(--font-sans); font-size: .7rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: .3rem; }
+		.profile-toc ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .15rem .75rem; font-family: var(--font-sans); font-size: .82rem; }
+		.profile-toc a { border: 0; }
+
+		.profile-section { scroll-margin-top: 7rem; }
+		.profile-section + .profile-section { margin-top: 1.5rem; }
+
+		.profile-bullets { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .2rem .75rem; }
+		.profile-bullets li { position: relative; padding-left: 1rem; color: var(--ink-soft); font-size: .9rem; line-height: 1.4; }
+		.profile-bullets li::before { content: "•"; position: absolute; left: 0; color: var(--accent); }
+		.profile-bullets--wide { grid-template-columns: 1fr; }
+		.profile-bullets--wide li { font-size: .9rem; padding-bottom: .18rem; }
+
+		.profile-timeline { display: grid; grid-template-columns: 140px 1fr; gap: .45rem 1.1rem; margin: 0; }
+		.profile-timeline dt { font-family: var(--font-sans); font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; padding-top: .1rem; }
+		.profile-timeline dd { margin: 0; padding-bottom: .45rem; border-bottom: 1px dashed var(--line); color: var(--ink-soft); font-size: .9rem; line-height: 1.4; }
+		.profile-timeline dd:last-of-type { border-bottom: 0; }
+		.profile-timeline dd strong { color: var(--ink); font-weight: 600; }
+		.profile-timeline__details { display: block; margin-top: .1rem; font-size: .85rem; color: var(--muted); }
+
+		.profile-note { margin: .5rem 0 1rem; padding: .55rem .85rem; font-family: var(--font-sans); font-size: .8rem; color: var(--muted); background: var(--accent-bg); border-radius: var(--radius); }
+
+		@media (max-width: 720px) {
+			.profile-meta { grid-template-columns: 1fr; }
+			.profile-meta img { width: 100px; height: 100px; }
+			.profile-timeline { grid-template-columns: 1fr; gap: .1rem; }
+			.profile-timeline dd { padding-bottom: 1rem; }
+		}
+		@media print { .profile-toc { display: none; } .profile-timeline dd { break-inside: avoid; } }
+	</style>
+</head>
+<body>
+
+<div data-include="header"></div>
+
+<main id="main" class="page page--wide">
+
+	<h1 class="page-title">Profil / CV</h1>
+	<p class="page-lede">Wykształcenie, stanowiska, dydaktyka, granty, nagrody i działalność naukowa.</p>
+
+	<div class="profile-meta">
+		<dl>
+			<dt>Nazwisko</dt><dd>Ptaszyński</dd>
+			<dt>Imiona</dt><dd>Michał Edmund</dd>
+			<dt>Stanowisko</dt><dd>Profesor · Wydział Informatyki, Kitami Institute of Technology</dd>
+			<dt>Lokalizacja</dt><dd>Kitami, Hokkaido, Japonia</dd>
+		</dl>
+		<img src="../images/ptaszynski.jpg" alt="Michał Ptaszyński — portret">
+	</div>
+
+	<nav class="profile-toc" aria-label="Spis treści strony">
+		<strong>Na tej stronie</strong>
+		<ul>
+			<li><a href="#interests">Zainteresowania badawcze</a></li>
+			<li><a href="#education">Wykształcenie</a></li>
+			<li><a href="#positions">Stanowiska akademickie</a></li>
+			<li><a href="#teaching">Dydaktyka</a></li>
+			<li><a href="#grants">Granty i stypendia</a></li>
+			<li><a href="#awards">Wyróżnienia i nagrody</a></li>
+			<li><a href="#certificates">Kursy i certyfikaty</a></li>
+			<li><a href="#memberships">Członkostwa</a></li>
+			<li><a href="#activities">Działalność naukowa</a></li>
+			<li><a href="#elsewhere">Inne aktywności</a></li>
+		</ul>
+	</nav>
+
+	<p class="profile-note">
+		Uwaga: zgodnie z praktyką akademicką nazwy własne (instytucji, konferencji, grantów, nagród, czasopism) pozostawiono w oryginale. Tłumaczenie obejmuje strukturę strony i nagłówki sekcji.
+	</p>
+
+
+	<section id="interests" class="profile-section">
+		<h2 class="section-heading">Zainteresowania badawcze</h2>
+		<ul class='profile-bullets'><li>Zainteresowania badawcze (alfabetycznie)</li><li>・Wykrywanie tekstów obraźliwych</li><li>・Analiza afektu i sentymentu</li><li>・Obliczenia afektywne (Affective Computing)</li><li>・Język ajnuski</li><li>・Sztuczna inteligencja (AI)</li><li>・Automatyczne wykrywanie cyberprzemocy</li><li>・Lingwistyka komputerowa (CL)</li><li>・Lingwistyka korpusowa</li><li>・Inteligencja emocjonalna</li><li>・Interakcja człowiek-komputer (HCI)</li><li>・Duże modele językowe</li><li>・Językoznawstwo</li><li>・Przetwarzanie języka naturalnego (NLP)</li><li>・Wykrywanie treści obraźliwych</li><li>・Filozofia emocji</li><li>・Pragmatyka</li></ul>
+	</section>
+
+
+	<section id="education" class="profile-section">
+		<h2 class="section-heading">Wykształcenie</h2>
+		<dl class='profile-timeline'>
+<dt>2007 – 2010</dt>
+<dd><strong>Doktorat (obroniony 24 września 2010) — Uniwersytet Hokkaido, Wydział Informatyki i Technologii Informacyjnej, Sapporo, Japonia (stypendium rządu Japonii).</strong></dd>
+<dt>2007</dt>
+<dd><strong>Studium podyplomowe w trybie research student — Uniwersytet Handlowy w Otaru, Wydział Nauk o Informacji i Zarządzaniu, Japonia (stypendium rządu Japonii).</strong></dd>
+<dt>2001 – 2006</dt>
+<dd><strong>Studia magisterskie — Uniwersytet im. Adama Mickiewicza w Poznaniu, Wydział Neofilologii, Japonistyka, Poznań (tytuł magistra w październiku 2006).</strong></dd>
+<dt>2000 – 2001</dt>
+<dd><strong>Politechnika Wrocławska, Wydział Mechaniczno-Energetyczny.</strong></dd>
+<dt>1996 – 2000</dt>
+<dd><strong>Liceum Ogólnokształcące nr 12 we Wrocławiu, klasa matematyczno-informatyczna.</strong></dd>
+</dl>
+	</section>
+
+
+	<section id="positions" class="profile-section">
+		<h2 class="section-heading">Stanowiska akademickie</h2>
+		<dl class='profile-timeline'>
+<dt>2025 – obecnie</dt>
+<dd><strong>Profesor</strong><br><span class='profile-timeline__details'>Kitami Institute of Technology, Kitami, Japonia.</span></dd>
+<dt>2018 – 2025</dt>
+<dd><strong>Profesor nadzwyczajny (Associate Professor)</strong><br><span class='profile-timeline__details'>Kitami Institute of Technology, Kitami, Japonia.</span></dd>
+<dt>2013 – 2018</dt>
+<dd><strong>Adiunkt (Assistant Professor)</strong><br><span class='profile-timeline__details'>Kitami Institute of Technology, Kitami, Japonia.</span></dd>
+<dt>2012 – 2013</dt>
+<dd><strong>Pracownik naukowy po doktoracie (Postdoctoral Researcher)</strong><br><span class='profile-timeline__details'>Kitami Institute of Technology, Kitami, Japonia.</span></dd>
+<dt>2010 – 2012</dt>
+<dd><strong>Stypendysta JSPS (JSPS Research Fellow)</strong><br><span class='profile-timeline__details'>Hokkai-Gakuen University, Wydział Inżynierii, Sapporo, Japonia.</span></dd>
+<dt>2010</dt>
+<dd><strong>Researcher (Professional Researcher)</strong><br><span class='profile-timeline__details'>Uniwersytet Hokkaido, Wydział Informatyki i Technologii Informacyjnej, Japonia.</span></dd>
+<dt>2008 – 2010</dt>
+<dd><strong>Asystent naukowy (Research Assistant)</strong><br><span class='profile-timeline__details'>Uniwersytet Hokkaido — w ramach Global Centers of Excellence Program finansowanego przez japońskie MEXT.</span></dd>
+<dt>2008 – 2010</dt>
+<dd><strong>Asystent dydaktyczny (Teaching Assistant)</strong><br><span class='profile-timeline__details'>Uniwersytet Hokkaido (przedmioty: 1. Mikroprocesory; 2. Systemy przetwarzania języka naturalnego).</span></dd>
+</dl>
+	</section>
+
+
+	<section id="teaching" class="profile-section">
+		<h2 class="section-heading">Dydaktyka i prowadzone kursy</h2>
+		<dl class='profile-timeline'>
+<dt>2024 – obecnie</dt>
+<dd><strong>Informatyka robotyczna (rok III studiów inżynierskich)</strong><br><span class='profile-timeline__details'>Wprowadzający wykład dotyczący robotów i ich programowania.</span></dd>
+<dt>2023 – obecnie</dt>
+<dd><strong>Wykład zaawansowany z Data Science I (rok I studiów doktoranckich)</strong><br><span class='profile-timeline__details'>Metody efektywnego przeglądu literatury i pisania pełnowartościowych prac przeglądowych.</span></dd>
+<dt>2023 – obecnie</dt>
+<dd><strong>Wykład zaawansowany z Data Science II (rok I studiów doktoranckich)</strong><br><span class='profile-timeline__details'>Zastosowanie technik Data Science w obszarze badawczym każdego doktoranta.</span></dd>
+<dt>2023 – obecnie</dt>
+<dd><strong>Special Lecture on Advanced Information and Communication Engineering I (rok I MSc)</strong><br><span class='profile-timeline__details'>Praktyczny kurs konkursowy programowania robota LEGO do śledzenia linii.</span></dd>
+<dt>2020 – 2024</dt>
+<dd><strong>Obliczenia afektywne (rok I studiów doktoranckich)</strong><br><span class='profile-timeline__details'>Wprowadzenie do dziedziny Affective Computing — teorie emocji, zastosowania w informatyce, kluczowe prace.</span></dd>
+<dt>2020 – 2024</dt>
+<dd><strong>Przetwarzanie języka naturalnego (rok I studiów doktoranckich)</strong><br><span class='profile-timeline__details'>Podstawy statystycznego NLP.</span></dd>
+<dt>2021 – obecnie</dt>
+<dd><strong>Advanced Data Science III (rok I MSc)</strong><br><span class='profile-timeline__details'>Kurs obejmujący wszystkie kluczowe elementy Data Science: analizę, modelowanie i inżynierię danych.</span></dd>
+<dt>2020 – obecnie</dt>
+<dd><strong>Advanced Data Science II (rok I MSc)</strong><br><span class='profile-timeline__details'>Wybrane poddziedziny Data Science: Affective Computing i NLP, w tym najnowsze prace.</span></dd>
+<dt>2019 – 2020</dt>
+<dd><strong>Advanced Engineering of Knowledge Discovery and Data Mining I (rok I MSc)</strong><br><span class='profile-timeline__details'>Praktyczny kurs wprowadzający podstawowe pojęcia odkrywania wiedzy i eksploracji danych.</span></dd>
+<dt>2018 – obecnie</dt>
+<dd><strong>Information Design and Communication Engineering I (rok III studiów inżynierskich)</strong><br><span class='profile-timeline__details'>Praktyczny kurs zespołowych projektów programistycznych: tworzenie chatbota dla LINE, programowanie robota Pepper itp.</span></dd>
+<dt>2017 – obecnie</dt>
+<dd><strong>Communication Literacy II (rok I studiów inżynierskich)</strong><br><span class='profile-timeline__details'>Skuteczna komunikacja, techniki prezentacji i negocjacji.</span></dd>
+<dt>2017 – 2020</dt>
+<dd><strong>Human and Intelligence (rok I MSc)</strong><br><span class='profile-timeline__details'>Wykłady o inteligencji człowieka — wprowadzenie do emocji, teorii emocji i Affective Computing.</span></dd>
+<dt>2016 – obecnie</dt>
+<dd><strong>Wprowadzenie do programowania II i III (rok II studiów inżynierskich)</strong><br><span class='profile-timeline__details'>Wprowadzenie do języka Python — kodowanie programowe (II) i programowanie robota LEGO (III).</span></dd>
+<dt>2016 – 2018</dt>
+<dd><strong>Intelligent Design Course Experiments II / Information Media Experiments II (rok III studiów inżynierskich)</strong><br><span class='profile-timeline__details'>Eksperymenty z NLP i uczeniem maszynowym.</span></dd>
+<dt>2013 – 2018</dt>
+<dd><strong>Programming Language (rok II studiów inżynierskich)</strong><br><span class='profile-timeline__details'>Wprowadzenie do języka C.</span></dd>
+</dl>
+	</section>
+
+
+	<section id="grants" class="profile-section">
+		<h2 class="section-heading">Granty i stypendia</h2>
+		<p class="muted small" style="margin-top:.25rem">Tytuły grantów pozostawiono w oryginalnym brzmieniu.</p>
+		<dl class='profile-timeline'>
+<dt>2023 – 2024</dt>
+<dd><strong>Research Expenses Funded Partially by FY2023 President's Discretionary Expenses, Research project on "Development of a robot for the support of Ainu language conversation education"</strong></dd>
+<dt>2020 – 2024</dt>
+<dd><strong>Research Expenses Funded Partially by the Research Project on "Development of communication support system for nursing based on natural language processing and machine learning technologies". KAKENHI Grant-in-Aid for Scientific Research (C), JSPS (Project number: 20K11093).</strong></dd>
+<dt>2018 – 2020</dt>
+<dd><strong>Research Expenses Funded Partially by FY2018 Exploratory cross-disciplinary research development project on "Construction and optimization of infrastructure environment for information triage"</strong></dd>
+<dt>2018 – 2019</dt>
+<dd><strong>Research Expenses Funded Partially by FY2018 President's discretionary expenses Research support project on "Data collection and technology development for building Ainu language grammar model"</strong></dd>
+<dt>2018 – 2019</dt>
+<dd><strong>Research Expenses Funded Partially by FY2018 Exploratory cross-disciplinary research development project on "Environmentally symbiotic road profiling system in the industrial-agricultural research area"</strong></dd>
+<dt>2017 – 2020</dt>
+<dd><strong>Research Expenses Funded Partially by the Research Project on "Development of a versatile future trend prediction support system using morphosemantic patterns information of text data". KAKENHI Grant-in-Aid for Scientific Research (C), JSPS (Project number: 17K00324).</strong></dd>
+<dt>2016 – 2017</dt>
+<dd><strong>Research Expenses Funded Partially by FY2016 Education and Research Activation Expenses (President's Discretionary Expenses) Research Support (B) project on "Development of deep learning and data mining experiment support environment for big data"</strong></dd>
+<dt>2015 – 2018</dt>
+<dd><strong>Research Expenses Funded Partially by the Research Project on "FeelHelper: Development of technology for cyberbullying mitigation focusing on both perpetrator and victim". KAKENHI Grant-in-Aid for Young Scientists (B), JSPS (Project number: 15K16044).</strong></dd>
+<dt>2014 – 2015</dt>
+<dd><strong>Research Expenses Funded Partially by FY2014 internationalization promotion expenses project (invitation of Prof. Jacek Pyzalski for a lecture series on "Cyberbullying as a social phenomenon — What have we learned from 10 years of research?").</strong></dd>
+<dt>2013 – 2015</dt>
+<dd><strong>Research Expenses Funded Partially by the Research Project on "SimpaTALK: Development and application of a language model taking into account user emotions and flexibly adapting to situation". KAKENHI Grant-in-Aid for Research Activity Start-up, JSPS (Project number: 25880003).</strong></dd>
+<dt>2013 – 2014</dt>
+<dd><strong>Research Expenses Funded Partially by FY2013 Educational Research Revitalization Expenses (President's Discretionary Expenses) Research Support (B) project on "Development and application of language models that take into account the emotions of the speaker and flexibly adapt to the situation"</strong></dd>
+<dt>2012 – 2015</dt>
+<dd><strong>Research Expenses Funded Partially by the Research Project on "Development of a method to detect cyber-bullying entries based on reputation, emotion and ethics". KAKENHI Grant-in-Aid for Scientific Research (C), JSPS (Project number: 24600001).</strong></dd>
+<dt>2010 – 2012</dt>
+<dd><strong>Secondary Investigator in project "Empathic Computer: Developing a Dialogue Agent that Understands and Aptly Responds to User Emotions". KAKENHI Grant-in-Aid for JSPS Research Fellows (Project number: 22-00358).</strong></dd>
+<dt>2010 – 2012</dt>
+<dd><strong>Stypendium JSPS dla młodych badaczy — Hokkai-Gakuen University, Sapporo.</strong></dd>
+<dt>2010</dt>
+<dd><strong>Research Expenses Founded Partially by the Research Project on "Development of A Dynamic Internet-based Wordbook System to Follow Information Transformation", Grant-in-Aid for Scientific Research (C), JSPS (Project Number: 20500833).</strong></dd>
+<dt>2010</dt>
+<dd><strong>Research Expenses Founded Partially by a Grant from Global COE Program of Center for Next-Generation Information Technology Based on Knowledge Discovery and Knowledge Federation ("Development of Automatic Common Knowledge Acquisition Method for the Area of Nano-Electoronics")</strong></dd>
+<dt>2010</dt>
+<dd><strong>Research Expenses Grant from The Young Researcher Support Program, w ramach Global COE Program, finansowanego przez japońskie MEXT.</strong></dd>
+<dt>2008 – 2010</dt>
+<dd><strong>Granty wyjazdowe na konferencje międzynarodowe (Global COE Program, oddział Uniwersytetu Hokkaido), finansowanie MEXT.</strong></dd>
+<dt>2008 – 2010</dt>
+<dd><strong>Granty wyjazdowe z Center for Engineering Education Development, oddział Uniwersytetu Hokkaido.</strong></dd>
+<dt>2008 – 2010</dt>
+<dd><strong>Granty wyjazdowe z Uniwersytetu Hokkaido, Wydział Informatyki i Technologii Informacyjnej.</strong></dd>
+<dt>2008</dt>
+<dd><strong>Grant wyjazdowy IAT'08 / HAI'08.</strong></dd>
+<dt>2007 – 2009</dt>
+<dd><strong>Research Expenses Founded Partially by a Cognitive Science Research Grant from the Nissan Science Foundation ("Communication Ability Development Toy with Common Sense Dialogue System")</strong></dd>
+<dt>2007 – 2010</dt>
+<dd><strong>Doktoranckie stypendium rządu Japonii, Uniwersytet Hokkaido.</strong></dd>
+<dt>2007</dt>
+<dd><strong>Stypendium rządu Japonii dla studenta podyplomowego (research student), Uniwersytet Handlowy w Otaru.</strong></dd>
+<dt>2005</dt>
+<dd><strong>Stypendium za wybitne wyniki w nauce, Uniwersytet im. Adama Mickiewicza w Poznaniu.</strong></dd>
+<dt>2004 – 2005</dt>
+<dd><strong>Stypendium rządu Japonii — kurs języka i kultury japońskiej, Uniwersytet Hokkaido.</strong></dd>
+</dl>
+	</section>
+
+
+	<section id="awards" class="profile-section">
+		<h2 class="section-heading">Wyróżnienia i nagrody</h2>
+		<dl class='profile-timeline'>
+<dt>2020</dt>
+<dd><strong>山下記念研究賞 IPSJ Yamashita SIG Research Award za artykuł: "A proposal for a unified corpus of the Ainu language", 情報処理学会 第237回自然言語処理研究会, Kitami, 25–26.09.2018.</strong></dd>
+<dt>2019</dt>
+<dd><strong>BICA 2019 BEST INNOVATIVE WORK za artykuł: "Emotional and Moral Impressions Associated with Buddhist Religious Terms in Japanese Blogs — Preliminary Analysis", BICA 2019, pp. 387–392, 16–19 sierpnia 2019, Redmond, Washington.</strong></dd>
+<dt>2019</dt>
+<dd><strong>BICA 2019 OUTSTANDING RESEARCH AWARD za ten sam artykuł co powyżej.</strong></dd>
+<dt>2019</dt>
+<dd><strong>Encouragement Award za artykuł: 「地域観光支援に向けた対話案内システムの構築と評価」 (Construction and evaluation of an interactive guidance system for regional tourism support), 第16回 観光情報学会全国大会, Yonago, 29–30 czerwca 2019.</strong></dd>
+<dt>2018</dt>
+<dd><strong>優秀研究賞 OUTSTANDING RESEARCH AWARD za artykuł: "A proposal for a unified corpus of the Ainu language", 情報処理学会 第237回自然言語処理研究会, Kitami, 25–26.09.2018.</strong></dd>
+<dt>2014</dt>
+<dd><strong>BEST PRESENTATION AWARD (FANプレゼンテーション賞) za artykuł: V-Murasaki — 「比喩的素描によりベトナム語の語義を獲得するシステム」, FAN 2014, Kitami, 18–19 września 2014.</strong></dd>
+<dt>2014</dt>
+<dd><strong>BEST PAPER AWARD 大会優秀賞受賞 za artykuł: 「宿泊施設の観点に着目した施設活性度の定量化と分析」, 第11回 観光情報学会全国大会, Tokio, 20–21 czerwca 2014, pp. 14–15.</strong></dd>
+<dt>2011</dt>
+<dd><strong>IEEE SAPPORO SECTION ENCOURAGEMENT AWARD, za artykuł: "CAO: A Fully Automatic Emoticon Analysis System Based on Theory of Kinesics", IEEE Transactions on Affective Computing, vol. 1, no. 1, pp. 46–59, styczeń–czerwiec 2010.</strong></dd>
+<dt>2008</dt>
+<dd><strong>Best Student Paper Award — Second International Conference on Kansei Engineering & Affective Systems (KEAS'08), Nagaoka, listopad 2008.</strong></dd>
+<dt>2007</dt>
+<dd><strong>Nomura Research Institute "NRI Short Paper Contest 2007", Honorable mention.</strong></dd>
+<dt>2002</dt>
+<dd><strong>I miejsce w XXIV edycji Konkursu Języka Japońskiego, zorganizowanego przez Ambasadę Japonii w Polsce. Tytuł prezentacji: <em lang="ja">Pōrandogo ni okeru nihongo ni niteiru kotoba</em> (słowa polskie podobne fonetycznie do japońskich).</strong></dd>
+<dt>1997 – 2000</dt>
+<dd><strong>Wyróżnienia w Konkursie Języka Japońskiego organizowanym przez Ambasadę Japonii w Polsce (edycje XIX, XX, XXI, XXII).</strong></dd>
+</dl>
+	</section>
+
+
+	<section id="certificates" class="profile-section">
+		<h2 class="section-heading">Kursy i certyfikaty</h2>
+		<dl class='profile-timeline'>
+<dt>2009</dt>
+<dd><strong>Certyfikat J.TEST (Test of Practical Japanese, <em lang="ja">Jitsuyō Nihongo Kentei</em>), poziom Pre-A, Association for Testing Japanese Proficiency.</strong></dd>
+<dt>2006</dt>
+<dd><strong>Certyfikat JLPT (Japanese Language Proficiency Test, <em lang="ja">Nihongo Nōryoku Ninteisho</em>), poziom 1-kyū — najwyższy ówczesny poziom (Japan Foundation / Japan Educational Exchanges and Services).</strong></dd>
+<dt>2004 – 2005</dt>
+<dd><strong>Roczny kurs języka i kultury japońskiej (<em lang="ja">Nihongo-Nihonbunka Kenshū Kōsu</em>) na Uniwersytecie Hokkaido, Japonia.</strong><br><span class='profile-timeline__details'>・Roczny kurs ceremonii herbacianej (wg zasad szkoły <em lang="ja">chadō-urasenke</em>) na Uniwersytecie Hokkaido.</span></dd>
+<dt>1995</dt>
+<dd><strong>Kurs uczenia przyspieszonego i rozwoju wyobraźni przestrzennej.</strong></dd>
+</dl>
+	</section>
+
+
+	<section id="memberships" class="profile-section">
+		<h2 class="section-heading">Członkostwa w organizacjach naukowych</h2>
+		<ul class='profile-bullets profile-bullets--wide'><li>ACL (Association for Computational Linguistics), <a href="http://www.aclweb.org" rel="noopener">www.aclweb.org</a>, od 2010</li><li>AAAI (Association for the Advancement of Artificial Intelligence), <a href="http://www.aaai.org" rel="noopener">www.aaai.org</a>, od 2010</li><li>IEEE (Institute of Electrical and Electronics Engineers), <a href="http://www.ieee.org" rel="noopener">www.ieee.org</a>, od 2009; IEEE Senior Member od 2018</li><li>HUMAINE (Association for the Research on Emotions and Human-Machine Interaction), <a href="http://emotion-research.net/" rel="noopener">emotion-research.net</a>, od 2010</li><li>AFNLP (Asian Federation of Natural Language Processing), <a href="http://www.afnlp.org" rel="noopener">www.afnlp.org</a>, od 2013</li><li>AISB (Society for the Study of Artificial Intelligence and the Simulation of Behaviour), <a href="http://www.aisb.org.uk" rel="noopener">www.aisb.org.uk</a>, od 2012</li><li>IACAP (International Association for Computing and Philosophy), <a href="http://www.iacap.org" rel="noopener">www.iacap.org</a>, od 2012</li><li>ANLP (The Association for Natural Language Processing, Japonia), <a href="http://www.anlp.jp" rel="noopener">www.anlp.jp</a>, od 2008</li><li>IPSJ (Information Processing Society of Japan), <a href="http://www.ipsj.or.jp" rel="noopener">www.ipsj.or.jp</a>, od 2015</li><li>AAR (Association for Automated Reasoning), <a href="http://www.aarinc.org" rel="noopener">www.aarinc.org</a>, od 2011</li><li>JSAI (Japanese Society for Artificial Intelligence), <a href="http://www.ai-gakkai.or.jp" rel="noopener">www.ai-gakkai.or.jp</a>, od 2008</li><li>SOFT (Japan Society for Fuzzy Theory and Intelligent Informatics), <a href="http://www.j-soft.org" rel="noopener">www.j-soft.org</a>, od 2009</li><li>D&E (Design & Emotion Society), <a href="http://www.designandemotion.org" rel="noopener">www.designandemotion.org</a>, od 2009</li><li>ACM (Association for Computing Machinery), <a href="http://www.acm.org">www.acm.org</a>, 2011–2012</li></ul>
+	</section>
+
+
+	<section id="activities" class="profile-section">
+		<h2 class="section-heading">Działalność naukowa</h2>
+		<p class="muted small" style="margin-top:.25rem">Komitety programowe, rady redakcyjne, organizacja warsztatów, recenzje — wg lat (najnowsze u góry). Nazwy konferencji i czasopism pozostawiono w oryginale.</p>
+<h3 class="activities-year">2022</h3>
+<ul class="activities-list">
+  <li>Thirty-Sixth AAAI Conference on Artificial Intelligence (AAAI-22), 22.02 -- 01.03.2022, Vancouver, Kanada (Program Committee)</li>
+  <li>・ACII 2022, The 8th LaCATODA Workshop, 18–21 października 2022, Nara, Japonia / Online (Organizing Committee Member)</li>
+  <li>・The 6th Workshop on Online Abuse and Harms (WOAH!), Seattle, 15 lipca 2022 (Program Committee Member)</li>
+  <li>・International Workshop on Metaverse and Artificial Companions in Education and Society 2022 (MetaACES2022), 24 czerwca 2022, Online (Program Committee Member)</li>
+  <li>・The 22nd IEEE ICALT 2022, Bukareszt, 1–4 lipca 2022 (Program Committee Member)</li>
+  <li>・Information Processing & Management Conference 2022 (IP&M 22), Xiamen, 20–23 października 2022 (Program Committee)</li>
+</ul>
+<h3 class="activities-year">2021</h3>
+<ul class="activities-list">
+  <li>Thirty-Fifth AAAI Conference on Artificial Intelligence (AAAI-21), 02.02 -- 09.02.2021, konferencja online (Program Committee)</li>
+  <li>・12th BICA 2021, 13 września 2021 (Program Committee)</li>
+  <li>・Journal of Intelligent Information Systems, Springer (Editorial Board)</li>
+  <li>・Association for Computational Linguistics Rolling Review (Reviewer)</li>
+  <li>・2021 Workshop on BICA przy IVA'21, 14 września 2021, Fukuchiyama, Japonia / Online (Program Committee)</li>
+  <li>・Workshop on Insights from Negative Results in NLP 2021 (Insights 2021) przy EMNLP 2021, 10 listopada 2021 (Program Committee)</li>
+  <li>・The 19th Australasian Data Mining Conference 2021 (AusDM'21), Brisbane, 13–15 grudnia 2021 (Program Committee)</li>
+  <li>・The International Workshop on Modern Science and Technology 2021 (IWMST 2021), sierpień 2021, Kitami (Reviewer)</li>
+  <li>・自然言語処理 (komitet redakcyjny)</li>
+  <li>・EMNLP 2021, Punta Cana / Online, 7–11 listopada 2021 (Program Committee Member)</li>
+  <li>・JSAI 2021, International Session on Machine Learning, 8–11 czerwca 2021 (Program Committee Member)</li>
+  <li>・Information Processing & Management, Special Issue on Ethical Natural Language Processing, Elsevier (Guest Editor)</li>
+  <li>・The 5th WOAH!, Bangkok / Online, 5 sierpnia 2021 (Program Committee Member)</li>
+  <li>・IJCAI 2021, The 7th LaCATODA Workshop, Montreal, 21–23 sierpnia 2021 (Organizing Committee Member)</li>
+  <li>・ICCE 2021, Bangkok, 22–26 listopada 2021 (Program Committee Member)</li>
+  <li>・IC2S2 2021, ETH Zurich, 27–31 lipca 2021 (Program Committee)</li>
+  <li>・Applied Sciences, Special Issue on Recent Developments in Creative Language Processing, MDPI (Guest Editor)</li>
+  <li>・NAACL-HLT 2021, Mexico City, 6–11 czerwca 2021 (Program Committee Member)</li>
+  <li>・ACL-IJCNLP 2021, Bangkok, 1–6 sierpnia 2021 (Program Committee Member)</li>
+  <li>・IEEE ICALT 2021, 12–15 lipca 2021, Online (Program Committee Member)</li>
+  <li>・NAACL 2021 (Program Committee)</li>
+</ul>
+<h3 class="activities-year">2020</h3>
+<ul class="activities-list">
+  <li>The 23rd ACM CSCW 2020, 17–21 października 2020, Minneapolis (Program Committee / Associate Chair)</li>
+  <li>・ICON 2020, Indie (Online), 18–21 grudnia 2020 (Program Committee Member)</li>
+  <li>・The 4th WOAH!, Punta Cana, 20 listopada 2020 (Program Committee Member)</li>
+  <li>・BICA*AI 2020 przy Robotica 2020, Natal, 10–15 listopada (Program Committee Member)</li>
+  <li>・Information Processing & Management, Special Issue on Creative Language Processing, Elsevier (Guest Editor)</li>
+  <li>・IJCAI 2020, LaCATODA 2020, Jokohama, 11–13 lipca 2020 (Organizing Committee Member)</li>
+  <li>・ICCE 2020, EGG, Darwin, 23–27 listopada 2020 (Program Committee Member)</li>
+  <li>・TRAC-2 przy LREC 2020, Marsylia, 16 maja 2020 (Program Committee Member)</li>
+  <li>・IEEE ICALT 2020, Tartu, 6–9 lipca 2020 (Program Committee Member)</li>
+  <li>・COLING 2020, Barcelona, 13–18 września 2020 (Demo Chair)</li>
+  <li>・IEEE Ethics and Member Conduct Committee Member</li>
+  <li>・CIHLI 2020 / IEEE SSCI 2020, Canberra, 1–4 grudnia 2020 (Program Committee Member)</li>
+  <li>・IC2S2 2020, Cambridge MA, 17–20 lipca 2020 (Program Committee)</li>
+</ul>
+<h3 class="activities-year">2019</h3>
+<ul class="activities-list">
+  <li>AAAI-19 AffCon 2019, Honolulu, 27–28 stycznia 2019 (Program Committee Member)</li>
+  <li>・IEEE SSCI / CIHLI 2019, Xiamen, 6–9 grudnia 2019 (Technical Program Committee Member)</li>
+  <li>・Applied Sciences, MDPI (Reviewer)</li>
+  <li>・SNSP 2019, Hualien, 19–22 listopada 2019 (Technical Program Committee Member)</li>
+  <li>・Open Artificial Intelligence Journal (Editorial Board Member)</li>
+  <li>・PolEval 2019, Task 6: Automatic Cyberbullying Detection, AI & NLP Workshop Day, Warszawa, 31 maja 2019 (Organizer)</li>
+  <li>・FSDM 2019, Kitakyushu, 18–21 października 2019 (Program Committee Member)</li>
+  <li>・CECNet 2019, Kitakyushu, 18–21 października 2019 (Program Committee Member)</li>
+  <li>・人工知能学会第33回全国大会(JSAI 2019), OS-09 顔文字の科学, Niigata, 4–7 czerwca 2019 (organizator)</li>
+  <li>・Journal of Big Data & Society (Reviewer)</li>
+  <li>・IJCAI 2019, LaCATODA, Makau, 10–12 sierpnia 2019 (Program Committee Member)</li>
+  <li>・Recent Patents on Computer Science, Bentham Publ. (Editorial Board Member)</li>
+  <li>・Information, MDPI (Reviewer)</li>
+  <li>・Computers, MDPI (Reviewer)</li>
+  <li>・Journal of Open Research Software (Reviewer)</li>
+  <li>・IEEE Transactions on Affective Computing (Reviewer)</li>
+  <li>・NTICT 2019, Bagdad, 18–19 grudnia 2019 (Program Committee Member)</li>
+  <li>・BICA 2019, Seattle, 16–18 sierpnia 2019 (Program Committee Member)</li>
+  <li>・The Future Of AI Workshop 2019 przy BICA 2019, Seattle, 15 sierpnia 2019 (Program Committee Member)</li>
+  <li>・ICCE 2019, EGG, Kenting, 2–6 grudnia 2019 (Program Committee Member)</li>
+  <li>・EDO 2019, Poznań, 17–19 maja 2019 (Organizer, Program Committee Member)</li>
+  <li>・LTC 2019, Poznań, 17–19 maja 2019 (Program Committee Member)</li>
+  <li>・IC2S2 2019, Uniwersytet Amsterdamski, 17–20 lipca 2019 (Program Committee Member)</li>
+  <li>・ALW3 przy ACL 2019, Florencja, 1–2 sierpnia 2019 (Program Committee Member)</li>
+  <li>・IEEE ICALT 2019, Maceio, 15–18 lipca 2019 (Program Committee Member)</li>
+</ul>
+<h3 class="activities-year">2018</h3>
+<ul class="activities-list">
+  <li>Poznan Studies in Contemporary Linguistics, Special Issue on Language Technology for Polish (Guest Editorial Committee Member)</li>
+  <li>・Journal of Convergence Information Technology, GlobalCIS (Editorial Board Member)</li>
+  <li>・Professional Conduct Committee Member of Association for Computational Linguistics</li>
+  <li>・Information Processing & Management, Elsevier (Editorial Board Member)</li>
+  <li>・BICA 2018, Praga, 22–24 sierpnia 2018 (Program Committee Member)</li>
+  <li>・International Journal of Intelligent Information Systems, Science Publishing Group (Editorial Board Member)</li>
+  <li>・CIHLI 2018 / IEEE SSCI 2018, Bengaluru, 18–21 listopada 2018 (Program Committee Member)</li>
+  <li>・Applied Soft Computing (Reviewer)</li>
+  <li>・Expert Systems With Applications (Reviewer)</li>
+  <li>・IJCAI-ECAI 2018, LaCATODA, Sztokholm, 13–15 lipca 2018 (Program Committee Member)</li>
+  <li>・SENTIRE'18 przy ICDM 2018, Singapur, 17 listopada (Program Committee Member)</li>
+  <li>・ICCE 2018, EGG, Manila, 26–30 listopada 2018 (Program Committee Member)</li>
+  <li>・IC2S2 2018, Evanston IL, 12–15 lipca 2018 (Program Committee Member)</li>
+  <li>・ALW2 przy EMNLP 2018, Bruksela, 31 października – 1 listopada 2018 (Program Committee Member)</li>
+  <li>・TRAC-1 przy COLING 2018, Santa Fe, 20–25 sierpnia 2018 (Program Committee Member)</li>
+  <li>・言語処理学会 代議員 (2018–2021)</li>
+  <li>・Advances in Human-Computer Interaction, Special Issue on Language Sense and Communication on Computer (Guest Editor)</li>
+  <li>・IEEE ICALT 2018, Mumbaj, 9–13 lipca 2018 (Program Committee Member)</li>
+  <li>・AffCon 2018 przy AAAI-18, Nowy Orlean, 2–3 lutego 2018 (Program Committee Member)</li>
+</ul>
+<h3 class="activities-year">2017</h3>
+<ul class="activities-list">
+  <li>ICAT2E 2017, Qingdao, 18–20 marca 2017 (Program Committee Member)</li>
+  <li>・AROB Journal (Reviewer)</li>
+  <li>・Research Insights (Editorial Advisory Board)</li>
+  <li>・BICA 2017, Moskwa, 1–5 sierpnia 2017 (Program Committee Member)</li>
+  <li>・ALW1 przy ACL 2017, Vancouver, 4 sierpnia 2017 (Program Committee Member)</li>
+  <li>・SocInfo 2017, Oksford, 13–15 września 2017 (Program Committee Member)</li>
+  <li>・CIHLI 2017 / IEEE SSCI 2017, Hawaje, 27 listopada – 1 grudnia 2017 (Program Committee Member)</li>
+  <li>・ICCE 2017, Christchurch, 4–8 grudnia 2017 (Program Committee Member)</li>
+  <li>・Tourism Informatics (Reviewer)</li>
+  <li>・FIERCES ON BICA 2017, Moskwa, 1–3 sierpnia 2017 (Program Committee Member)</li>
+  <li>・EDO 2017 przy LTC 2017, Poznań, 17–19 listopada 2017 (Organizer, Program Committee Member)</li>
+  <li>・Workshop on Computational Methods in Cybersafety przy WWW 2017, Perth, 3–7 kwietnia 2017 (Program Committee Member)</li>
+  <li>・IEEE ICALT 2017, Timisoara, 3–7 lipca 2017 (Program Committee Member)</li>
+  <li>・IJCAI 2017, LaCATODA, Melbourne, 19–25 sierpnia 2017 (Program Committee Member)</li>
+  <li>・CAME 2017, Kraków, 2017 (Program/Scientific Committee Member)</li>
+  <li>・人工知能学会第32回全国大会(JSAI 2017), OS-22 顔文字の科学, Nagoja, 23–26 maja 2017 (organizator)</li>
+  <li>・CSICT2017, Qingdao, 18–20 marca 2017 (Program Committee Member)</li>
+</ul>
+<h3 class="activities-year">2016</h3>
+<ul class="activities-list">
+  <li>FIERCES ON BICA 2016, Moskwa, 22–24 kwietnia 2016 (Program Committee Member)</li>
+  <li>・IEEJ Transactions on Electronics, Information and Systems (Reviewer)</li>
+  <li>・Journal of Medical Internet Research (JMIR) (Reviewer)</li>
+  <li>・Language Resources and Evaluation (Reviewer)</li>
+  <li>・Springer PLUS (Reviewer)</li>
+  <li>・International Journal of Computer & Software Engineering (IJCSE) (Editorial Board)</li>
+  <li>・JSAI 2016, OS-17 (organizator)</li>
+  <li>・BICA 2016, Nowy Jork, 16–19 lipca 2016 (Program Committee Member)</li>
+  <li>・ATC 2016, Tuluza, 18–21 lipca 2016 (Program Committee Member)</li>
+  <li>・CIHLI / IEEE SSCI 2016, Ateny, 6–9 grudnia 2016 (Program Committee Member)</li>
+  <li>・SocInfo 2016, Seattle, listopad 2016 (Program Committee Member)</li>
+  <li>・Transactions on Information Systems (Reviewer)</li>
+  <li>・Workshop on Language Sense on Computer przy IJCAI 2016, Nowy Jork, 9–15 lipca 2016 (Program Committee Member)</li>
+  <li>・ICALT2016 / DIGITEL@ICALT2016, Austin TX, 25–28 lipca 2016 (Program Committee Member)</li>
+</ul>
+<h3 class="activities-year">2015</h3>
+<ul class="activities-list">
+  <li>CAME 2015, Kraków, 29–30 czerwca 2015 (Program/Scientific Committee Member)</li>
+  <li>・EDO 2015 przy LTC 2015, Poznań, 27–29 listopada 2015 (Program Committee Member)</li>
+  <li>・SocInfo 2015, Pekin, 9–12 grudnia 2015 (Program Committee Member)</li>
+  <li>・BICA 2015, Lyon, 6–8 listopada 2015 (Program Committee Member)</li>
+  <li>・IPSJ・NL研 (Steering Committee)</li>
+  <li>・Journal of Experimental and Theoretical Artificial Intelligence (Review Committee Member)</li>
+  <li>・Computers in Human Behavior (Review Committee Member)</li>
+  <li>・International Journal of Distance Education Technologies (IJDET) (Editorial Board)</li>
+  <li>・CIHLI / IEEE SSCI 2015, Kapsztad, 7–10 grudnia 2015 (Program Committee Member)</li>
+</ul>
+<h3 class="activities-year">2014</h3>
+<ul class="activities-list">
+  <li>CIHLI / IEEE SSCI 2014, Orlando, 9–12 grudnia 2014 (Program Committee Member)</li>
+  <li>・ACM ICPC Asia Tokyo Regional Contest, Domestic Eliminations, 11.07.2014 (trener drużyny Kitami Institute of Technology)</li>
+  <li>・SocInfo 2014, Barcelona, 10–13 listopada 2014 (Program Committee Member)</li>
+  <li>・KES 2014, Gdynia, 15–17 września 2014 (General Track Session Chair)</li>
+  <li>・BICA 2014, MIT, Cambridge MA, 7–9 listopada 2014 (Program Committee Member)</li>
+  <li>・The 20th Annual Meeting of ANLP (NLP2014), Sapporo, marzec 2014 (Local Chair, 大会実行委員会委員)</li>
+</ul>
+<h3 class="activities-year">2013</h3>
+<ul class="activities-list">
+  <li>CIHLI / IEEE SSCI 2013, Singapur, 15–19 kwietnia 2013 (Program Committee Member)</li>
+  <li>・BICA 2013, Kijów, 13–15 września 2013 (Program Committee Member)</li>
+  <li>・PICA Journal, Human and Sciences Publ. (Editorial Board Member)</li>
+  <li>・IJIIP, AICIT Publ. (Editorial Board Member)</li>
+  <li>・SocInfo 2013, Kioto, 25–27 listopada 2013 (Program Committee Member)</li>
+  <li>・LTC'12, Poznań, 7–9 grudnia 2012 (Reviewer)</li>
+</ul>
+<h3 class="activities-year">2012</h3>
+<ul class="activities-list">
+  <li>IJTEL, ACTA Press (Editorial Board Member)</li>
+  <li>・Next Generation Computing (NGC), Ohmsha & Springer (Reviewer)</li>
+  <li>・2012 Young Researchers' Roundtable on Spoken Dialog Systems (Organizing Committee Member)</li>
+  <li>・ICONIP 2012, Boca Raton FL, 12–15 grudnia 2012 (Program Committee Member)</li>
+  <li>・AISB/IACAP World Congress 2012, LaCATODA 2012, Birmingham, 2–6 lipca 2012 (Program Committee Member)</li>
+  <li>・BICA 2012, Palermo, 31 października – 3 listopada 2012 (Program Committee Member)</li>
+  <li>・ICMLA 2012, Doha, 12–15 listopada 2012 (Reviewer)</li>
+  <li>・ACM TSLP (Reviewer)</li>
+  <li>・BICA, Elsevier Journal (Reviewer)</li>
+  <li>・Artificial Intelligence in Medicine (AIIM), Elsevier Journal (Reviewer)</li>
+  <li>・International Journal of Distance Education Technologies (IJDET) (Reviewer)</li>
+</ul>
+<h3 class="activities-year">2011</h3>
+<ul class="activities-list">
+  <li>IJCLR, Special Issue on Linguistic and Cognitive Approaches to Dialog Agents (Review Committee)</li>
+  <li>・IJCL, CSC Journals (Editorial Board Member)</li>
+  <li>・IEEE CIS Task Force on Towards Human-like Intelligence (Task Force Permanent Member)</li>
+  <li>・LTC'11, Poznań, 25–27 listopada 2011 (Reviewer)</li>
+  <li>・Journal of The Society for Natural Language Processing, Special Issue on Un-Natural Language Processing (Editorial Board Member)</li>
+  <li>・AI 2011, Perth, 5–8 grudnia 2011 (Reviewer)</li>
+  <li>・AGI-11, Mountain View CA, 3–6 sierpnia 2011 (Review Committee)</li>
+  <li>・BICA 2011, Arlington VA, 5–6 listopada 2011 (Program Committee Member)</li>
+  <li>・"Agent-Based Approaches to Ambient Intelligence", IOS Press (Reviewer)</li>
+  <li>・Book Series "Speech, Image and Language Processing for HCI: Multi-modal Advancements" (Reviewer)</li>
+</ul>
+<h3 class="activities-year">2010</h3>
+<ul class="activities-list">
+  <li>AISB'10 LaCATODA, De Montfort University, Leicester, 29 marca – 1 kwietnia 2010 (Program Committee Member)</li>
+</ul>
+<h3 class="activities-year">2009</h3>
+<ul class="activities-list">
+  <li>AI'09, Uniwersytet w Melbourne, 1–4 grudnia 2009 (Reviewer)</li>
+  <li>・AIRS 2009, Sapporo, 21–23 października 2009 (Local Staff)</li>
+  <li>・PACLING 2009, Sapporo, 1–4 września 2009 (Session Chair)</li>
+  <li>・LTC'09, Poznań, 6–8 listopada 2009 (Reviewer)</li>
+</ul>
+<h3 class="activities-year">2007</h3>
+<ul class="activities-list">
+  <li>IDW'07, Sapporo, 5–7 grudnia 2007 (Technical staff)</li>
+</ul>
+	</section>
+
+
+	<section id="elsewhere" class="profile-section">
+		<h2 class="section-heading">Inne aktywności</h2>
+		<p>
+			<strong>Grupa Lingwistyka Komputerowa na LinkedIn</strong> —
+			założyłem na <a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a> grupę poświęconą lingwistyce komputerowej i obszarom pokrewnym (NLP, lingwistyka korpusowa itp.), aby ułatwić zainteresowanym wymianę informacji o przetwarzaniu języka.
+		</p>
+		<p>
+			<strong>Japonica Creativa</strong> — studenckie koło naukowe przy
+			<a href="https://www.orient.amu.edu.pl/index.php/katedra/struktura/japonistyka" rel="noopener">Katedrze Studiów Azjatyckich, sekcji Japonistyki</a>, Wydziału Neofilologii UAM w Poznaniu. Byłem jednym z założycieli i przez kilka lat pełniłem funkcję prezesa; koło popularyzuje japońską kulturę i dostarcza informacji o Japonii w środowisku poznańskim.
+		</p>
+		<p>
+			<strong>„Hokkaido — Japonia bez gejsz i samurajów”</strong> —
+			wieloautorska książka z 2005 r. poświęcona zjawiskom związanym z północną wyspą Japonii. Mój rozdział dotyczy nocnego życia i ciemniejszej strony Sapporo — największego miasta Hokkaido
+			(<a href="https://hokkaido.com.pl/" rel="noopener">hokkaido.com.pl</a>).
+		</p>
+	</section>
+
+
+	<p class="muted small" style="margin-top:1.5rem">
+		<em>Wskazówka:</em> naciśnij <kbd>Ctrl</kbd>+<kbd>P</kbd> / <kbd>⌘</kbd>+<kbd>P</kbd>, aby uzyskać przejrzystą wersję do druku / PDF.
+	</p>
+
+</main>
+
+<div data-include="footer"></div>
+
+</body>
+</html>

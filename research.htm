@@ -7,6 +7,8 @@
 	<meta name="author" content="Michal Ptaszynski">
 	<meta name="description" content="Research projects, systems and tools by Michal Ptaszynski — ML-Ask, CAO, SPEC, POST-AL, YACIS, cyberbullying detection, and ongoing work on AI for low-resource languages and affective computing.">
 	<link rel="alternate" hreflang="en" href="research.htm">
+	<link rel="alternate" hreflang="ja" href="ja/research.htm">
+	<link rel="alternate" hreflang="pl" href="pl/research.htm">
 	<link rel="alternate" hreflang="x-default" href="research.htm">
 	<link rel="icon" href="images/favico.ico" type="image/x-icon">
 	<link rel="stylesheet" href="assets/site.css">
@@ -16,27 +18,27 @@
 		/* Research-page specific UI */
 		.research-grid {
 			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-			gap: .9rem;
-			margin: 1.5rem 0 3rem;
+			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+			gap: .55rem;
+			margin: .85rem 0 1.5rem;
 		}
-		.research-grid .card { padding: 1rem 1.05rem; }
-		.research-grid .card h3 { margin: 0; font-size: .95rem; color: var(--accent); text-transform: none; letter-spacing: 0; }
-		.research-grid .card p { margin: .3rem 0 0; font-size: .85rem; color: var(--ink-soft); }
+		.research-grid .card { padding: .65rem .85rem; }
+		.research-grid .card h3 { margin: 0; font-size: .9rem; color: var(--accent); text-transform: none; letter-spacing: 0; }
+		.research-grid .card p { margin: .15rem 0 0; font-size: .8rem; color: var(--ink-soft); line-height: 1.4; }
 
 		.project {
-			margin: 4rem 0;
-			scroll-margin-top: 5rem;
+			margin: 2rem 0;
+			scroll-margin-top: 4rem;
 		}
 		.project__head {
 			display: grid;
 			grid-template-columns: 1fr auto;
-			gap: 1.5rem;
+			gap: 1.1rem;
 			align-items: start;
 		}
 		.project__head h2 {
-			margin: 0 0 .25rem;
-			font-size: 1.6rem;
+			margin: 0 0 .15rem;
+			font-size: 1.3rem;
 			text-transform: none;
 			letter-spacing: -0.01em;
 			color: var(--ink);
@@ -44,20 +46,21 @@
 		.project__tagline {
 			color: var(--accent);
 			font-family: var(--font-sans);
-			font-size: .95rem;
+			font-size: .88rem;
 			margin: 0;
 			font-weight: 500;
+			line-height: 1.4;
 		}
 		.project__cover {
-			width: 130px;
-			height: 130px;
+			width: 95px;
+			height: 95px;
 			border-radius: var(--radius-lg);
 			background: var(--surface);
 			border: 1px solid var(--line);
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			padding: .9rem;
+			padding: .65rem;
 			box-shadow: var(--shadow);
 		}
 		.project__cover img {
@@ -66,37 +69,60 @@
 			object-fit: contain;
 		}
 		.project__body {
-			margin-top: 1.25rem;
+			margin-top: .7rem;
 		}
-		.project__body p { color: var(--ink-soft); }
+		.project__body p { color: var(--ink-soft); font-size: .94rem; line-height: 1.5; margin-bottom: .55rem; }
 
 		.project__resources {
-			margin: 1.25rem 0 .5rem;
-			padding: .85rem 1.1rem;
+			margin: .7rem 0 .3rem;
+			padding: .55rem .85rem;
 			background: var(--accent-bg);
 			border-left: 3px solid var(--accent);
 			border-radius: 0 var(--radius) var(--radius) 0;
 			font-family: var(--font-sans);
-			font-size: .88rem;
+			font-size: .82rem;
+			line-height: 1.45;
 		}
+		.project__resources > div { margin: .1rem 0; }
 		.project__resources strong {
-			font-size: .75rem;
+			font-size: .7rem;
 			text-transform: uppercase;
 			letter-spacing: .1em;
 			color: var(--muted);
-			margin-right: .75rem;
+			margin-right: .6rem;
 			display: inline-block;
-			min-width: 90px;
+			min-width: 85px;
 		}
-		.project__resources a { margin-right: .9rem; }
+		.project__resources a { margin-right: .7rem; }
 
 		.project__cites {
-			margin: 1.25rem 0 0;
-			padding-left: 1.25rem;
-			font-size: .92rem;
+			margin: .7rem 0 0;
+			padding-left: 1.1rem;
+			font-size: .85rem;
+			line-height: 1.45;
 		}
-		.project__cites li { margin: .55rem 0; }
+		.project__cites li { margin: .25rem 0; }
 		.project__cites em { color: var(--ink); font-style: italic; }
+
+		.cite-link {
+			font-family: var(--font-sans);
+			font-size: .72rem;
+			color: var(--accent);
+			border-bottom: 0;
+			white-space: nowrap;
+			margin-left: .35rem;
+			padding: 0 .4rem;
+			background: var(--accent-bg);
+			border-radius: 999px;
+			display: inline-block;
+			line-height: 1.6;
+		}
+		.cite-link:hover {
+			color: #fff;
+			background: var(--accent);
+			border-bottom: 0;
+		}
+		:root[data-theme="dark"] .cite-link:hover { color: var(--bg); }
 
 		.kbd {
 			font-family: var(--font-mono);
@@ -461,6 +487,30 @@
 </main>
 
 <div data-include="footer"></div>
+
+<script>
+(function () {
+	// Auto-wire each citation's italic title to a search-prefilled link
+	// into the Publications page. First ~5 words of the title work as a
+	// tight enough query for the on-site search box to surface the paper.
+	document.querySelectorAll(".project__cites li").forEach(li => {
+		const em = li.querySelector("em");
+		if (!em) return;
+		const title = (em.textContent || "").trim().replace(/^["'“”‘’]+|["'“”‘’.,]+$/g, "");
+		if (!title) return;
+		const words = title.split(/\s+/).filter(Boolean);
+		const q = words.slice(0, Math.min(5, words.length)).join(" ");
+		if (!q) return;
+		const a = document.createElement("a");
+		a.href = "publications.htm?q=" + encodeURIComponent(q);
+		a.className = "cite-link";
+		a.textContent = "→ in Publications";
+		a.title = "Find this paper on the Publications page";
+		li.appendChild(document.createTextNode(" "));
+		li.appendChild(a);
+	});
+})();
+</script>
 
 </body>
 </html>
