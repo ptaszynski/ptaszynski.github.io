@@ -19,15 +19,15 @@
 		.pubs-toolbar {
 			display: grid;
 			grid-template-columns: 1fr auto;
-			gap: 1rem;
+			gap: .65rem;
 			align-items: center;
-			margin: 1.5rem 0 1rem;
-			padding: 1rem 1.1rem;
+			margin: .85rem 0 .65rem;
+			padding: .6rem .9rem;
 			background: var(--surface);
 			border: 1px solid var(--line);
 			border-radius: var(--radius-lg);
 			position: sticky;
-			top: 64px;
+			top: 60px;
 			z-index: 10;
 		}
 		.pubs-search {
@@ -83,15 +83,15 @@
 		:root[data-theme="dark"] .filter-btn.is-active { color: var(--bg); }
 
 		.pub-section {
-			margin: 2rem 0 .6rem;
+			margin: 1.25rem 0 .4rem;
 			font-family: var(--font-sans);
-			font-size: .78rem;
+			font-size: .75rem;
 			text-transform: uppercase;
 			letter-spacing: .12em;
 			color: var(--muted);
-			padding-bottom: .4rem;
+			padding-bottom: .3rem;
 			border-bottom: 1px solid var(--line);
-			scroll-margin-top: 9rem;
+			scroll-margin-top: 8rem;
 		}
 
 		.pub {
@@ -176,6 +176,10 @@
 		}
 		.pub__link:hover { color: var(--accent-soft); }
 
+		.pub__bib-wrap {
+			position: relative;
+			display: inline-block;
+		}
 		.pub__bib-btn {
 			font-family: var(--font-sans);
 			font-size: .7rem;
@@ -191,12 +195,13 @@
 			gap: .25rem;
 			line-height: 1.3;
 		}
-		.pub__bib-btn:hover {
+		.pub__bib-btn:hover,
+		.pub__bib-btn:focus-visible {
 			color: var(--accent);
 			border-color: var(--accent-soft);
 			background: var(--accent-bg);
 		}
-		.pub__bib-btn[aria-pressed="true"] {
+		.pub__bib-btn.is-copied {
 			color: var(--accent);
 			border-color: var(--accent);
 			background: var(--accent-bg);
@@ -208,39 +213,46 @@
 			vertical-align: -1px;
 		}
 
-		.pub__bib {
+		.pub__bib-card {
 			display: none;
-			margin: .4rem 0 0;
-			padding: .55rem .75rem;
+			position: absolute;
+			z-index: 30;
+			top: calc(100% + 6px);
+			right: 0;
+			min-width: 280px;
+			max-width: min(520px, 90vw);
+			padding: .5rem .65rem;
 			background: var(--surface);
-			border: 1px solid var(--line);
+			border: 1px solid var(--line-strong);
 			border-radius: var(--radius);
 			font-family: var(--font-mono);
-			font-size: .72rem;
+			font-size: .7rem;
 			color: var(--ink-soft);
 			white-space: pre;
 			overflow-x: auto;
 			line-height: 1.5;
+			box-shadow: 0 6px 24px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.06);
+			pointer-events: none;
 		}
-		.pub__bib.is-open { display: block; }
-		.pub__bib-actions {
-			display: flex;
-			justify-content: flex-end;
-			gap: .5rem;
-			margin-top: .4rem;
-		}
-		.pub__bib-copy {
+		:root[data-theme="dark"] .pub__bib-card { box-shadow: 0 6px 24px rgba(0,0,0,0.6); }
+		.pub__bib-wrap:hover .pub__bib-card,
+		.pub__bib-btn:focus-visible + .pub__bib-card,
+		.pub__bib-card.is-pinned { display: block; }
+		.pub__bib-card__hint {
+			display: block;
+			margin-top: .35rem;
+			padding-top: .3rem;
+			border-top: 1px dashed var(--line);
 			font-family: var(--font-sans);
-			font-size: .75rem;
-			padding: .25rem .65rem;
-			color: var(--accent);
-			background: transparent;
-			border: 1px solid var(--accent-soft);
-			border-radius: var(--radius);
-			cursor: pointer;
+			font-size: .65rem;
+			color: var(--muted);
+			text-align: right;
+			white-space: normal;
 		}
-		.pub__bib-copy:hover { background: var(--accent-bg); }
-		.pub__bib-copy.is-done { color: var(--ink); border-color: var(--ink-soft); }
+		.pub__bib-card.is-copied .pub__bib-card__hint {
+			color: var(--accent);
+			font-weight: 600;
+		}
 
 		.pubs-empty {
 			text-align: center;
@@ -501,8 +513,11 @@
 
 		const year = p.year ? `<span class="pub__year">${p.year}</span>` : "";
 		const bib = generateBibtex(p);
-		const bibBtn = `<button type="button" class="pub__bib-btn" aria-pressed="false" aria-controls="bib-${fmt(p.id)}" aria-label="Show BibTeX citation"><svg class="pub__bib-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5h8a2 2 0 0 1 2 2v12"/><rect x="5" y="3" width="10" height="16" rx="1"/></svg>BibTeX</button>`;
-		const bibBlock = `<div class="pub__bib" id="bib-${fmt(p.id)}"><code>${fmt(bib)}</code><div class="pub__bib-actions"><button type="button" class="pub__bib-copy" data-bib="${fmt(bib)}">Copy</button></div></div>`;
+		const bibBtn =
+			`<span class="pub__bib-wrap">` +
+				`<button type="button" class="pub__bib-btn" aria-describedby="bib-${fmt(p.id)}" aria-label="Copy BibTeX to clipboard"><svg class="pub__bib-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5h8a2 2 0 0 1 2 2v12"/><rect x="5" y="3" width="10" height="16" rx="1"/></svg>BibTeX</button>` +
+				`<span class="pub__bib-card" id="bib-${fmt(p.id)}" role="tooltip"><code>${fmt(bib)}</code><span class="pub__bib-card__hint">click to copy</span></span>` +
+			`</span>`;
 
 		return `
 			<article class="pub" data-type="${p.type}" data-year="${p.year || ''}">
@@ -512,7 +527,6 @@
 					<p class="pub__authors">${highlightSelf(p.authors)}</p>
 					${p.venue ? `<p class="pub__venue">${fmt(p.venue)}</p>` : ""}
 					<div class="pub__meta">${year}${links}${bibBtn}</div>
-					${bibBlock}
 				</div>
 			</article>
 		`;
@@ -584,49 +598,58 @@
 	}
 
 	function bindBibtex() {
-		// Event delegation — re-render replaces the list innerHTML
+		// Click the BibTeX button → copy to clipboard, flash confirmation.
+		// Hovering / focusing the button shows the floating preview card (pure CSS).
 		document.addEventListener("click", (e) => {
-			const toggle = e.target.closest(".pub__bib-btn");
-			if (toggle) {
-				const article = toggle.closest(".pub");
-				const block = article && article.querySelector(".pub__bib");
-				if (!block) return;
-				const open = block.classList.toggle("is-open");
-				toggle.setAttribute("aria-pressed", open ? "true" : "false");
-				return;
-			}
-			const copy = e.target.closest(".pub__bib-copy");
-			if (copy) {
-				const code = copy.parentNode.parentNode.querySelector("code");
-				const text = code ? code.textContent : (copy.dataset.bib || "");
-				const done = () => {
-					const orig = copy.textContent;
-					copy.textContent = "Copied!";
-					copy.classList.add("is-done");
-					setTimeout(() => {
-						copy.textContent = orig;
-						copy.classList.remove("is-done");
-					}, 1500);
-				};
-				if (navigator.clipboard && navigator.clipboard.writeText) {
-					navigator.clipboard.writeText(text).then(done, () => {
-						// Fallback: select & copy via deprecated API
-						const r = document.createRange();
-						r.selectNodeContents(code);
-						const sel = window.getSelection();
-						sel.removeAllRanges(); sel.addRange(r);
-						try { document.execCommand("copy"); done(); }
-						catch (_) { copy.textContent = "Press Ctrl+C"; }
-					});
-				} else {
-					const r = document.createRange();
-					r.selectNodeContents(code);
-					const sel = window.getSelection();
-					sel.removeAllRanges(); sel.addRange(r);
-					try { document.execCommand("copy"); done(); } catch(_) {}
-				}
+			const btn = e.target.closest(".pub__bib-btn");
+			if (!btn) return;
+			const wrap = btn.parentNode;
+			const card = wrap && wrap.querySelector(".pub__bib-card");
+			const code = card && card.querySelector("code");
+			const text = code ? code.textContent : "";
+			const hint = card && card.querySelector(".pub__bib-card__hint");
+
+			const done = () => {
+				btn.classList.add("is-copied");
+				if (card) card.classList.add("is-copied");
+				if (hint) hint.textContent = "✓ copied to clipboard";
+				setTimeout(() => {
+					btn.classList.remove("is-copied");
+					if (card) card.classList.remove("is-copied");
+					if (hint) hint.textContent = "click to copy";
+				}, 1500);
+			};
+			const fallback = () => {
+				if (!code) return;
+				const r = document.createRange();
+				r.selectNodeContents(code);
+				const sel = window.getSelection();
+				sel.removeAllRanges(); sel.addRange(r);
+				try { document.execCommand("copy"); done(); sel.removeAllRanges(); }
+				catch (_) { if (hint) hint.textContent = "press ⌘/Ctrl+C"; }
+			};
+
+			if (navigator.clipboard && navigator.clipboard.writeText) {
+				navigator.clipboard.writeText(text).then(done, fallback);
+			} else {
+				fallback();
 			}
 		});
+	}
+
+	function applyUrlQuery() {
+		// Honor ?q=... so research-page citation links can deep-link
+		// into a pre-filtered Publications view. Also accepts ?type=...
+		// for type-filter deep-links.
+		const params = new URLSearchParams(location.search);
+		const q = params.get("q");
+		if (q) {
+			state.query = q;
+			const input = el("#pubs-q");
+			if (input) input.value = q;
+		}
+		const type = params.get("type");
+		if (type) state.filter = type;
 	}
 
 	async function init() {
@@ -639,6 +662,11 @@
 			buildFilters();
 			bindSearch();
 			bindBibtex();
+			applyUrlQuery();
+			// Reflect filter state in the chip UI after applyUrlQuery may have set it.
+			document.querySelectorAll("#pubs-filters .filter-btn").forEach(b => {
+				b.classList.toggle("is-active", b.dataset.type === state.filter);
+			});
 			render();
 		} catch (e) {
 			el("#pubs-list").innerHTML =

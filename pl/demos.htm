@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="pl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Michał Ptaszyński / Dema i publikacje kodu</title>
+	<meta name="author" content="Michał Ptaszyński">
+	<meta name="description" content="Interaktywne dema, zbiory danych, modele i wydania kodu pochodzące z badań Michała Ptaszyńskiego — ML-Ask, POST-AL, YACIS, wykrywanie cyberprzemocy i inne.">
+	<link rel="alternate" hreflang="en" href="../demos.htm">
+	<link rel="alternate" hreflang="ja" href="../ja/demos.htm">
+	<link rel="alternate" hreflang="pl" href="demos.htm">
+	<link rel="alternate" hreflang="x-default" href="../demos.htm">
+
+	<link rel="icon" href="../images/favico.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../assets/site.css">
+	<script src="../assets/site.js" defer></script>
+
+	<style>
+		.demo-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+			gap: .65rem;
+			margin: .65rem 0 1.25rem;
+		}
+		.demo {
+			display: flex;
+			flex-direction: column;
+			padding: .65rem .85rem .75rem;
+			background: var(--surface);
+			border: 1px solid var(--line);
+			border-radius: var(--radius-lg);
+			transition: transform .18s cubic-bezier(.2,.7,.3,1), border-color .18s, box-shadow .18s;
+			color: inherit;
+			border-bottom: 1px solid var(--line);
+			position: relative;
+			overflow: hidden;
+		}
+		.demo:hover {
+			transform: translateY(-2px);
+			border-color: var(--accent-soft);
+			box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+			background: var(--surface);
+		}
+		.demo__kind {
+			font-family: var(--font-sans);
+			font-size: .65rem;
+			text-transform: uppercase;
+			letter-spacing: .12em;
+			color: var(--muted);
+			margin-bottom: .15rem;
+		}
+		.demo__title {
+			font-family: var(--font-sans);
+			font-weight: 600;
+			color: var(--accent);
+			font-size: .96rem;
+			margin: 0 0 .2rem;
+			letter-spacing: -0.01em;
+			text-transform: none;
+		}
+		.demo__desc {
+			color: var(--ink-soft);
+			font-size: .83rem;
+			line-height: 1.5;
+			margin: 0 0 .4rem;
+			flex: 1;
+		}
+		.demo__links {
+			display: flex;
+			flex-wrap: wrap;
+			gap: .15rem .55rem;
+			font-family: var(--font-sans);
+			font-size: .75rem;
+		}
+		.demo__links a {
+			color: var(--accent);
+			border-bottom-color: transparent;
+		}
+		.demo__links a:hover { border-bottom-color: var(--accent); }
+
+		.demo-section {
+			font-family: var(--font-sans);
+			font-size: .78rem;
+			text-transform: uppercase;
+			letter-spacing: .14em;
+			color: var(--muted);
+			margin: 1.5rem 0 .55rem;
+			padding-bottom: .3rem;
+			border-bottom: 1px solid var(--line);
+			position: relative;
+		}
+		.demo-section::after {
+			content: "";
+			position: absolute;
+			bottom: -1px; left: 0;
+			width: 40px; height: 1px;
+			background: var(--accent);
+		}
+	</style>
+</head>
+<body>
+
+<div data-include="header"></div>
+
+<main id="main" class="page page--wide">
+
+	<h1 class="page-title">Dema i publikacje kodu</h1>
+	<p class="page-lede">
+		Interaktywne dema, zbiory danych i wydania kodu z moich projektów badawczych.
+		Większość udostępniam na liberalnych licencjach — przy użyciu prosimy o cytowanie odpowiedniej publikacji.
+	</p>
+
+	<!-- ============ ŻYWE DEMA ============ -->
+	<h2 class="demo-section">🟢 Dema online</h2>
+	<div class="demo-grid">
+
+		<a class="demo" href="https://mlask-official.streamlit.app/" rel="noopener">
+			<div class="demo__kind">Streamlit · Analiza afektu</div>
+			<h3 class="demo__title">ML-Ask online</h3>
+			<p class="demo__desc">Wklej dowolne zdanie po japońsku — w odpowiedzi otrzymasz wykryte elementy emotywne, typ(y) emocji oraz pozycję na dwuwymiarowej mapie afektu Russella.</p>
+			<div class="demo__links"><span>otwórz demo ↗</span></div>
+		</a>
+
+		<a class="demo" href="https://qwals-app.streamlit.app" rel="noopener">
+			<div class="demo__kind">Streamlit · Podobieństwo języków</div>
+			<h3 class="demo__title">qWALS · transfer międzyjęzykowy</h3>
+			<p class="demo__desc">Predykcja skuteczności transferu uczenia między dwoma dowolnymi językami na podstawie ich odległości typologicznej (cechy WALS).</p>
+			<div class="demo__links">
+				<span>otwórz demo ↗</span>
+				<a href="https://github.com/kit-tiplab/qwals">GitHub</a>
+				<a href="https://pypi.org/project/qwals/">PyPI</a>
+			</div>
+		</a>
+
+		<a class="demo" href="../repository/demo/postal/postal-demo.html">
+			<div class="demo__kind">Przeglądarka · Tagowanie POS</div>
+			<h3 class="demo__title">POST-AL · tager POS dla ajnuskiego</h3>
+			<p class="demo__desc">Tager części mowy dla języka ajnuskiego, działający w całości w przeglądarce. Element szerszego pakietu narzędzi NLP dla ajnuskiego.</p>
+			<div class="demo__links"><span>otwórz demo ↗</span></div>
+		</a>
+
+		<a class="demo" href="https://huggingface.co/ptaszynski" rel="noopener">
+			<div class="demo__kind">Hugging Face · Modele i Spaces</div>
+			<h3 class="demo__title">Profil na Hugging Face</h3>
+			<p class="demo__desc">Modele, zbiory danych i Spaces opublikowane na Hugging Face — w tym japońskie modele rozpoznawania emocji oraz modele językowe wytrenowane na YACIS.</p>
+			<div class="demo__links"><span>otwórz profil ↗</span></div>
+		</a>
+
+	</div>
+
+	<!-- ============ ZBIORY DANYCH I LEKSYKONY ============ -->
+	<h2 class="demo-section">📦 Zbiory danych i leksykony</h2>
+	<div class="demo-grid">
+
+		<div class="demo">
+			<div class="demo__kind">Leksykon · ~2 100 wyrażeń</div>
+			<h3 class="demo__title">Leksykon emocji ML-Ask (wersja 2024)</h3>
+			<p class="demo__desc">Japoński słownik wyrażeń emotywnych z podziałem na dziesięć klasycznych typów emocji. Najnowsze rozszerzenie z 2024 r. Używany przez ML-Ask; możliwy do cytowania osobno.</p>
+			<div class="demo__links">
+				<a href="../repository/files/emotions_20240804.zip">pobierz (2,4 MB) ↗</a>
+				<a href="research.htm#mlask">o ML-Ask</a>
+			</div>
+		</div>
+
+		<div class="demo">
+			<div class="demo__kind">Leksykon · 108 wzorców</div>
+			<h3 class="demo__title">Struktury CVS (japoński)</h3>
+			<p class="demo__desc">Contextual Valence Shifters — 108 wzorców negacji i przesunięcia walencji dla japońskiego, w ujęciu Polanyi &amp; Zaenen (2006). Plik tekstowy.</p>
+			<div class="demo__links">
+				<a href="../repository/files/cvs.txt">pobierz (2 kB) ↗</a>
+			</div>
+		</div>
+
+		<div class="demo">
+			<div class="demo__kind">Baza · ponad 10 000 emotikonów</div>
+			<h3 class="demo__title">Baza emotikonów CAO</h3>
+			<p class="demo__desc">Wszystkie unikatowe japońskie emotikony (<em lang="ja">kaomoji</em>) używane w CAO, z dekompozycją na trójki oko–usta–oko i częstościami dla poszczególnych emocji.</p>
+			<div class="demo__links">
+				<a href="../repository/files/emoticons-sorted-by-length.txt">wszystkie emotikony ↗</a>
+				<a href="../repository/files/emoticon-triplets.zip">trójki (ZIP)</a>
+				<a href="../repository/files/emoticon-eyes-stats.zip">statystyki oczu</a>
+				<a href="../repository/files/emoticon-mouths-stats.zip">statystyki ust</a>
+			</div>
+		</div>
+
+		<div class="demo">
+			<div class="demo__kind">Korpus · 5,6 mld słów</div>
+			<h3 class="demo__title">YACIS · korpus japońskich blogów</h3>
+			<p class="demo__desc">Yet Another Corpus of Internet Sentences — japońskie wpisy blogowe z pełną anotacją syntaktyczną oraz afektywną (ML-Ask + CAO).</p>
+			<div class="demo__links">
+				<a href="research.htm#yacis">o YACIS</a>
+				<a href="https://huggingface.co/ptaszynski" rel="noopener">modele HF trenowane na YACIS</a>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- ============ WYDANIA KODU ============ -->
+	<h2 class="demo-section">⚙️ Wydania kodu</h2>
+	<div class="demo-grid">
+
+		<a class="demo" href="https://github.com/ptaszynski/" rel="noopener">
+			<div class="demo__kind">GitHub · profil</div>
+			<h3 class="demo__title">github.com/ptaszynski</h3>
+			<p class="demo__desc">Główne konto na GitHubie. Aktywne forki obejmują m.in. qWALS, eksperymenty z ML-Ask, benchmarki wykrywania cyberprzemocy oraz prace nad NLP dla ajnuskiego.</p>
+			<div class="demo__links"><span>otwórz profil ↗</span></div>
+		</a>
+
+		<a class="demo" href="https://github.com/kit-tiplab/qwals" rel="noopener">
+			<div class="demo__kind">GitHub · KIT TIP Lab</div>
+			<h3 class="demo__title">qWALS</h3>
+			<p class="demo__desc">Implementacja referencyjna qWALS — kwantyfikacja podobieństwa języków na podstawie cech WALS. Wykorzystana w artykule MLKE 2026.</p>
+			<div class="demo__links">
+				<span>repozytorium ↗</span>
+				<a href="https://pypi.org/project/qwals/">pip install qwals</a>
+			</div>
+		</a>
+
+		<div class="demo">
+			<div class="demo__kind">Perl · skrypty</div>
+			<h3 class="demo__title">ML-Ask 4.3 (Perl)</h3>
+			<p class="demo__desc">Implementacja referencyjna ML-Ask. Wymaga MeCab oraz wiązania Perla. Dwa warianty: „simple” dla tekstów blogowych/dokumentów oraz domyślny dla wypowiedzi konwersacyjnych.</p>
+			<div class="demo__links">
+				<a href="../repository/files/mlask43-noregex.zip">ML-Ask 4.3</a>
+				<a href="../repository/files/mlask43-simple-noregex.zip">ML-Ask 4.3 simple</a>
+				<a href="research.htm#mlask">dokumentacja</a>
+			</div>
+		</div>
+
+		<div class="demo">
+			<div class="demo__kind">Perl · skrypt</div>
+			<h3 class="demo__title">Detektor emotikonów (wersja lekka)</h3>
+			<p class="demo__desc">Lekkie narzędzie wyszukujące kaomoji w łańcuchu znaków — uproszczona wersja silnika dopasowywania CAO.</p>
+			<div class="demo__links">
+				<a href="../repository/files/emodetector.zip">pobierz (4 kB) ↗</a>
+			</div>
+		</div>
+
+	</div>
+
+	<p class="muted small" style="margin-top:2rem">
+		Szukasz czegoś, czego tu nie ma? <a href="contact.htm">Napisz</a> — nie wszystkie wewnętrzne narzędzia są jeszcze publiczne, ale większość można udostępnić.
+	</p>
+
+</main>
+
+<div data-include="footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+	"_comment": "Search index for site-wide search. Each entry: {title, snippet, url, kind}. Keep snippets short — they're shown in result rows. Hand-maintained; small enough to be fine.",
+	"entries": [
+
+		{ "kind": "page", "title": "Home", "snippet": "Hero, news, social profiles.", "url": "index.html" },
+		{ "kind": "page", "title": "Publications", "snippet": "Search 400+ entries by title, author, venue, year. Filter by type.", "url": "publications.htm" },
+		{ "kind": "page", "title": "Profile / CV", "snippet": "Education, positions, teaching, grants, awards, memberships, activities.", "url": "profile.htm" },
+		{ "kind": "page", "title": "Research", "snippet": "ML-Ask, CAO, SPEC, POST-AL, YACIS, cyberbullying detection.", "url": "research.htm" },
+		{ "kind": "page", "title": "Demos & releases", "snippet": "Live demos, datasets, code releases.", "url": "demos.htm" },
+		{ "kind": "page", "title": "Photos", "snippet": "Conference and lab photos by year.", "url": "photos.htm" },
+		{ "kind": "page", "title": "Contact", "snippet": "Office address, email, phone — at Kitami Institute of Technology.", "url": "contact.htm" },
+
+		{ "kind": "project", "title": "ML-Ask · Affect Analysis System", "snippet": "Keyword-based affect annotation for Japanese — emotemes, emotive expressions, Russell's 2D affect space.", "url": "research.htm#mlask" },
+		{ "kind": "project", "title": "CAO · Emoticon Analysis System", "snippet": "10,000+ Japanese kaomoji decomposed into eyes, mouth, framing — re-assembled into emotion.", "url": "research.htm#cao" },
+		{ "kind": "project", "title": "Cyberbullying detection", "snippet": "From SVM to a patented PMI-IR method on real-world Japanese cyberbullying data.", "url": "research.htm#cyberbullying" },
+		{ "kind": "project", "title": "YACIS · Japanese blog corpus", "snippet": "5.6 billion words of Japanese blog text — annotated with ML-Ask + CAO.", "url": "research.htm#yacis" },
+		{ "kind": "project", "title": "SPEC · Sentence Pattern Extraction", "snippet": "Language-independent extraction of n-element ordered combinations.", "url": "research.htm#spec" },
+		{ "kind": "project", "title": "POST-AL · Ainu POS tagger", "snippet": "POS tagging and NLP for the critically endangered Ainu language.", "url": "research.htm#postal" },
+		{ "kind": "project", "title": "Contextual appropriateness of emotions", "snippet": "Not just what emotion was expressed — was it appropriate for the context?", "url": "research.htm#appropriateness" },
+		{ "kind": "project", "title": "Automatic evaluation of conversational agents", "snippet": "Affect-based auto-rating of Japanese chatbots.", "url": "research.htm#evaluation" },
+
+		{ "kind": "demo", "title": "ML-Ask online", "snippet": "Streamlit demo — paste Japanese, get emotion analysis + Russell-2D mapping.", "url": "https://mlask-official.streamlit.app/" },
+		{ "kind": "demo", "title": "qWALS — cross-lingual transfer", "snippet": "Predict transfer-learning performance from typological distance (WALS-based).", "url": "https://qwals-app.streamlit.app" },
+		{ "kind": "demo", "title": "POST-AL · Ainu POS tagger (browser)", "snippet": "In-browser POS tagger for Ainu — paste text, see analysis.", "url": "repository/demo/postal/postal-demo.html" },
+		{ "kind": "demo", "title": "ML-Ask emotion lexicon (v2024)", "snippet": "Japanese emotive-expression database — ~2,100 entries, 10 emotion types.", "url": "demos.htm#datasets" },
+		{ "kind": "demo", "title": "CAO emoticon database", "snippet": "All unique kaomoji used in CAO, with eye/mouth decomposition and frequencies.", "url": "demos.htm#datasets" },
+		{ "kind": "demo", "title": "Hugging Face profile", "snippet": "Models and Spaces — Japanese emotion-aware models, YACIS-derived LMs.", "url": "https://huggingface.co/ptaszynski" },
+
+		{ "kind": "profile", "title": "Research interests", "snippet": "Affect analysis, NLP, cyberbullying detection, affective computing, Ainu language.", "url": "profile.htm#interests" },
+		{ "kind": "profile", "title": "Education", "snippet": "Ph.D. Hokkaido University 2010, M.A. Adam Mickiewicz University 2006.", "url": "profile.htm#education" },
+		{ "kind": "profile", "title": "Academic positions", "snippet": "Professor (Kitami, 2025–), Associate Professor (2018–2025), Assistant Professor (2013–2018).", "url": "profile.htm#positions" },
+		{ "kind": "profile", "title": "Teaching", "snippet": "Robot Informatics, Data Science, Affective Computing, NLP — undergrad to PhD.", "url": "profile.htm#teaching" },
+		{ "kind": "profile", "title": "Grants & scholarships", "snippet": "KAKENHI projects, JSPS Research Fellowship, President's Discretionary Expenses.", "url": "profile.htm#grants" },
+		{ "kind": "profile", "title": "Honours & awards", "snippet": "IPSJ Yamashita Award, BICA Best Innovative Work, IEEE Sapporo Encouragement Award.", "url": "profile.htm#awards" },
+		{ "kind": "profile", "title": "Memberships", "snippet": "ACL, AAAI, IEEE Senior Member, HUMAINE, AFNLP, JSAI, IPSJ, ANLP.", "url": "profile.htm#memberships" },
+		{ "kind": "profile", "title": "Professional activities", "snippet": "Program committees, editorial boards, workshop organisation, reviewing.", "url": "profile.htm#activities" },
+		{ "kind": "profile", "title": "Elsewhere — Computational Linguistics LinkedIn group, Japonica Creativa, Hokkaido book chapter.", "snippet": "Side projects and outreach beyond the lab.", "url": "profile.htm#elsewhere" }
+	]
+}

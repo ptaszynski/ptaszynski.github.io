@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<channel>
+		<title>Michal Ptaszynski — News</title>
+		<link>https://ptaszynski.github.io/</link>
+		<atom:link href="https://ptaszynski.github.io/feed.xml" rel="self" type="application/rss+xml" />
+		<description>Latest news from Michal Ptaszynski — affect analysis, cyberbullying detection, NLP for low-resource languages.</description>
+		<language>en</language>
+		<dc:creator>Michal Ptaszynski</dc:creator>
+		<copyright>© Michal Ptaszynski</copyright>
+		<ttl>1440</ttl>
+
+		<item>
+			<title>New book chapter on causal analysis of espresso quality (Springer)</title>
+			<link>https://ptaszynski.github.io/#news</link>
+			<guid isPermaLink="false">ptaszynski-news-2026-04-espresso</guid>
+			<pubDate>Wed, 01 Apr 2026 00:00:00 +0000</pubDate>
+			<description><![CDATA[
+				New book chapter <em>"Causal Analysis of Machine Deviations on Espresso Sensory Quality"</em> to appear in Springer's <i>AI for Sustainability and Global Security</i>.
+			]]></description>
+		</item>
+
+		<item>
+			<title>Promoted to Professor at Kitami Institute of Technology</title>
+			<link>https://ptaszynski.github.io/#news</link>
+			<guid isPermaLink="false">ptaszynski-news-2025-professor</guid>
+			<pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+			<description><![CDATA[
+				Promoted to <strong>Professor</strong> at Kitami Institute of Technology.
+			]]></description>
+		</item>
+
+		<item>
+			<title>Three book chapters on AI-assisted Ainu-language research</title>
+			<link>https://ptaszynski.github.io/#news</link>
+			<guid isPermaLink="false">ptaszynski-news-2023-12-ainu-dziady</guid>
+			<pubDate>Fri, 01 Dec 2023 00:00:00 +0000</pubDate>
+			<description><![CDATA[
+				Three book chapters on AI-assisted research into the Ainu language published in <i>Inne, a jednak Dziady</i>.
+			]]></description>
+		</item>
+	</channel>
+</rss>

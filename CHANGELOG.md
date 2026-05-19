@@ -2,6 +2,92 @@
 
 All notable changes to the personal homepage.
 
+## 2026-05-19 — Phase 8: Slim pages, hover BibTeX, search, RSS, JA/PL expansion
+
+### Slim down across all pages
+
+- Global `site.css` tightened: body line-height 1.7 → 1.55, h1/h2/h3
+  smaller and with tighter margins, `.page` padding 2.5/4 → 1.5/2.5,
+  `.page-title` 2.4 → 2 rem, `.page-lede` margin 2.25 → 1.25 rem.
+- Hero: gap 2.5 → 1.75, margin 1/3 → 0.35/1.5, portrait 160 → 130 px,
+  title 2.6 → 2.15 rem, lede line-height 1.7 → 1.55.
+- Entry-point cards padding 1.35/1.2 → 0.95/1.0, h2 1.1 → 1.02 rem.
+- News-list rows: 1 rem padding → 0.55 rem, time + p tighter.
+- Header padding 0.9 → 0.65 rem; footer margin-top 4 → 2.5 rem.
+- Per-page tightening on profile (timeline gap 0.9 → 0.45, dd
+  padding 0.9 → 0.45), research (project margin 4 → 2 rem,
+  cover 130 → 95 px, project__body p line-height 1.7 → 1.5),
+  demos (card padding 1.0/1.1 → 0.65/0.85, kind 0.68 → 0.65 rem),
+  publications (toolbar padding 1.0/1.1 → 0.6/0.9, pub-section
+  margin 2 → 1.25 rem). photos.htm list rows tightened too.
+
+### Hover-cards on `publications.htm`
+
+- Replaced the row-expansion BibTeX block with a hover-card popover.
+  Hovering / focusing the BibTeX button now reveals a floating
+  preview to the right; clicking the button copies the entry to
+  the clipboard (with a "✓ copied to clipboard" flash). No row
+  re-flow, no second copy button. Works with keyboard focus as well.
+
+### Deep-link research → publications
+
+- Each `<em>` in `.project__cites` on `research.htm` (EN / JA / PL)
+  is auto-wrapped at runtime with a "→ in Publications" chip that
+  points to `publications.htm?q=<first-5-words-of-title>`.
+- `publications.htm` now reads `?q=` (and `?type=`) on load,
+  pre-fills the search box, and renders the filtered view.
+
+### News-section RSS feed
+
+- New `feed.xml` (RSS 2.0) at site root with the 3 current Latest
+  items, ISO pub-dates. Each language home (EN / JA / PL) has a
+  `<link rel="alternate" type="application/rss+xml">` for autodiscovery
+  and a visible "RSS" chip beside the *Latest / 最新情報 / Aktualności*
+  heading.
+
+### Site-wide search
+
+- New `assets/search-index.json` — ~30-entry hand-maintained index
+  covering page roots, research projects, demos, and profile sections.
+- Magnifier button in the header; `/` keystroke (when not in an
+  input) and `⌘/Ctrl+K` open a centered overlay panel with live
+  filtering, ↑/↓ to navigate, Enter to open. Fallback "search
+  Publications for …" link appears when nothing else matches.
+- Search overlay i18n strings added to `I18N` in `site.js`.
+
+### JA / PL translations: profile, research, demos
+
+- New `ja/profile.htm`, `ja/research.htm`, `ja/demos.htm`.
+- New `pl/profile.htm`, `pl/research.htm`, `pl/demos.htm`.
+- Standard academic-CV practice followed: page chrome (titles,
+  section headings, page lede, descriptions, intro paragraphs)
+  fully translated; CV listings (institution names, conference
+  names, paper titles, grant titles) kept in original form with
+  a note explaining the policy.
+- Terminology calibrated for naturalness:
+  - JA: 感情情報処理, ネットいじめ, 情緒素/情緒表現, 覚醒–沈静,
+    低資源言語, 顔文字, 学校裏サイト, 言語復興技術.
+  - PL: obliczenia afektywne, cyberprzemoc, wyrażenia emotywne,
+    walencja × pobudzenie, języki o niskich zasobach,
+    technologie rewitalizacji języków.
+- `TRANSLATED_PAGES` in `site.js` extended to include the three
+  new translated pages — language switcher now keeps the user in
+  the same content section.
+- EN pages (`profile.htm`, `research.htm`, `demos.htm`) now declare
+  `<link rel="alternate" hreflang="ja">` and `hreflang="pl">`.
+- `ja/index.html` and `pl/index.html` entry-point cards updated:
+  Research no longer marked as EN-only; intra-page references now
+  point to the same-language sibling files (`research.htm#...`,
+  `profile.htm#...`).
+
+### Header layout
+
+- Header padding tightened (0.9 → 0.65 rem) to claw back a bit
+  more vertical space; sticky-toolbar offsets in Publications
+  + Profile TOC bumped from 64 → 60 px to match.
+
+---
+
 ## 2026-05-19 — Phase 7: Compact publications, Demos page, profile cleanup
 
 ### Publications page — compact + structured BibTeX
@@ -263,11 +349,11 @@ GitHub-Pages-hosted static site.
 | **Press / Media coverage page** | Especially around the cyberbullying-detection patent and the Ainu NLP work — journalism / podcasts / interviews collected in one spot | Low |
 | **Standalone Datasets catalog with DOIs** | Deposit ML-Ask lexicon, CVS, CAO emoticon DB and YACIS to Zenodo so each has its own DOI; current Demos page links to ZIPs but they aren't independently citable. Solves the `data/` migration problem AND makes the artefacts properly findable | High once you start the Zenodo migration |
 | **JSON-LD `ScholarlyArticle` markup** on `publications.htm` | Better Google Scholar / Semantic Scholar indexing of the on-site list. Roughly one extra `<script type="application/ld+json">` per render | Low |
-| **News-section RSS feed** | A tiny `feed.xml` generated from the same data the Home page uses. Lets people subscribe to "Latest". Adds basically nothing to the site weight | Low |
-| **Site-wide search** | `publications.htm` has a great search; extend it across profile/research/demos by indexing their text into a small JSON at build time. Probably overkill for a personal site but a nice flourish | Low |
-| **Hover-cards on `publications.htm`** showing the BibTeX inline on long-press / hover, without expanding the row | Speeds up the "copy a few cites in a row" workflow | Low |
-| **Deep-link from research.htm citations into publications.htm filtered view** | Right now research-page citations are plain text; could `?q=ML-Ask` deep-link into the search-filtered publications view | Low |
-| **Custom domain + HTTPS-CNAME** if desired (currently `ptaszynski.github.io`) | One CNAME file + DNS records; instructions in README | Trivial |
+| ~~**News-section RSS feed**~~ | ✅ Done in Phase 8 — `feed.xml` + autodiscovery on all home pages. | — |
+| ~~**Site-wide search**~~ | ✅ Done in Phase 8 — `/` overlay + `assets/search-index.json`. | — |
+| ~~**Hover-cards on `publications.htm`**~~ | ✅ Done in Phase 8 — hover shows BibTeX, click copies. | — |
+| ~~**Deep-link from research.htm citations into publications.htm filtered view**~~ | ✅ Done in Phase 8 — `?q=` chip on every citation. | — |
+| **Custom domain + HTTPS-CNAME** if desired (currently `ptaszynski.github.io`) | Custom domain ≠ free domain. Need to buy a domain at a registrar (~$10–15/yr), add 4 A-records + 1 www CNAME, drop a `CNAME` file in repo root with the domain on one line, tick "Enforce HTTPS" in Pages settings. Let's Encrypt cert auto-provisioned. | Trivial (if domain owned) |
 
 ### How to deploy any of these
 
