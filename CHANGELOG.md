@@ -2,6 +2,70 @@
 
 All notable changes to the personal homepage.
 
+## 2026-05-19 — Phase 7: Compact publications, Demos page, profile cleanup
+
+### Publications page — compact + structured BibTeX
+
+- Layout tightened ~40 % vertically: cover 70 → 44 px, padding
+  1.1 → 0.55 rem, title 1 → 0.92 rem, author 0.92 → 0.82, venue
+  0.88 → 0.78. Empty-cover placeholder no longer pads to 90 px tall.
+- BibTeX block: smaller font + tighter padding when expanded.
+- New `parseVenue()` extracts **journal / booktitle, volume, number,
+  pages, month, address, ISBN, DOI** as separate BibTeX fields —
+  matching Scholar's export convention rather than dumping the whole
+  venue string into one blob.
+- Cite-key generator now CJK-aware (Japanese names: surname first);
+  detects ALL-CAPS surname tokens.
+- Author splitter handles "X, Y, **and** Z" form so the leading
+  "and " no longer becomes part of a surname.
+- Stripped 58 residual full-width colons (`Araki：`) from author
+  strings — legacy parser artefact.
+- BibTeX output verified against CrossRef for four high-profile DOIs
+  (IP&M 2026, JORS 2017 ML-Ask, IEEE TAC 2010 CAO, MLKE 2026
+  Polyglots) — journal name, volume, number, year all match.
+
+### New Demos page
+
+- `demos.htm`: three sections —
+  - **Live demos:** ML-Ask Streamlit, qWALS Streamlit + PyPI,
+    POST-AL in-browser, Hugging Face profile.
+  - **Datasets & lexicons:** ML-Ask 2024 emotion lexicon, CVS
+    structures, CAO emoticon database (with eye/mouth stats), YACIS.
+  - **Code releases:** GitHub profile, qWALS repo, ML-Ask 4.3 Perl,
+    standalone emoticon detector.
+- Added to main nav as **Demos / デモ / Dema**.
+
+### Links page removed
+
+- `links.htm` deleted; its three substantive items (Computational
+  Linguistics LinkedIn group, Japonica Creativa, *Hokkaido* book)
+  folded into a new **"Elsewhere"** section at the bottom of
+  `profile.htm`.
+
+### Profile cleanup
+
+- **Mojibake fix:** `ftfy.fix_text` applied across `profile.htm`
+  (text only, tags preserved). ~43 k characters affected, file
+  shrank 54 → 52 KB. Japanese in Honours & Awards readable again.
+- **Honours & Awards layout fix:** year promoted from a sea of
+  `&nbsp;` inside `<dd>` to the proper `<dt>` column.
+- **Professional Activities restructured:** 165 flat `<p>` rows
+  with sporadic "year ・" prefixes → 15 year-grouped sections with
+  proper `<h3>` headings and clean `<ul>` lists. New
+  `.activities-year` / `.activities-list` styling with a
+  hoverable left border.
+
+### Header nav fix
+
+- The 7-item nav (Home / Profile / Research / Publications / Demos /
+  Photos / Contact) was wrapping "Contact" to a second line on
+  widths between ~820–1040 px. Now `flex-wrap: nowrap` with a
+  hidden-scrollbar horizontal-scroll fallback. Brand subtitle
+  ("Affective Computing · NLP · HCI") hides below 820 px to
+  free room for the nav.
+
+---
+
 ## 2026-05-19 — Phase 6: BibTeX, admin, research-merge, link cleanup
 
 ### Publications data cleanup
@@ -173,12 +237,47 @@ GitHub-Pages-hosted static site.
 
 ## Known TODO for future sessions
 
+### Carry-over from earlier phases
+
 | Item | Why | Priority |
 |---|---|---|
-| Move `data/` (526 MB of paper PDFs) to Zenodo / OSF / arXiv; bulk-update URLs in `assets/publications.json` | PDF links in publications page currently point at `data/*.pdf` paths that don't exist on github.io | High |
-| Move `photos/` (138 MB) to Google Photos / Flickr; update `photos.htm` links | Per-event links currently 404 on github.io | Medium |
-| Native-speaker review of JA / PL translations | Translations are AI-generated and need polish | Medium |
-| ~18 / 406 publication entries have no parseable year (sort to bottom of their section); some venue fields contain stray words like "paper", "slides" from looseness in the original markup | Parser was best-effort; entries are easy to fix one-by-one in the JSON | Low |
-| Keep the **Latest** section on `index.html` (and JA/PL versions) up to date | Currently has 3 placeholder entries from 2023-2026 | Ongoing |
-| The `repository/*.htm` sub-pages (linked from `research.htm` "Read more →") still use the old 2010 stylesheet | Visual whiplash from research → repo sub-page | Low |
-| Wire the **Profile**, **Research** etc. pages to read from `<link rel="alternate">` so the switcher tooltips work correctly on every page (currently they correctly disable JA/PL but the tooltip pattern relies on absence of alternates) | Polish issue | Low |
+| Move `data/` (526 MB of paper PDFs) to Zenodo / OSF; bulk-update URLs in `assets/publications.json` | PDF links currently point at `data/*.pdf` paths that don't exist on github.io | **High** |
+| Move `photos/` (138 MB) to Google Photos / Flickr / Zenodo; update `photos.htm` links | Per-event links currently 404 on github.io | Medium |
+| Native-speaker review of JA / PL translations | Translations are AI-generated and need polish (PL especially — you're the authority) | Medium |
+| Manual fix of ~12 residual Japanese characters lost in original encoding round-trip (e.g. `観堉` → `観光`, `案冠` → `案内`) | `ftfy` recovered ~99 % of the mojibake but a handful of multi-byte sequences were truncated in the source | Medium |
+| Keep the **Latest** section on `index.html` (+ JA/PL home) fresh | Currently 3 entries spanning 2023-2026 | Ongoing |
+
+### New from Phase 7
+
+| Item | Why | Priority |
+|---|---|---|
+| Continue auditing the 302 remaining "duplicate-URL across pubs" cases | The structural-cleanup heuristic only confidently fixed 62 of 364; the rest need eyeballs — the new `/admin/` tool makes per-entry edits a 30-second job | Medium |
+| Add explicit `bibtex` overrides for CJK-only / irregular-venue entries where the auto-generator produces a weak result (e.g. p0010 *心を交わす人工知能*) | The generator falls back to `Anon2016Paper`-style keys when no Latin surname is parseable | Low |
+
+### Creative ideas worth doing next
+
+| Idea | Sketch | Effort |
+|---|---|---|
+| **Talks / Keynotes page** | A new `talks.htm` listing invited talks, keynotes, panel appearances — venue, date, topic, slides/video link. Pair with a strong "want me to talk?" CTA. You're advertising availability now; a real list adds credibility | Medium |
+| **Students / Lab page** | Standard for academic CVs: list of supervised PhD / MSc / BSc students with thesis title and current position. Helps recruitment + shows lineage | Medium |
+| **Press / Media coverage page** | Especially around the cyberbullying-detection patent and the Ainu NLP work — journalism / podcasts / interviews collected in one spot | Low |
+| **Standalone Datasets catalog with DOIs** | Deposit ML-Ask lexicon, CVS, CAO emoticon DB and YACIS to Zenodo so each has its own DOI; current Demos page links to ZIPs but they aren't independently citable. Solves the `data/` migration problem AND makes the artefacts properly findable | High once you start the Zenodo migration |
+| **JSON-LD `ScholarlyArticle` markup** on `publications.htm` | Better Google Scholar / Semantic Scholar indexing of the on-site list. Roughly one extra `<script type="application/ld+json">` per render | Low |
+| **News-section RSS feed** | A tiny `feed.xml` generated from the same data the Home page uses. Lets people subscribe to "Latest". Adds basically nothing to the site weight | Low |
+| **Site-wide search** | `publications.htm` has a great search; extend it across profile/research/demos by indexing their text into a small JSON at build time. Probably overkill for a personal site but a nice flourish | Low |
+| **Hover-cards on `publications.htm`** showing the BibTeX inline on long-press / hover, without expanding the row | Speeds up the "copy a few cites in a row" workflow | Low |
+| **Deep-link from research.htm citations into publications.htm filtered view** | Right now research-page citations are plain text; could `?q=ML-Ask` deep-link into the search-filtered publications view | Low |
+| **Custom domain + HTTPS-CNAME** if desired (currently `ptaszynski.github.io`) | One CNAME file + DNS records; instructions in README | Trivial |
+
+### How to deploy any of these
+
+```bash
+# from this worktree:
+git add <files> && git commit -m "..."
+
+# then from the main worktree:
+cd /Users/michalptaszynski/nlp/strona_backup
+git merge --ff-only claude/inspiring-varahamihira-33f01a
+git push origin main
+# GitHub Pages republishes in ~30–60 s.
+```
