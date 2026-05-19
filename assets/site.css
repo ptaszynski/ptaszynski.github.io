@@ -480,6 +480,37 @@ a:focus-visible {
 }
 
 /* ============================================================
+   Profile-page: Activities year-grouped list
+   ============================================================ */
+
+.activities-year {
+	font-family: var(--font-sans);
+	font-size: 1.05rem;
+	font-weight: 600;
+	color: var(--accent);
+	margin: 1.75rem 0 .5rem;
+	padding-bottom: .2rem;
+	border-bottom: 1px solid var(--line);
+	letter-spacing: 0;
+	text-transform: none;
+}
+.activities-list {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 .5rem;
+}
+.activities-list li {
+	font-size: .9rem;
+	color: var(--ink-soft);
+	line-height: 1.55;
+	padding: .3rem 0 .3rem .9rem;
+	border-left: 2px solid var(--line);
+	margin-bottom: .1rem;
+	transition: border-color .15s ease;
+}
+.activities-list li:hover { border-left-color: var(--accent); }
+
+/* ============================================================
    Misc utility
    ============================================================ */
 
