@@ -29,7 +29,21 @@
 			position: sticky;
 			top: 60px;
 			z-index: 10;
+			transition: padding .18s ease, box-shadow .18s ease;
 		}
+		/* Compact-on-scroll: collapse the filter chips + count to reclaim
+		   vertical space (especially on phones). Re-expands near the top or
+		   while the search box is focused. */
+		.pubs-toolbar.is-compact {
+			padding-top: .4rem;
+			padding-bottom: .4rem;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+		}
+		.pubs-toolbar.is-compact .pubs-filters,
+		.pubs-toolbar.is-compact .pubs-count { display: none; }
+		.pubs-toolbar.is-compact.is-expanded { padding-bottom: .6rem; }
+		.pubs-toolbar.is-compact.is-expanded .pubs-filters { display: flex; }
+		.pubs-toolbar.is-compact.is-expanded .pubs-count { display: block; }
 		.pubs-search {
 			display: flex;
 			gap: .5rem;
@@ -93,6 +107,21 @@
 			border-bottom: 1px solid var(--line);
 			scroll-margin-top: 8rem;
 		}
+
+		.pub-year {
+			font-family: var(--font-sans);
+			font-weight: 700;
+			font-size: .82rem;
+			color: var(--accent);
+			margin: .85rem 0 .25rem;
+			padding: .1rem .55rem;
+			background: var(--accent-bg);
+			border-radius: 999px;
+			display: inline-block;
+			letter-spacing: .02em;
+			scroll-margin-top: 8rem;
+		}
+		.pub-year:first-of-type { margin-top: .35rem; }
 
 		.pub {
 			display: grid;
@@ -218,9 +247,10 @@
 			position: absolute;
 			z-index: 30;
 			top: calc(100% + 6px);
-			right: 0;
+			left: 0;
+			right: auto;
 			min-width: 280px;
-			max-width: min(520px, 90vw);
+			max-width: min(520px, 92vw);
 			padding: .5rem .65rem;
 			background: var(--surface);
 			border: 1px solid var(--line-strong);
@@ -238,6 +268,8 @@
 		.pub__bib-wrap:hover .pub__bib-card,
 		.pub__bib-btn:focus-visible + .pub__bib-card,
 		.pub__bib-card.is-pinned { display: block; }
+		/* Flip to open leftward when opening rightward would overflow the viewport. */
+		.pub__bib-card.is-flip-left { left: auto; right: 0; }
 		.pub__bib-card__hint {
 			display: block;
 			margin-top: .35rem;
@@ -559,7 +591,17 @@
 		TYPE_ORDER.forEach(t => {
 			if (!groups[t] || !groups[t].length) return;
 			html += `<h2 class="pub-section" id="t-${t}">${TYPE_META[t].emoji} ${TYPE_META[t].label} <span style="font-weight:400; color:var(--muted); text-transform:none; letter-spacing:0;">· ${groups[t].length}</span></h2>`;
-			groups[t].forEach(p => { html += renderPub(p); });
+			// Sort newest-first, then insert a year divider whenever the year changes.
+			const items = groups[t].slice().sort((a, b) => (b.year || 0) - (a.year || 0));
+			let curYear = null;
+			items.forEach(p => {
+				const y = p.year || "—";
+				if (y !== curYear) {
+					curYear = y;
+					html += `<div class="pub-year">${y}</div>`;
+				}
+				html += renderPub(p);
+			});
 		});
 
 		list.innerHTML = html;
@@ -597,9 +639,60 @@
 		});
 	}
 
+	function positionBibCard(btn) {
+		// Keep the BibTeX preview fully inside the viewport. Default: open
+		// rightward from the button's left edge. Flip leftward if that
+		// overflows; on very narrow screens, pin it within the viewport.
+		const wrap = btn.parentNode;
+		const card = wrap && wrap.querySelector(".pub__bib-card");
+		if (!card) return;
+
+		// Reset any prior inline positioning before measuring.
+		card.style.left = "";
+		card.style.right = "";
+		card.classList.remove("is-flip-left");
+
+		// Measure the card's real width off-screen.
+		const prevVis = card.style.visibility;
+		card.style.visibility = "hidden";
+		card.style.display = "block";
+		const cardW = card.getBoundingClientRect().width;
+		card.style.display = "";
+		card.style.visibility = prevVis;
+
+		const rect = btn.getBoundingClientRect();
+		const vw = document.documentElement.clientWidth;
+		const margin = 10;
+		const wrapRect = wrap.getBoundingClientRect();
+
+		if (rect.left + cardW <= vw - margin) {
+			// Fits opening rightward (default CSS — left:0).
+			return;
+		}
+		if (rect.right - cardW >= margin) {
+			// Fits opening leftward.
+			card.classList.add("is-flip-left");
+			return;
+		}
+		// Too wide for either side: pin so the right edge rests at the margin.
+		const leftViewport = Math.max(margin, vw - margin - cardW);
+		card.style.left = (leftViewport - wrapRect.left) + "px";
+		card.style.right = "auto";
+	}
+
 	function bindBibtex() {
 		// Click the BibTeX button → copy to clipboard, flash confirmation.
-		// Hovering / focusing the button shows the floating preview card (pure CSS).
+		// Hovering / focusing the button shows the floating preview card (pure CSS),
+		// positioned by positionBibCard() so it never runs off-screen.
+		document.addEventListener("pointerover", (e) => {
+			const btn = e.target.closest && e.target.closest(".pub__bib-btn");
+			if (btn) positionBibCard(btn);
+		});
+		document.addEventListener("focusin", (e) => {
+			const btn = e.target.closest && e.target.closest(".pub__bib-btn");
+			if (btn) positionBibCard(btn);
+		});
+
 		document.addEventListener("click", (e) => {
 			const btn = e.target.closest(".pub__bib-btn");
 			if (!btn) return;
@@ -652,6 +745,22 @@
 		if (type) state.filter = type;
 	}
 
+	function bindToolbarCompact() {
+		const toolbar = el(".pubs-toolbar");
+		if (!toolbar) return;
+		const input = el("#pubs-q");
+		const onScroll = () => {
+			toolbar.classList.toggle("is-compact", window.scrollY > 150);
+		};
+		window.addEventListener("scroll", onScroll, { passive: true });
+		// While typing/searching, keep the filters reachable.
+		if (input) {
+			input.addEventListener("focus", () => toolbar.classList.add("is-expanded"));
+			input.addEventListener("blur", () => toolbar.classList.remove("is-expanded"));
+		}
+		onScroll();
+	}
+
 	async function init() {
 		try {
 			const r = await fetch("assets/publications.json", { cache: "no-cache" });
@@ -662,6 +771,7 @@
 			buildFilters();
 			bindSearch();
 			bindBibtex();
+			bindToolbarCompact();
 			applyUrlQuery();
 			// Reflect filter state in the chip UI after applyUrlQuery may have set it.
 			document.querySelectorAll("#pubs-filters .filter-btn").forEach(b => {
