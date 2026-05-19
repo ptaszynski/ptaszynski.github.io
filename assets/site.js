@@ -95,10 +95,27 @@
 
 	function escapeAttr(s) { return String(s).replace(/"/g, "&quot;"); }
 
+	function inSubdir() {
+		// True if this page lives one level below the site root (admin, repository, etc.)
+		// — i.e. nav hrefs need a "../" prefix to reach root pages.
+		// Reads <html data-site-depth="N"> or <body data-site-depth="N">; defaults to 0
+		// for EN root pages.
+		const dom = document.documentElement;
+		const body = document.body;
+		const explicit = dom.getAttribute("data-site-depth") ||
+		                 (body && body.getAttribute("data-site-depth"));
+		if (explicit != null) return parseInt(explicit, 10) > 0;
+		// JA/PL handled by language fallthrough below
+		return false;
+	}
+
 	function navHrefFor(item) {
 		// From an EN root page, hrefs are bare filenames.
 		// From a /ja/ or /pl/ page, untranslated items need "../".
-		if (currentLang() === "en") return item.href;
+		// From other subdirs (admin/, repository/), all items need "../".
+		if (currentLang() === "en") {
+			return inSubdir() ? "../" + item.href : item.href;
+		}
 		return TRANSLATED_PAGES.has(item.href) ? item.href : "../" + item.href;
 	}
 

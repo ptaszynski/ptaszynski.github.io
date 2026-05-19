@@ -5,10 +5,113 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Michal Ptaszynski / Research</title>
 	<meta name="author" content="Michal Ptaszynski">
-	<meta name="description" content="Research projects and tools by Michal Ptaszynski — ML-Ask, CAO, SPEC, POST-AL, YACIS, cyberbullying detection, and more.">
+	<meta name="description" content="Research projects, systems and tools by Michal Ptaszynski — ML-Ask, CAO, SPEC, POST-AL, YACIS, cyberbullying detection, and ongoing work on AI for low-resource languages and affective computing.">
+	<link rel="alternate" hreflang="en" href="research.htm">
+	<link rel="alternate" hreflang="x-default" href="research.htm">
 	<link rel="icon" href="images/favico.ico" type="image/x-icon">
 	<link rel="stylesheet" href="assets/site.css">
 	<script src="assets/site.js" defer></script>
+
+	<style>
+		/* Research-page specific UI */
+		.research-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+			gap: .9rem;
+			margin: 1.5rem 0 3rem;
+		}
+		.research-grid .card { padding: 1rem 1.05rem; }
+		.research-grid .card h3 { margin: 0; font-size: .95rem; color: var(--accent); text-transform: none; letter-spacing: 0; }
+		.research-grid .card p { margin: .3rem 0 0; font-size: .85rem; color: var(--ink-soft); }
+
+		.project {
+			margin: 4rem 0;
+			scroll-margin-top: 5rem;
+		}
+		.project__head {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			gap: 1.5rem;
+			align-items: start;
+		}
+		.project__head h2 {
+			margin: 0 0 .25rem;
+			font-size: 1.6rem;
+			text-transform: none;
+			letter-spacing: -0.01em;
+			color: var(--ink);
+		}
+		.project__tagline {
+			color: var(--accent);
+			font-family: var(--font-sans);
+			font-size: .95rem;
+			margin: 0;
+			font-weight: 500;
+		}
+		.project__cover {
+			width: 130px;
+			height: 130px;
+			border-radius: var(--radius-lg);
+			background: var(--surface);
+			border: 1px solid var(--line);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: .9rem;
+			box-shadow: var(--shadow);
+		}
+		.project__cover img {
+			max-width: 100%;
+			max-height: 100%;
+			object-fit: contain;
+		}
+		.project__body {
+			margin-top: 1.25rem;
+		}
+		.project__body p { color: var(--ink-soft); }
+
+		.project__resources {
+			margin: 1.25rem 0 .5rem;
+			padding: .85rem 1.1rem;
+			background: var(--accent-bg);
+			border-left: 3px solid var(--accent);
+			border-radius: 0 var(--radius) var(--radius) 0;
+			font-family: var(--font-sans);
+			font-size: .88rem;
+		}
+		.project__resources strong {
+			font-size: .75rem;
+			text-transform: uppercase;
+			letter-spacing: .1em;
+			color: var(--muted);
+			margin-right: .75rem;
+			display: inline-block;
+			min-width: 90px;
+		}
+		.project__resources a { margin-right: .9rem; }
+
+		.project__cites {
+			margin: 1.25rem 0 0;
+			padding-left: 1.25rem;
+			font-size: .92rem;
+		}
+		.project__cites li { margin: .55rem 0; }
+		.project__cites em { color: var(--ink); font-style: italic; }
+
+		.kbd {
+			font-family: var(--font-mono);
+			background: var(--accent-bg);
+			padding: 1px 5px;
+			border-radius: 3px;
+			font-size: .85em;
+		}
+
+		@media (max-width: 720px) {
+			.project__head { grid-template-columns: 1fr; }
+			.project__cover { width: 100px; height: 100px; }
+			.project__resources strong { display: block; margin-bottom: .15rem; }
+		}
+	</style>
 </head>
 <body>
 
@@ -17,114 +120,343 @@
 <main id="main" class="page">
 
 	<h1 class="page-title">Research</h1>
-	<p class="page-lede">Projects, systems and tools — past and present.</p>
-
-	<p>
-		This page lists general information about my research and the systems, tools and methods
-		I have developed or contributed to. Each entry links to a deeper sub-page in
-		<a href="repository/">/repository</a>.
+	<p class="page-lede">
+		Eight systems and lines of work. The thread connecting them is
+		<em>making computers understand human feeling and human language</em> —
+		especially Japanese, especially online, and increasingly for languages
+		nobody else builds tools for.
 	</p>
 
-	<nav aria-label="Page contents" style="margin:1.5rem 0; padding:1rem 1.25rem; border:1px solid var(--line); border-radius:var(--radius); background:var(--accent-bg);">
-		<strong style="font-family:var(--font-sans); font-size:.8rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted);">On this page</strong>
-		<ul style="list-style:none; padding:0; margin:.5rem 0 0; columns: 2; column-gap: 1.5rem;">
-			<li><a href="#mlask">ML-Ask · affect analysis</a></li>
-			<li><a href="#cao">CAO · emoticon analysis</a></li>
-			<li><a href="#evaluation">Evaluation of conversational agents</a></li>
-			<li><a href="#appropriateness">Contextual appropriateness of emotions</a></li>
-			<li><a href="#cyberbullying">Cyberbullying detection</a></li>
-			<li><a href="#spec">SPEC · sentence-pattern extraction</a></li>
-			<li><a href="#postal">POST-AL · POS tagger for Ainu</a></li>
-			<li><a href="#yacis">YACIS · Yet Another Corpus of Internet Sentences</a></li>
-		</ul>
+	<!-- ============ HIGHLIGHTS GRID ============ -->
+	<nav class="research-grid" aria-label="Project shortcuts">
+		<a class="card" href="#mlask">
+			<h3>ML-Ask</h3>
+			<p>Affect analysis for Japanese — keyword + CVS + 2D affect space.</p>
+		</a>
+		<a class="card" href="#cao">
+			<h3>CAO</h3>
+			<p>Emoticon decoder — 10k+ kaomoji, eyes/mouths decomposition.</p>
+		</a>
+		<a class="card" href="#cyberbullying">
+			<h3>Cyberbullying detection</h3>
+			<p>Online-patrol-grade detection — patented PMI-IR method.</p>
+		</a>
+		<a class="card" href="#yacis">
+			<h3>YACIS</h3>
+			<p>5.6 billion-word Japanese blog corpus — annotated for affect.</p>
+		</a>
+		<a class="card" href="#spec">
+			<h3>SPEC</h3>
+			<p>Language-independent sentence-pattern extraction.</p>
+		</a>
+		<a class="card" href="#postal">
+			<h3>POST-AL · Ainu</h3>
+			<p>POS tagging &amp; NLP for an endangered language.</p>
+		</a>
+		<a class="card" href="#appropriateness">
+			<h3>Appropriateness</h3>
+			<p>Was the emotion <em>appropriate</em>? — irony / harassment screening.</p>
+		</a>
+		<a class="card" href="#evaluation">
+			<h3>Agent evaluation</h3>
+			<p>Affect-based auto-rating of conversational agents.</p>
+		</a>
 	</nav>
 
-	<section id="mlask">
-		<h2>ML-Ask · Affect Analysis System</h2>
-		<p>
-			ML-Ask is a system for affect analysis of textual input in Japanese. It is based on a linguistic assumption
-			that emotional states of a speaker are conveyed by emotional expressions used in emotive utterances.
-			ML-Ask first separates emotive utterances from non-emotive ones, then within the emotive utterances seeks
-			expressions of specific emotion types.
-			<a href="repository/mlask.htm">Read more →</a>
-		</p>
-	</section>
+	<!-- ============ ML-ASK ============ -->
+	<article class="project" id="mlask">
+		<header class="project__head">
+			<div>
+				<h2>ML-Ask · Affect Analysis System</h2>
+				<p class="project__tagline">emotive elements, emotive expressions, and Russell's 2D affect space — for Japanese.</p>
+			</div>
+			<div class="project__cover"><img src="images/emotionbook.png" alt="ML-Ask emotion lexicon"></div>
+		</header>
 
-	<section id="cao">
-		<h2>CAO · Emoticon Analysis System</h2>
-		<p>
-			CAO is a system for analysis of emoticons in Japanese online communication. It extracts emoticons from
-			input and determines the specific emotion types they express. It first matches extracted emoticons against
-			a database of over ten thousand samples; emoticons for which emotion types cannot be determined this way
-			are automatically decomposed into semantic areas representing “mouths” or “eyes”, then annotated according
-			to their co-occurrence in the database.
-			<a href="repository/cao.htm">Read more →</a>
-		</p>
-	</section>
+		<div class="project__body">
+			<p>
+				ML-Ask — <em>eMotive eLement and Expression Analysis system</em> — is a keyword-based,
+				language-dependent system for automatic affect annotation of Japanese utterances. It is built on a
+				simple linguistic assumption: a speaker's emotional state is conveyed by emotional expressions used
+				in <em>emotive</em> utterances. ML-Ask first decides whether a sentence is emotive at all, then —
+				within emotive sentences only — looks for expressions of specific emotion types.
+			</p>
+			<p>
+				Two ingredients carry the system. <strong>Emotemes</strong> are signal words that mark emotivity
+				without specifying which emotion — interjections (<span lang="ja">すごい</span> <em>sugoi</em>),
+				mimetic expressions (<span lang="ja">わくわく</span> <em>wakuwaku</em>), vulgar morphemes
+				(<span lang="ja">〜やがる</span> <em>-yagaru</em>), and emotive sentence markers ("!", "??").
+				<strong>Emotive expressions</strong> are the words that name the feeling itself — nouns
+				(<span lang="ja">愛情</span> <em>aijou</em>, love), verbs (<span lang="ja">悲しむ</span>
+				<em>kanashimu</em>, to grieve), adjectives, and set phrases. The expression database is based on
+				Akira Nakamura's <em>Emotive Expression Dictionary</em>, sorted into ten classical Japanese emotion
+				types (joy, anger, sorrow, fear, shame, fondness, dislike, excitement, relief, surprise) —
+				roughly 2,100 expressions in total.
+			</p>
+			<p>
+				ML-Ask also implements <strong>Contextual Valence Shifters</strong> (Polanyi &amp; Zaenen, 2006)
+				with 108 Japanese negation patterns, and projects the detected emotion onto Russell's two-dimensional
+				model of affect (valence × activation) — so downstream applications can reason about
+				<em>positive-activated</em> vs. <em>negative-deactivated</em> mood rather than 10 discrete labels.
+			</p>
 
-	<section id="evaluation">
-		<h2>Automatic Evaluation of Conversational Agents</h2>
-		<p>
-			The two systems above are used in further research on enhancing human–computer interaction. This method
-			uses affect analysis as a background procedure during conversations with Japanese-speaking conversational
-			agents; users’ emotional engagement during conversation is reinterpreted as general attitudes toward the
-			agent. Tendencies obtained this way were comparable to results of a post-conversation questionnaire,
-			showing that the method is applicable to automatic evaluation of Japanese-speaking conversational agents.
-			<a href="repository/evalmethod.htm">Read more →</a>
-		</p>
-	</section>
+			<div class="project__resources">
+				<div><strong>Try it</strong><a href="https://mlask-official.streamlit.app/" rel="noopener">ML-Ask online demo ↗</a></div>
+				<div><strong>Downloads</strong>
+					<a href="repository/files/emotions_20240804.zip">Lexicon v2024 (2.4 MB)</a>
+					<a href="repository/files/cvs.txt">CVS structures</a>
+					<a href="repository/files/mlask43-noregex.zip">ML-Ask 4.3 (Perl)</a>
+				</div>
+				<div><strong>License</strong>New BSD (3-Clause)</div>
+			</div>
 
-	<section id="appropriateness">
-		<h2>Contextual Appropriateness of Emotions</h2>
-		<p>
-			A novel approach to the analysis of emotional states that determines not only what emotion was expressed,
-			but also whether it was appropriate for the context of the conversation. An affect analysis system
-			estimates the speaker’s affective states and a web-mining technique gathers from the Internet a list of
-			emotions that should be expressed at that moment. Implemented in a conversational agent, this method
-			could differentiate sincere/appropriate expressions from insincere/inappropriate ones (irony, harassment,
-			etc.) and choose appropriate conversational procedures.
-			<a href="repository/approp.htm">Read more →</a>
-		</p>
-	</section>
+			<h3 style="margin-top:1.5rem; font-size:.8rem;">Preferred citations</h3>
+			<ul class="project__cites">
+				<li>Michal Ptaszynski, Pawel Dybala, Rafal Rzepka, Kenji Araki, <em>"Affecting Corpora: Experiments with Automatic Affect Annotation System — A Case Study of the 2channel Forum"</em>. PACLING-09, Sapporo, 2009.</li>
+				<li>Michal Ptaszynski, Pawel Dybala, Wenhan Shi, Rafal Rzepka, Kenji Araki, <em>"A System for Affect Analysis of Utterances in Japanese Supported with Web Mining"</em>. <i>J. Japan Society for Fuzzy Theory and Intelligent Informatics</i>, 21(2), 2009. <a href="https://www.jstage.jst.go.jp/article/jsoft/21/2/21_2_194/_pdf" rel="noopener">PDF ↗</a></li>
+			</ul>
+		</div>
+	</article>
 
-	<section id="cyberbullying">
-		<h2>Automatic Detection of Cyberbullying Activities</h2>
-		<p>
-			Online slandering and bullying have been an urgent problem on unofficial websites of Japanese schools.
-			School personnel and members of Parent-Teacher Associations have started Online Patrol to spot websites
-			and blogs containing such inappropriate content; however, the countless number of such pages makes the job
-			an uphill task. This research develops a systematic approach to Online Patrol by automatically spotting
-			suspicious entries and reporting them to PTA members. The analysis combines SVM-based machine learning
-			with ML-Ask-driven feature analysis to improve the model.
-			<a href="repository/cyberbull.htm">Read more →</a>
-		</p>
-	</section>
+	<!-- ============ CAO ============ -->
+	<article class="project" id="cao">
+		<header class="project__head">
+			<div>
+				<h2>CAO · Emoticon Analysis System</h2>
+				<p class="project__tagline">10,000+ Japanese kaomoji, decomposed into eyes / mouth / framing — and reassembled into emotion.</p>
+			</div>
+			<div class="project__cover"><img src="images/cao-logo-mid.gif" alt="CAO logo"></div>
+		</header>
 
-	<section id="spec">
-		<h2>SPEC · Sentence Pattern Extraction Architecture</h2>
-		<p>
-			SPEC is a language-independent architecture for extracting from sentences more sophisticated patterns than
-			n-grams. A “sentence pattern” here is an <i>n</i>-element ordered combination of sentence elements.
-			<a href="repository/spec.htm">Read more →</a>
-		</p>
-	</section>
+		<div class="project__body">
+			<p>
+				CAO is a fully automatic analyser for Japanese kaomoji-style emoticons — the
+				<span lang="ja">(^_^)</span> / <span lang="ja">orz</span> / <span lang="ja">(╯°□°)╯</span> family
+				of pictographic glyphs that dominate Japanese online communication. Given an input string it
+				identifies emoticons and assigns them to specific emotion types.
+			</p>
+			<p>
+				The pipeline runs in two stages. First, a <strong>database lookup</strong> against more than
+				ten thousand pre-collected emoticons. For glyphs not in the database — there are always new ones —
+				CAO performs <strong>structural decomposition</strong> into semantic regions: eyes, mouth,
+				and framing characters. Each region carries its own emotion distribution, learned from
+				co-occurrence patterns in the database, and the final label is the joint probability over those
+				regions. The design is grounded in <em>kinesics</em>, Birdwhistell's theory of non-verbal
+				communication.
+			</p>
 
-	<section id="postal">
-		<h2>POST-AL · Part-of-Speech Tagger for Ainu Language</h2>
-		<p>
-			A POS tagger for the Ainu language, a critically endangered language of northern Japan.
-			<a href="repository/postal.htm">Read more →</a>
-		</p>
-	</section>
+			<div class="project__resources">
+				<div><strong>Downloads</strong>
+					<a href="repository/files/emoticons-sorted-by-length.txt">All emoticons (sorted)</a>
+					<a href="repository/files/emoticon-triplets.zip">Triplets (eye-mouth-eye)</a>
+					<a href="repository/files/emoticon-mouths-stats.zip">Mouths + frequencies</a>
+					<a href="repository/files/emoticon-eyes-stats.zip">Eyes + frequencies</a>
+					<a href="repository/files/emodetector.zip">Standalone detector (Perl)</a>
+				</div>
+				<div><strong>License</strong>New BSD (3-Clause)</div>
+				<div><strong>Award</strong>2011 IEEE Sapporo Section Encouragement Award.</div>
+			</div>
 
-	<section id="yacis">
-		<h2>YACIS · Yet Another Corpus of Internet Sentences</h2>
-		<p>
-			A large-scale corpus of Japanese blog sentences, collected and annotated for use in NLP and affect-analysis
-			research.
-			<a href="repository/yacis.htm">Read more →</a>
-		</p>
-	</section>
+			<h3 style="margin-top:1.5rem; font-size:.8rem;">Preferred citation</h3>
+			<ul class="project__cites">
+				<li>Michal Ptaszynski, Jacek Maciejewski, Pawel Dybala, Rafal Rzepka, Kenji Araki, <em>"CAO: A Fully Automatic Emoticon Analysis System Based on Theory of Kinesics"</em>. <i>IEEE Transactions on Affective Computing</i>, 1(1), pp. 46–59, 2010.</li>
+				<li>Michal Ptaszynski, Jacek Maciejewski, Pawel Dybala, Rafal Rzepka, Kenji Araki, <em>"CAO: A Fully Automatic Emoticon Analysis System"</em>. AAAI-10, Atlanta, 2010.</li>
+			</ul>
+		</div>
+	</article>
+
+	<!-- ============ CYBERBULLYING ============ -->
+	<article class="project" id="cyberbullying">
+		<header class="project__head">
+			<div>
+				<h2>Automatic Cyberbullying Detection</h2>
+				<p class="project__tagline">From ML-Ask + SVM to a patented PMI-IR method — built on the only annotated real-world Japanese cyberbullying dataset.</p>
+			</div>
+			<div class="project__cover"><img src="images/Brown_Bag_Cyberbullying_En_thumb.jpg" alt="Cyberbullying project poster"></div>
+		</header>
+
+		<div class="project__body">
+			<p>
+				This research began in September 2009 at the PACLING banquet, when Prof. Fumito Masui mentioned
+				he'd been collecting cyberbullying entries from the unofficial websites of Japanese schools — the
+				kind of pages that the Mie Prefecture Human Rights Center had been trying to monitor manually.
+				The volume of suspect pages had outgrown what teachers and PTA volunteers could read by hand, so
+				the question was natural: can we automate the triage?
+			</p>
+			<p>
+				The first published method (AISB 2010) used ML-Ask to find that <strong>vulgar and violent
+				vocabulary</strong> were the strongest discriminators, then fed a dedicated lexicon into an
+				SVM classifier. SVMs eventually hit a ceiling — Japanese cyberbullying is wordplay-heavy and
+				words alone miss context — so we moved to <strong>SO-PMI-IR</strong>. The trick was to apply
+				Turney's method not to individual words but to <strong>phrases</strong>: this cleared most
+				ambiguity, and grouping the seed words further (Nitta et al., IJCNLP 2013) lifted accuracy
+				enough that the method was eventually filed as a patent
+				(<a href="https://astamuse.com/ja/published/JP/No/2015103210" rel="noopener">JP 2015-103210</a>).
+			</p>
+			<p>
+				Current work goes in three directions: (1) finding a release-grade preprocessing for the corpus
+				— masking enough personal information that the data can be shared with other labs without
+				identifying victims; (2) tightening the PMI method further with student projects on lexicon
+				expansion and parameter optimization; (3) Language-Combinatorics-based pattern mining to find
+				recurrent cyberbullying constructions automatically.
+			</p>
+
+			<div class="project__resources">
+				<div><strong>Patent</strong><a href="https://astamuse.com/ja/published/JP/No/2015103210" rel="noopener">JP 2015-103210 (SO-PMI-IR for harm detection) ↗</a></div>
+				<div><strong>Outreach</strong>
+					<a href="https://www.facebook.com/AutomaticCyberbullyingDetection/" rel="noopener">Facebook project page</a>
+				</div>
+				<div><strong>Stakeholders</strong>Mie Prefecture Human Rights Center · Parental Options (USA)</div>
+			</div>
+
+			<h3 style="margin-top:1.5rem; font-size:.8rem;">Key references</h3>
+			<ul class="project__cites">
+				<li>Michal Ptaszynski, Pawel Dybala, Tatsuaki Matsuba, Fumito Masui, Rafal Rzepka, Kenji Araki, <em>"Machine Learning and Affect Analysis Against Cyber-Bullying"</em>. AISB'10, Leicester, 2010.</li>
+				<li>Michal Ptaszynski, Pawel Dybala, Tatsuaki Matsuba, Fumito Masui, Rafal Rzepka, Kenji Araki, Yoshio Momouchi, <em>"In the Service of Online Order: Tackling Cyber-Bullying with Machine Learning and Affect Analysis"</em>. <i>Int'l J. Computational Linguistics Research</i>, 1(3), 135–154, 2010.</li>
+				<li>Taisei Nitta, Fumito Masui, Michal Ptaszynski, Yasutomo Kimura, Rafal Rzepka, Kenji Araki, <em>"Detecting Cyberbullying Entries on Informal School Websites Based on Category Relevance Maximization"</em>. IJCNLP 2013, Nagoya, pp. 579–586. <a href="http://aclanthology.org/I/I13/I13-1066.pdf" rel="noopener">PDF ↗</a></li>
+				<li>Michal Ptaszynski, Fumito Masui, Yasutomo Kimura, Rafal Rzepka, Kenji Araki, <em>"Brute Force Works Best Against Bullying"</em>. IJCAI-15 IP Workshop, Buenos Aires, 2015.</li>
+			</ul>
+		</div>
+	</article>
+
+	<!-- ============ YACIS ============ -->
+	<article class="project" id="yacis">
+		<header class="project__head">
+			<div>
+				<h2>YACIS · Yet Another Corpus of Internet Sentences</h2>
+				<p class="project__tagline">5.6 billion words of Japanese blog text — the largest single-genre Japanese affect-annotated corpus we know of.</p>
+			</div>
+			<div class="project__cover" style="background:var(--accent-bg)"><span style="font-family:var(--font-sans); font-size:.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:.1em;">corpus</span></div>
+		</header>
+
+		<div class="project__body">
+			<p>
+				YACIS is a large-scale corpus of Japanese blog sentences scraped, deduplicated and
+				lemmatized for use in NLP and affective-computing research. The headline number is the
+				~5.6 billion word tokens spanning Ameba blog domains, but the technically interesting
+				part is the <strong>annotation layer</strong>: the entire corpus was passed through ML-Ask 4.2 (the "fast
+				and furious" branch) and CAO, producing per-sentence affect labels and per-emoticon emotion tags.
+				This makes YACIS unusually useful for downstream tasks that need real-world emotion distributions
+				in informal Japanese — distributions you can't get from formal corpora like KWDLC.
+			</p>
+			<p>
+				ML-Ask 4.2's regex precompilation and emoticon-detection rewrite (≈10× faster than ML-Ask 4.0)
+				were originally driven by what YACIS required to annotate in finite time.
+			</p>
+		</div>
+	</article>
+
+	<!-- ============ SPEC ============ -->
+	<article class="project" id="spec">
+		<header class="project__head">
+			<div>
+				<h2>SPEC · Sentence Pattern Extraction Architecture</h2>
+				<p class="project__tagline">Language-independent extraction of <em>n</em>-element ordered combinations — n-grams' more flexible cousin.</p>
+			</div>
+			<div class="project__cover"><img src="images/spec_logo.gif" alt="SPEC logo"></div>
+		</header>
+
+		<div class="project__body">
+			<p>
+				SPEC formalizes a "sentence pattern" as an <em>n</em>-element ordered combination of sentence
+				elements (tokens, characters, POS tags, or any user-defined unit). Unlike n-grams the combination
+				doesn't have to be contiguous: pattern <code class="kbd">A&nbsp;…&nbsp;B&nbsp;…&nbsp;C</code> matches any
+				sentence containing A, B, C in that order with arbitrary material between. This makes SPEC more
+				expressive than n-grams for tasks like detecting cyberbullying constructions
+				(<span lang="ja">「お前」… 「死ね」</span>) or sarcasm where the cue words are far apart.
+			</p>
+			<p>
+				The architecture is language-independent: tokenization is pluggable, and the same engine has been
+				applied to Japanese (with MeCab), Polish, and Ainu.
+			</p>
+		</div>
+	</article>
+
+	<!-- ============ POST-AL ============ -->
+	<article class="project" id="postal">
+		<header class="project__head">
+			<div>
+				<h2>POST-AL · POS Tagger for the Ainu Language</h2>
+				<p class="project__tagline">NLP tooling for a critically endangered indigenous language of northern Japan.</p>
+			</div>
+			<div class="project__cover"><img src="images/karol-ainu-thumb.jpg" alt="Ainu language work"></div>
+		</header>
+
+		<div class="project__body">
+			<p>
+				Ainu — the indigenous language of Hokkaido and Sakhalin — is classified by UNESCO as
+				<em>critically endangered</em>. Fewer than a hundred fluent speakers remain, and almost no
+				digital tooling exists for the language: no tokenizer, no POS tagger, no usable lexicon for
+				downstream NLP. POST-AL is our small contribution toward closing that gap.
+			</p>
+			<p>
+				The tagger is paired with parallel work on (1) corpus collection from the Ainu Oral
+				Literature Archive at the National Ainu Museum, (2) Romanization-to-katakana transliteration,
+				and (3) machine-translation experiments with very small training sets. The broader project sits
+				under the umbrella of <strong>language revitalisation technology</strong> — building enough of
+				an NLP toolkit that future learners' apps, dictionaries and search interfaces have something
+				to build on.
+			</p>
+
+			<div class="project__resources">
+				<div><strong>Demo</strong><a href="repository/demo/postal/">POST-AL online demo</a></div>
+				<div><strong>Related</strong><a href="https://huggingface.co/ptaszynski" rel="noopener">Hugging Face models ↗</a></div>
+			</div>
+		</div>
+	</article>
+
+	<!-- ============ APPROPRIATENESS ============ -->
+	<article class="project" id="appropriateness">
+		<header class="project__head">
+			<div>
+				<h2>Contextual Appropriateness of Emotions</h2>
+				<p class="project__tagline">Not just <em>what</em> emotion was expressed — was it <em>appropriate</em> for the context?</p>
+			</div>
+		</header>
+
+		<div class="project__body">
+			<p>
+				Sentiment analysis usually stops at the label: "this utterance is angry." But anger in the right
+				context is healthy; anger in the wrong context is harassment, irony, or trolling. This project
+				adds a second judgement on top of standard affect analysis: was the expressed emotion
+				<em>appropriate</em> given the situation it was uttered in?
+			</p>
+			<p>
+				The method combines an affect-analysis backend (ML-Ask) with a <strong>web-mining</strong> step
+				that crawls the open web for sentences describing what people normally feel in
+				situations of the same kind, then compares the elicited "expected" emotion distribution against
+				the actual one. Implemented inside a conversational agent, the appropriateness signal lets the
+				agent distinguish sincere expressions from sarcastic / inappropriate ones — and choose its
+				response accordingly.
+			</p>
+		</div>
+	</article>
+
+	<!-- ============ EVALUATION ============ -->
+	<article class="project" id="evaluation">
+		<header class="project__head">
+			<div>
+				<h2>Automatic Evaluation of Conversational Agents</h2>
+				<p class="project__tagline">Using affect analysis as a proxy for user satisfaction with Japanese chatbots.</p>
+			</div>
+		</header>
+
+		<div class="project__body">
+			<p>
+				Building Japanese conversational agents is hard; <em>evaluating</em> them is harder.
+				Post-conversation questionnaires are slow, expensive, and biased by recency. We propose
+				using <strong>affect analysis during the conversation itself</strong> as a continuous,
+				zero-cost proxy: how engaged is the user, emotionally, while they're talking to the agent?
+			</p>
+			<p>
+				Operationally, ML-Ask runs over the user's utterances in real time and outputs per-turn
+				affective signals. Aggregated across a dialog, these correlate well (in our experiments)
+				with the satisfaction scores users would have given on a post-hoc questionnaire — which
+				suggests the affect-analysis trace is a reasonable continuous-time replacement for
+				discrete questionnaire data.
+			</p>
+		</div>
+	</article>
 
 </main>
 

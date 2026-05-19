@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en" data-site-depth="1">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Admin · Add publication</title>
+	<meta name="robots" content="noindex, nofollow">
+
+	<link rel="icon" href="../images/favico.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../assets/site.css">
+	<script src="../assets/site.js" defer></script>
+
+	<style>
+		.admin-card {
+			background: var(--surface);
+			border: 1px solid var(--line);
+			border-radius: var(--radius-lg);
+			padding: 1.5rem 1.5rem 1.75rem;
+			margin: 1rem 0 2rem;
+		}
+		.admin-card h2 {
+			margin-top: 0;
+			text-transform: none;
+			letter-spacing: 0;
+			color: var(--ink);
+			font-size: 1.15rem;
+		}
+		.admin-row { display: grid; grid-template-columns: 160px 1fr; gap: 1rem; align-items: start; margin: .8rem 0; }
+		.admin-row label {
+			font-family: var(--font-sans);
+			font-size: .85rem;
+			padding-top: .45rem;
+			color: var(--ink-soft);
+		}
+		.admin-row input,
+		.admin-row textarea,
+		.admin-row select {
+			width: 100%;
+			padding: .5rem .7rem;
+			font: inherit;
+			color: var(--ink);
+			background: var(--bg);
+			border: 1px solid var(--line-strong);
+			border-radius: var(--radius);
+		}
+		.admin-row textarea { font-family: var(--font-serif); min-height: 2.6em; }
+		.admin-row input:focus,
+		.admin-row textarea:focus,
+		.admin-row select:focus {
+			outline: 2px solid var(--accent);
+			outline-offset: 1px;
+			border-color: var(--accent);
+		}
+		.admin-row .hint {
+			font-family: var(--font-sans);
+			font-size: .75rem;
+			color: var(--muted);
+			margin-top: .25rem;
+		}
+		.admin-actions {
+			display: flex;
+			gap: .6rem;
+			margin-top: 1.25rem;
+			flex-wrap: wrap;
+		}
+		.btn {
+			font-family: var(--font-sans);
+			font-size: .9rem;
+			padding: .55rem 1rem;
+			border-radius: var(--radius);
+			border: 1px solid transparent;
+			cursor: pointer;
+			transition: background .15s, color .15s, border-color .15s;
+		}
+		.btn-primary { background: var(--accent); color: #fff; }
+		.btn-primary:hover { background: var(--accent-soft); }
+		.btn-primary:disabled { background: var(--muted); cursor: not-allowed; }
+		.btn-secondary { background: transparent; color: var(--ink-soft); border-color: var(--line-strong); }
+		.btn-secondary:hover { color: var(--accent); border-color: var(--accent-soft); }
+		.btn-ghost { background: transparent; color: var(--muted); border-color: transparent; }
+		.btn-ghost:hover { color: var(--ink); }
+
+		.links-row {
+			display: grid;
+			grid-template-columns: 160px 1fr auto;
+			gap: .5rem;
+			margin: .3rem 0;
+			align-items: center;
+		}
+		.links-row input { padding: .4rem .55rem; font-size: .9rem; }
+		.links-row button {
+			padding: .3rem .6rem;
+			background: transparent;
+			border: 1px solid var(--line-strong);
+			border-radius: var(--radius);
+			color: var(--muted);
+			cursor: pointer;
+			font-size: .8rem;
+		}
+		.links-row button:hover { color: #c44; border-color: #c44; }
+
+		.status-banner {
+			padding: .9rem 1.1rem;
+			border-radius: var(--radius);
+			margin: 1rem 0;
+			font-family: var(--font-sans);
+			font-size: .9rem;
+		}
+		.status-banner.ok    { background: rgba(50, 140, 80, .12);  color: #2c6840; border: 1px solid rgba(50, 140, 80, .3); }
+		.status-banner.err   { background: rgba(190, 70, 70, .12);  color: #963030; border: 1px solid rgba(190, 70, 70, .3); }
+		.status-banner.warn  { background: rgba(190, 130, 40, .12); color: #8c5f1d; border: 1px solid rgba(190, 130, 40, .3); }
+		:root[data-theme="dark"] .status-banner.ok  { color: #9ddab2; }
+		:root[data-theme="dark"] .status-banner.err { color: #f0a9a9; }
+		:root[data-theme="dark"] .status-banner.warn{ color: #e8c388; }
+
+		.preview-box {
+			background: var(--bg);
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			padding: .9rem 1.1rem;
+			font-family: var(--font-mono);
+			font-size: .8rem;
+			white-space: pre-wrap;
+			overflow-x: auto;
+			max-height: 320px;
+		}
+
+		details.help { margin: 1rem 0; }
+		details.help summary { font-family: var(--font-sans); font-size: .85rem; color: var(--accent); cursor: pointer; }
+		details.help[open] summary { margin-bottom: .5rem; }
+		details.help ol, details.help ul { padding-left: 1.4rem; }
+		details.help li { margin: .3rem 0; }
+
+		@media (max-width: 640px) {
+			.admin-row { grid-template-columns: 1fr; gap: .3rem; }
+			.admin-row label { padding-top: 0; }
+			.links-row { grid-template-columns: 1fr; }
+		}
+	</style>
+</head>
+
+<body>
+
+<div data-include="header"></div>
+
+<main id="main" class="page">
+
+	<h1 class="page-title">Admin · add publication</h1>
+	<p class="page-lede">
+		Form-driven editor for <code>assets/publications.json</code>.
+		Writes directly to the GitHub repo on your behalf.
+		<strong>Not linked from the public site</strong>; bookmark the URL.
+	</p>
+
+	<!-- ==================== AUTH ==================== -->
+	<section class="admin-card" id="auth-section">
+		<h2>Sign in with a GitHub Personal Access Token</h2>
+		<p class="muted small">
+			This page is 100% static — there is no backend. To save a new publication, it commits to
+			the GitHub repo via your token, which lives only in your browser
+			(<code>localStorage</code>) and is sent only to <code>api.github.com</code>.
+		</p>
+
+		<details class="help">
+			<summary>How to create a token (one-time, ~60 seconds)</summary>
+			<ol>
+				<li>Go to <a href="https://github.com/settings/personal-access-tokens/new" rel="noopener" target="_blank">github.com/settings/personal-access-tokens/new</a>.</li>
+				<li><strong>Token name:</strong> anything (e.g. <em>"site editor"</em>).</li>
+				<li><strong>Resource owner:</strong> your account.</li>
+				<li><strong>Repository access:</strong> <em>Only select repositories</em> → pick your homepage repo (e.g. <code>ptaszynski.github.io</code>).</li>
+				<li><strong>Permissions → Repository → Contents:</strong> set to <em>Read and write</em>. Leave the rest default.</li>
+				<li><strong>Expiration:</strong> 90 days is reasonable.</li>
+				<li>Click <em>Generate token</em>, copy it, paste it below. Treat it like a password.</li>
+			</ol>
+			<p class="small muted">
+				Click <em>Sign out</em> anytime to wipe the token from this browser. Only the repo owner
+				can hold a token that works on this repo — GitHub enforces that.
+			</p>
+		</details>
+
+		<div class="admin-row">
+			<label for="pat">Personal access token</label>
+			<div>
+				<input type="password" id="pat" autocomplete="off" placeholder="github_pat_…" spellcheck="false">
+				<p class="hint">Stays in your browser only. Use the masked field; revoke at <a href="https://github.com/settings/tokens?type=beta" rel="noopener" target="_blank">github.com/settings/tokens</a>.</p>
+			</div>
+		</div>
+		<div class="admin-row">
+			<label for="repo">Repository</label>
+			<div>
+				<input type="text" id="repo" placeholder="ptaszynski/ptaszynski.github.io">
+				<p class="hint">Format: <code>OWNER/REPO</code>. Detected from the page host on first load.</p>
+			</div>
+		</div>
+		<div class="admin-row">
+			<label for="branch">Branch</label>
+			<div>
+				<input type="text" id="branch" value="main">
+				<p class="hint">Usually <code>main</code>.</p>
+			</div>
+		</div>
+
+		<div class="admin-actions">
+			<button class="btn btn-primary" id="sign-in" type="button">Sign in &amp; verify</button>
+			<button class="btn btn-ghost" id="sign-out" type="button" hidden>Sign out (forget token)</button>
+		</div>
+		<div id="auth-status"></div>
+	</section>
+
+	<!-- ==================== FORM ==================== -->
+	<section class="admin-card" id="form-section" hidden>
+		<h2>New publication</h2>
+
+		<div class="admin-row">
+			<label for="f-type">Type</label>
+			<select id="f-type" required>
+				<option value="book">Book / chapter</option>
+				<option value="journal" selected>Journal article</option>
+				<option value="conference">International conference</option>
+				<option value="local">Local conference / workshop</option>
+				<option value="patent">Patent / standard</option>
+				<option value="dissertation">Dissertation</option>
+				<option value="other">Other</option>
+			</select>
+		</div>
+		<div class="admin-row">
+			<label for="f-year">Year</label>
+			<input id="f-year" type="number" min="1980" max="2100" placeholder="2026" required>
+		</div>
+		<div class="admin-row">
+			<label for="f-title">Title</label>
+			<textarea id="f-title" rows="2" required placeholder="Paper title (no surrounding quotes)"></textarea>
+		</div>
+		<div class="admin-row">
+			<label for="f-authors">Authors</label>
+			<div>
+				<textarea id="f-authors" rows="2" required placeholder="First Last, First Middle Last, …"></textarea>
+				<p class="hint">Comma-separated. Each author as <em>First Middle Last</em>. The BibTeX generator converts to <em>Last, First</em>.</p>
+			</div>
+		</div>
+		<div class="admin-row">
+			<label for="f-venue">Venue</label>
+			<div>
+				<textarea id="f-venue" rows="3" placeholder="Journal name, Vol., Issue, pages, ISBN/DOI, dates"></textarea>
+				<p class="hint">Anything that goes after the title. Include vol/issue, pages, DOI, ISBN, dates, impact factor, etc.</p>
+			</div>
+		</div>
+		<div class="admin-row">
+			<label for="f-image">Cover image URL</label>
+			<div>
+				<input id="f-image" type="text" placeholder="images/cover.jpg or https://… (optional)">
+				<p class="hint">Optional. If you use a local file, upload it to <code>images/</code> separately.</p>
+			</div>
+		</div>
+
+		<div class="admin-row" style="grid-template-columns:160px 1fr;">
+			<label>Links</label>
+			<div id="links-rows">
+				<!-- one starter row -->
+			</div>
+		</div>
+		<div class="admin-row" style="grid-template-columns:160px 1fr;">
+			<label></label>
+			<button type="button" class="btn btn-secondary" id="add-link">+ Add another link</button>
+		</div>
+
+		<div class="admin-row" style="grid-template-columns:160px 1fr;">
+			<label>BibTeX override</label>
+			<div>
+				<textarea id="f-bibtex" rows="4" placeholder="Leave blank to auto-generate from the fields above"></textarea>
+				<p class="hint">Optional. If you paste a BibTeX entry here, it'll override the auto-generator on the public page.</p>
+			</div>
+		</div>
+
+		<div class="admin-actions">
+			<button class="btn btn-primary" id="preview-btn" type="button">Preview JSON</button>
+			<button class="btn btn-primary" id="submit-btn" type="button">Save to GitHub</button>
+			<button class="btn btn-ghost" id="reset-btn" type="button">Reset form</button>
+		</div>
+
+		<div id="form-status"></div>
+		<div id="preview-out" hidden>
+			<h3>Preview</h3>
+			<div class="preview-box" id="preview-json"></div>
+		</div>
+	</section>
+
+</main>
+
+<div data-include="footer"></div>
+
+<script>
+(function () {
+	"use strict";
+
+	const $ = (sel) => document.querySelector(sel);
+	const ce = (tag, attrs = {}) => {
+		const el = document.createElement(tag);
+		Object.entries(attrs).forEach(([k, v]) => {
+			if (k === "class") el.className = v;
+			else if (k === "html") el.innerHTML = v;
+			else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+			else el.setAttribute(k, v);
+		});
+		return el;
+	};
+
+	function setBanner(elSel, kind, msg) {
+		const wrap = $(elSel);
+		wrap.innerHTML = `<div class="status-banner ${kind}">${msg}</div>`;
+	}
+	function clearBanner(elSel) { $(elSel).innerHTML = ""; }
+
+	// ---------- Default repo guess ----------
+	function guessRepo() {
+		// On a user-page (something.github.io), repo defaults to "<username>.github.io"
+		const host = location.hostname;
+		const m = host.match(/^([^.]+)\.github\.io$/);
+		if (m) return `${m[1]}/${m[1]}.github.io`;
+		return "";
+	}
+
+	// ---------- Token storage ----------
+	const LS = {
+		token:  () => localStorage.getItem("admin_gh_token") || "",
+		repo:   () => localStorage.getItem("admin_gh_repo")  || guessRepo(),
+		branch: () => localStorage.getItem("admin_gh_branch") || "main",
+		set:    (t, r, b) => {
+			if (t) localStorage.setItem("admin_gh_token", t);
+			if (r) localStorage.setItem("admin_gh_repo", r);
+			if (b) localStorage.setItem("admin_gh_branch", b);
+		},
+		clear:  () => {
+			localStorage.removeItem("admin_gh_token");
+			// keep repo/branch — they're not secret
+		},
+	};
+
+	// ---------- GitHub Contents API ----------
+	const PUB_PATH = "assets/publications.json";
+
+	async function ghGet(repo, path, branch, token) {
+		const url = `https://api.github.com/repos/${repo}/contents/${encodeURI(path)}?ref=${encodeURIComponent(branch)}`;
+		const r = await fetch(url, {
+			headers: {
+				"Authorization": `Bearer ${token}`,
+				"Accept": "application/vnd.github+json",
+				"X-GitHub-Api-Version": "2022-11-28",
+			},
+		});
+		if (!r.ok) throw new Error(`GET ${path}: HTTP ${r.status} ${r.statusText}`);
+		const data = await r.json();
+		// content is base64-encoded; decode as UTF-8
+		const bin = atob(data.content.replace(/\n/g, ""));
+		const bytes = new Uint8Array(bin.length);
+		for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+		const text = new TextDecoder("utf-8").decode(bytes);
+		return { sha: data.sha, text };
+	}
+
+	async function ghPut(repo, path, branch, token, contentText, sha, message) {
+		const url = `https://api.github.com/repos/${repo}/contents/${encodeURI(path)}`;
+		// UTF-8-safe base64 encode
+		const enc = new TextEncoder().encode(contentText);
+		let binary = "";
+		for (let i = 0; i < enc.length; i++) binary += String.fromCharCode(enc[i]);
+		const b64 = btoa(binary);
+		const body = {
+			message,
+			content: b64,
+			sha,
+			branch,
+		};
+		const r = await fetch(url, {
+			method: "PUT",
+			headers: {
+				"Authorization": `Bearer ${token}`,
+				"Accept": "application/vnd.github+json",
+				"X-GitHub-Api-Version": "2022-11-28",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(body),
+		});
+		if (!r.ok) {
+			const err = await r.text();
+			throw new Error(`PUT ${path}: HTTP ${r.status} – ${err.slice(0, 200)}`);
+		}
+		return r.json();
+	}
+
+	async function ghWhoAmI(token) {
+		const r = await fetch("https://api.github.com/user", {
+			headers: { "Authorization": `Bearer ${token}`, "Accept": "application/vnd.github+json" },
+		});
+		if (!r.ok) throw new Error(`HTTP ${r.status}`);
+		return r.json();
+	}
+
+	// ---------- ID generator ----------
+	function nextId(pubs) {
+		let max = -1;
+		pubs.forEach(p => {
+			const m = (p.id || "").match(/^p(\d{4})$/);
+			if (m) max = Math.max(max, parseInt(m[1], 10));
+		});
+		return `p${String(max + 1).padStart(4, "0")}`;
+	}
+
+	// ---------- Form helpers ----------
+	function addLinkRow(label = "", url = "") {
+		const row = ce("div", { class: "links-row" });
+		const lbl = ce("input", { type: "text", placeholder: "Label (e.g. DOI, MDPI, PDF)" });
+		lbl.value = label;
+		const u   = ce("input", { type: "url",  placeholder: "https://…" });
+		u.value = url;
+		const del = ce("button", { type: "button" });
+		del.textContent = "Remove";
+		del.addEventListener("click", () => row.remove());
+		row.appendChild(lbl); row.appendChild(u); row.appendChild(del);
+		$("#links-rows").appendChild(row);
+	}
+
+	function readForm() {
+		const links = [];
+		$("#links-rows").querySelectorAll(".links-row").forEach(row => {
+			const inputs = row.querySelectorAll("input");
+			const label = inputs[0].value.trim();
+			const url   = inputs[1].value.trim();
+			if (url) links.push({ label: label || "Link", url });
+		});
+		const e = {
+			type:    $("#f-type").value,
+			year:    parseInt($("#f-year").value, 10) || null,
+			authors: $("#f-authors").value.trim().replace(/\s+/g, " "),
+			title:   $("#f-title").value.trim().replace(/\s+/g, " "),
+			venue:   $("#f-venue").value.trim().replace(/\s+/g, " "),
+			image:   $("#f-image").value.trim() || null,
+			links,
+		};
+		const bib = $("#f-bibtex").value.trim();
+		if (bib) e.bibtex = bib;
+		return e;
+	}
+
+	function validateEntry(e) {
+		const errs = [];
+		if (!e.title) errs.push("Title is required.");
+		if (!e.authors) errs.push("Authors is required.");
+		if (!e.year || e.year < 1980 || e.year > 2100) errs.push("Year must be between 1980 and 2100.");
+		return errs;
+	}
+
+	// ---------- UI binding ----------
+	function paint() {
+		$("#pat").value    = LS.token();
+		$("#repo").value   = LS.repo();
+		$("#branch").value = LS.branch();
+		const signedIn = !!LS.token();
+		$("#sign-out").hidden = !signedIn;
+		$("#form-section").hidden = !signedIn;
+	}
+
+	function onSignIn() {
+		const t = $("#pat").value.trim();
+		const r = $("#repo").value.trim();
+		const b = $("#branch").value.trim() || "main";
+		if (!t)  { setBanner("#auth-status", "err", "Paste a GitHub PAT first."); return; }
+		if (!r || !r.includes("/")) { setBanner("#auth-status", "err", 'Repo must be in form "owner/repo".'); return; }
+		setBanner("#auth-status", "warn", "Verifying token…");
+		ghWhoAmI(t)
+			.then(u => ghGet(r, PUB_PATH, b, t).then(_ => u))
+			.then(u => {
+				LS.set(t, r, b);
+				setBanner("#auth-status", "ok",
+					`Signed in as <strong>${u.login}</strong>. Repo <code>${r}@${b}</code> is reachable.`);
+				paint();
+			})
+			.catch(err => setBanner("#auth-status", "err",
+				`Couldn't authenticate or access <code>${PUB_PATH}</code> in <code>${r}</code>: ${err.message}.<br>Token needs <em>Contents: Read and write</em> on that repo.`));
+	}
+
+	function onSignOut() {
+		LS.clear();
+		paint();
+		clearBanner("#auth-status");
+	}
+
+	function onPreview() {
+		const e = readForm();
+		const errs = validateEntry(e);
+		if (errs.length) { setBanner("#form-status", "err", errs.join("<br>")); return; }
+		clearBanner("#form-status");
+		const preview = { id: "p????", ...e };
+		$("#preview-out").hidden = false;
+		$("#preview-json").textContent = JSON.stringify(preview, null, 2);
+	}
+
+	function onReset() {
+		if (!confirm("Reset all fields?")) return;
+		document.querySelectorAll("#form-section input, #form-section textarea, #form-section select").forEach(f => {
+			if (f.id === "f-type") f.value = "journal";
+			else if (f.type === "number") f.value = "";
+			else f.value = "";
+		});
+		$("#links-rows").innerHTML = "";
+		addLinkRow();
+		$("#preview-out").hidden = true;
+		clearBanner("#form-status");
+	}
+
+	async function onSubmit() {
+		const e = readForm();
+		const errs = validateEntry(e);
+		if (errs.length) { setBanner("#form-status", "err", errs.join("<br>")); return; }
+		const t = LS.token();
+		const r = LS.repo();
+		const b = LS.branch();
+		const btn = $("#submit-btn"); btn.disabled = true;
+		setBanner("#form-status", "warn", "Reading current publications.json…");
+		try {
+			const { sha, text } = await ghGet(r, PUB_PATH, b, t);
+			let payload;
+			try { payload = JSON.parse(text); }
+			catch (_) { throw new Error(`Couldn't parse remote JSON — it may have been edited manually with a syntax error.`); }
+			payload.publications = payload.publications || [];
+			const id = nextId(payload.publications);
+			const entry = { id, ...e };
+
+			// Insert newest-first within the same type
+			const sameType = payload.publications.filter(p => p.type === entry.type);
+			const others   = payload.publications.filter(p => p.type !== entry.type);
+			sameType.unshift(entry);
+			payload.publications = [...others.filter(p => p.type < entry.type),
+			                        ...sameType,
+			                        ...others.filter(p => p.type > entry.type)];
+			// Simpler: just prepend, the runtime sorts by year anyway via filter chips.
+			// Re-prepend to keep top-of-file readable:
+			payload.publications = [entry, ...payload.publications.filter(p => p.id !== id)];
+
+			const newText = JSON.stringify(payload, null, 2) + "\n";
+			setBanner("#form-status", "warn", `Committing as <code>${id}</code>…`);
+			const res = await ghPut(r, PUB_PATH, b, t, newText, sha,
+				`Add publication ${id}: ${entry.title.slice(0, 60)}`);
+			const commitUrl = res.commit && res.commit.html_url;
+			setBanner("#form-status", "ok",
+				`Saved as <strong>${id}</strong>. ` +
+				(commitUrl ? `<a href="${commitUrl}" rel="noopener" target="_blank">View commit ↗</a>` : "") +
+				` &middot; <a href="../publications.htm#t-${entry.type}">View publications page ↗</a>`);
+			onReset();
+		} catch (err) {
+			setBanner("#form-status", "err", `Save failed: ${err.message}`);
+		} finally {
+			btn.disabled = false;
+		}
+	}
+
+	function init() {
+		paint();
+		addLinkRow();
+		$("#sign-in").addEventListener("click", onSignIn);
+		$("#sign-out").addEventListener("click", onSignOut);
+		$("#add-link").addEventListener("click", () => addLinkRow());
+		$("#preview-btn").addEventListener("click", onPreview);
+		$("#submit-btn").addEventListener("click", onSubmit);
+		$("#reset-btn").addEventListener("click", onReset);
+	}
+
+	if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+	else init();
+})();
+</script>
+
+</body>
+</html>

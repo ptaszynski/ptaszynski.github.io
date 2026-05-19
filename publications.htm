@@ -8,6 +8,8 @@
 	<meta name="author" content="Michal Ptaszynski">
 	<meta name="description" content="Publications by Michal Ptaszynski — books, journals, conference and workshop papers. Searchable and filterable.">
 
+	<link rel="alternate" hreflang="en" href="publications.htm">
+	<link rel="alternate" hreflang="x-default" href="publications.htm">
 	<link rel="icon" href="images/favico.ico" type="image/x-icon">
 	<link rel="stylesheet" href="assets/site.css">
 	<script src="assets/site.js" defer></script>
@@ -157,6 +159,7 @@
 			gap: .4rem .8rem;
 			font-family: var(--font-sans);
 			font-size: .8rem;
+			align-items: center;
 		}
 		.pub__year {
 			color: var(--muted);
@@ -170,6 +173,71 @@
 			padding: .15rem 0;
 		}
 		.pub__link:hover { color: var(--accent-soft); }
+
+		.pub__bib-btn {
+			font-family: var(--font-sans);
+			font-size: .78rem;
+			background: var(--surface);
+			color: var(--ink-soft);
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			padding: .2rem .6rem;
+			cursor: pointer;
+			transition: background .15s, color .15s, border-color .15s;
+			display: inline-flex;
+			align-items: center;
+			gap: .35rem;
+		}
+		.pub__bib-btn:hover {
+			color: var(--accent);
+			border-color: var(--accent-soft);
+			background: var(--accent-bg);
+		}
+		.pub__bib-btn[aria-pressed="true"] {
+			color: var(--accent);
+			border-color: var(--accent);
+			background: var(--accent-bg);
+		}
+		.pub__bib-btn .pub__bib-icon {
+			width: 13px;
+			height: 13px;
+			display: inline-block;
+			vertical-align: -2px;
+		}
+
+		.pub__bib {
+			display: none;
+			margin: .6rem 0 0;
+			padding: .7rem .9rem;
+			background: var(--surface);
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			font-family: var(--font-mono);
+			font-size: .78rem;
+			color: var(--ink-soft);
+			white-space: pre;
+			overflow-x: auto;
+			line-height: 1.55;
+		}
+		.pub__bib.is-open { display: block; }
+		.pub__bib-actions {
+			display: flex;
+			justify-content: flex-end;
+			gap: .5rem;
+			margin-top: .4rem;
+		}
+		.pub__bib-copy {
+			font-family: var(--font-sans);
+			font-size: .75rem;
+			padding: .25rem .65rem;
+			color: var(--accent);
+			background: transparent;
+			border: 1px solid var(--accent-soft);
+			border-radius: var(--radius);
+			cursor: pointer;
+		}
+		.pub__bib-copy:hover { background: var(--accent-bg); }
+		.pub__bib-copy.is-done { color: var(--ink); border-color: var(--ink-soft); }
 
 		.pubs-empty {
 			text-align: center;
@@ -246,6 +314,121 @@
 			"<strong>$1</strong>");
 	}
 
+	// ---- BibTeX generation -------------------------------------
+
+	const BIBTEX_TYPE = {
+		book: "inbook",          // covers both authored book and chapter
+		journal: "article",
+		conference: "inproceedings",
+		local: "inproceedings",
+		patent: "misc",
+		dissertation: "phdthesis",
+		other: "misc",
+	};
+
+	const STOPWORDS = new Set("a,an,the,of,on,in,for,and,or,to,with,from,by,is,are,as,at,its,using,based,study,analysis,approach,model,models,method,methods,toward,towards,using".split(","));
+
+	function asciiSlug(s, maxLen = 20) {
+		// Strip diacritics, then non-alphanumerics
+		const norm = (s || "").normalize("NFKD").replace(/[̀-ͯ]/g, "");
+		return norm.replace(/[^A-Za-z0-9]+/g, "").slice(0, maxLen);
+	}
+
+	function firstAuthorSurname(authors) {
+		if (!authors) return "Anon";
+		// First author = first comma-separated chunk; surname = last whitespace token
+		const first = authors.split(",")[0].trim();
+		const toks = first.split(/\s+/);
+		const surname = toks[toks.length - 1] || first;
+		return asciiSlug(surname, 25) || "Anon";
+	}
+
+	function firstSignificantTitleWord(title) {
+		const words = (title || "").split(/\s+/);
+		for (const w of words) {
+			const clean = w.replace(/[^A-Za-z]/g, "");
+			if (clean.length >= 3 && !STOPWORDS.has(clean.toLowerCase())) {
+				return clean.charAt(0).toUpperCase() + clean.slice(1).toLowerCase();
+			}
+		}
+		// Fallback: first non-empty
+		for (const w of words) {
+			const c = w.replace(/[^A-Za-z]/g, "");
+			if (c) return c.charAt(0).toUpperCase() + c.slice(1).toLowerCase();
+		}
+		return "Paper";
+	}
+
+	function bibKey(p) {
+		const sur = firstAuthorSurname(p.authors);
+		const yr = p.year || "nd";
+		const tw = firstSignificantTitleWord(p.title);
+		return `${sur}${yr}${tw}`;
+	}
+
+	function bibAuthors(authors) {
+		// Handle comma-separated and "X, Y, and Z" / "X and Y" English-style separators.
+		// Each name "First Middle Last" → "Last, First Middle".
+		if (!authors) return "";
+		return authors
+			.split(/\s*,\s*|\s+(?:and|&)\s+/i)
+			.map(s => s.trim())
+			.filter(Boolean)
+			.map(name => {
+				const parts = name.split(/\s+/);
+				if (parts.length === 1) return parts[0];
+				const surname = parts.pop();
+				return `${surname}, ${parts.join(" ")}`;
+			})
+			.join(" and ");
+	}
+
+	function bibEscape(v) {
+		// BibTeX-safe: keep braces minimal; escape stray % and #
+		return String(v).replace(/[%#&$_]/g, (c) => "\\" + c);
+	}
+
+	function bestUrl(p) {
+		if (!p.links || !p.links.length) return null;
+		// Prefer DOI / Springer / official publisher over PDF dumps
+		const priority = [/doi\.org/i, /link\.springer/i, /sciencedirect/i,
+		                  /mdpi\.com/i, /aclanthology/i, /ieeexplore/i,
+		                  /tandfonline/i, /onlinelibrary\.wiley/i, /dl\.acm\.org/i];
+		for (const re of priority) {
+			const m = p.links.find(l => re.test(l.url || ""));
+			if (m) return m.url;
+		}
+		return p.links[0].url;
+	}
+
+	function extractDoi(text) {
+		const m = (text || "").match(/10\.\d{4,9}\/[-._;()/:A-Z0-9]+/i);
+		return m ? m[0].replace(/[.,;)]+$/, "") : null;
+	}
+
+	function generateBibtex(p) {
+		if (p.bibtex) return p.bibtex.trim();  // explicit override wins
+		const type = BIBTEX_TYPE[p.type] || "misc";
+		const key = bibKey(p);
+		const fields = [];
+		const push = (k, v) => v && fields.push(`  ${k} = {${bibEscape(v)}}`);
+		push("author", bibAuthors(p.authors));
+		push("title",  p.title);
+		push("year",   p.year);
+		const v = p.venue || "";
+		const venueField =
+			type === "article"       ? "journal" :
+			type === "inproceedings" ? "booktitle" :
+			type === "inbook"        ? "booktitle" :
+			type === "phdthesis"     ? "school" : "howpublished";
+		push(venueField, v);
+		const doi = extractDoi((p.venue || "") + " " + (p.links || []).map(l => l.url || "").join(" "));
+		if (doi) push("doi", doi);
+		const url = bestUrl(p);
+		if (url) push("url", url);
+		return `@${type}{${key},\n${fields.join(",\n")}\n}`;
+	}
+
 	function renderPub(p) {
 		const cover = p.image
 			? `<div class="pub__cover"><img src="${fmt(p.image)}" alt="" loading="lazy" onerror="this.parentNode.classList.add('pub__cover--empty');this.remove();this.parentNode.textContent=this.parentNode.dataset.fallback||''" data-fallback="${(TYPE_META[p.type]||{}).emoji||''}"></div>`
@@ -256,6 +439,9 @@
 		).join("");
 
 		const year = p.year ? `<span class="pub__year">${p.year}</span>` : "";
+		const bib = generateBibtex(p);
+		const bibBtn = `<button type="button" class="pub__bib-btn" aria-pressed="false" aria-controls="bib-${fmt(p.id)}" aria-label="Show BibTeX citation"><svg class="pub__bib-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5h8a2 2 0 0 1 2 2v12"/><rect x="5" y="3" width="10" height="16" rx="1"/></svg>BibTeX</button>`;
+		const bibBlock = `<div class="pub__bib" id="bib-${fmt(p.id)}"><code>${fmt(bib)}</code><div class="pub__bib-actions"><button type="button" class="pub__bib-copy" data-bib="${fmt(bib)}">Copy</button></div></div>`;
 
 		return `
 			<article class="pub" data-type="${p.type}" data-year="${p.year || ''}">
@@ -264,7 +450,8 @@
 					<h3 class="pub__title">${fmt(p.title)}</h3>
 					<p class="pub__authors">${highlightSelf(p.authors)}</p>
 					${p.venue ? `<p class="pub__venue">${fmt(p.venue)}</p>` : ""}
-					<div class="pub__meta">${year}${links}</div>
+					<div class="pub__meta">${year}${links}${bibBtn}</div>
+					${bibBlock}
 				</div>
 			</article>
 		`;
@@ -335,6 +522,52 @@
 		});
 	}
 
+	function bindBibtex() {
+		// Event delegation — re-render replaces the list innerHTML
+		document.addEventListener("click", (e) => {
+			const toggle = e.target.closest(".pub__bib-btn");
+			if (toggle) {
+				const article = toggle.closest(".pub");
+				const block = article && article.querySelector(".pub__bib");
+				if (!block) return;
+				const open = block.classList.toggle("is-open");
+				toggle.setAttribute("aria-pressed", open ? "true" : "false");
+				return;
+			}
+			const copy = e.target.closest(".pub__bib-copy");
+			if (copy) {
+				const code = copy.parentNode.parentNode.querySelector("code");
+				const text = code ? code.textContent : (copy.dataset.bib || "");
+				const done = () => {
+					const orig = copy.textContent;
+					copy.textContent = "Copied!";
+					copy.classList.add("is-done");
+					setTimeout(() => {
+						copy.textContent = orig;
+						copy.classList.remove("is-done");
+					}, 1500);
+				};
+				if (navigator.clipboard && navigator.clipboard.writeText) {
+					navigator.clipboard.writeText(text).then(done, () => {
+						// Fallback: select & copy via deprecated API
+						const r = document.createRange();
+						r.selectNodeContents(code);
+						const sel = window.getSelection();
+						sel.removeAllRanges(); sel.addRange(r);
+						try { document.execCommand("copy"); done(); }
+						catch (_) { copy.textContent = "Press Ctrl+C"; }
+					});
+				} else {
+					const r = document.createRange();
+					r.selectNodeContents(code);
+					const sel = window.getSelection();
+					sel.removeAllRanges(); sel.addRange(r);
+					try { document.execCommand("copy"); done(); } catch(_) {}
+				}
+			}
+		});
+	}
+
 	async function init() {
 		try {
 			const r = await fetch("assets/publications.json", { cache: "no-cache" });
@@ -344,6 +577,7 @@
 			el("#pubs-status").textContent = ` ${state.all.length} entries total.`;
 			buildFilters();
 			bindSearch();
+			bindBibtex();
 			render();
 		} catch (e) {
 			el("#pubs-list").innerHTML =
