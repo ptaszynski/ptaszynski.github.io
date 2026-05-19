@@ -188,6 +188,8 @@
 							<circle cx="11" cy="11" r="7"/>
 							<line x1="21" y1="21" x2="16.65" y2="16.65"/>
 						</svg>
+						<span class="site-search-btn__label">${s.search}</span>
+						<kbd class="site-search-btn__key">/</kbd>
 					</button>
 					<button class="theme-toggle" type="button" aria-label="${escapeAttr(s.themeToggle)}" title="${escapeAttr(s.themeToggle)}">
 						<svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
@@ -457,11 +459,73 @@
 		});
 	}
 
+	/* ----- Rotating portrait (Home hero + Profile photo) -----
+	   Reproduces the original site's effect: the canonical portrait
+	   alternates with candid / generated photos every few seconds,
+	   here with a gentle cross-fade. Honors prefers-reduced-motion. */
+
+	const ROTATION_IMAGES = [
+		"ptaszynski.jpg", "IMG_2645.JPG",
+		"ptaszynski.jpg", "IMG_2646.JPG",
+		"ptaszynski.jpg", "IMG_2647.JPG",
+		"ptaszynski.jpg", "IMG_2648.JPG",
+		"ptaszynski.jpg", "IMG_2649.JPG",
+		"ptaszynski.jpg", "IMG_2650.JPG",
+		"ptaszynski.jpg", "stablediffusion01.webp",
+		"ptaszynski.jpg", "stablediffusion02.webp",
+		"ptaszynski.jpg", "stablediffusion03.webp",
+		"ptaszynski.jpg", "stablediffusion04.webp",
+	];
+
+	function bindPortraitRotator() {
+		if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+		const targets = document.querySelectorAll(".hero__portrait img, .profile-meta img");
+		if (!targets.length) return;
+
+		targets.forEach(img => {
+			const src0 = img.getAttribute("src") || "";
+			const slash = src0.lastIndexOf("/");
+			const dir = slash >= 0 ? src0.slice(0, slash + 1) : "";
+			const urls = ROTATION_IMAGES.map(f => dir + f);
+
+			// Preload so swaps are instant (no flash mid-fade).
+			urls.forEach(u => { const i = new Image(); i.src = u; });
+
+			// Keep any existing transform transition (hero hover-scale).
+			img.style.transition = "opacity .6s ease, transform .3s ease";
+
+			let idx = 0;
+			setInterval(() => {
+				idx = (idx + 1) % urls.length;
+				const next = urls[idx];
+				img.style.opacity = "0";
+				setTimeout(() => {
+					img.src = next;
+					requestAnimationFrame(() => { img.style.opacity = "1"; });
+				}, 600);
+			}, 3600);
+		});
+	}
+
+	/* ----- Profile TOC compact-on-scroll ----- */
+
+	function bindProfileToc() {
+		const toc = document.querySelector(".profile-toc");
+		if (!toc) return;
+		const onScroll = () => {
+			toc.classList.toggle("is-compact", window.scrollY > 150);
+		};
+		window.addEventListener("scroll", onScroll, { passive: true });
+		onScroll();
+	}
+
 	function init() {
 		injectSlot("header", renderHeader());
 		injectSlot("footer", renderFooter());
 		bindThemeToggle();
 		bindSearch();
+		bindProfileToc();
+		bindPortraitRotator();
 	}
 
 	initTheme(); // run early to avoid a flash of the wrong palette

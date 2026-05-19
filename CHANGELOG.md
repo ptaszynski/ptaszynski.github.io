@@ -2,6 +2,77 @@
 
 All notable changes to the personal homepage.
 
+## 2026-05-20 — Phase 8.1: UX polish, rotating portrait, tip-jar, contact
+
+### Publications
+
+- **BibTeX hover-card now opens rightward** and is viewport-aware:
+  `positionBibCard()` measures the card and flips it left (or pins it
+  within the viewport) only when opening right would overflow — fixes
+  the off-screen-left clipping when the button sat near the left edge.
+- **Year dividers**: within each type group, entries are now grouped
+  under year sub-headings (pill style), sorted newest-first.
+- **Toolbar compresses on scroll**: past 150 px the sticky toolbar
+  collapses its filter chips + count (re-expands near the top or while
+  the search box is focused), reclaiming vertical space on phones.
+
+### Profile
+
+- **TOC fixed**: background was translucent (`--accent-bg`) so text
+  bled through — now opaque `--surface` with a stronger border + shadow.
+  Compresses on scroll (hides the label, single scrollable row of links)
+  via shared `bindProfileToc()` in `site.js`.
+
+### Rotating portrait (Home + Profile)
+
+- Reinstated the original site's rotating-photo effect with a cross-fade:
+  the canonical `ptaszynski.jpg` alternates with `IMG_2645–2650.JPG` and
+  `stablediffusion01–04.webp` every 3.6 s. Preloads all frames; honors
+  `prefers-reduced-motion`. Lives in `bindPortraitRotator()` (`site.js`),
+  targets `.hero__portrait img` and `.profile-meta img` on all languages.
+
+### Support / tip-jar placeholders
+
+- New `.support` component (shared CSS). Home gains a "Support me on /
+  応援する / Wesprzyj mnie" group; Research + Demos gain a top banner
+  ("Like my research? Buy me a coffee ☕️" / localized). Links to
+  Buy Me a Coffee, Ko-fi, Patreon, Gumroad, Patronite — **placeholder
+  URLs** (`/ptaszynski`), flagged with HTML comments to update once the
+  accounts exist.
+
+### Icons
+
+- researchmap → `images/icon_researchmap.png` (replaces the
+  `researchmap_icon.png` + onerror text fallback; JA home now shows the
+  icon instead of a text link).
+- Google Developers → `images/google-developers.svg` (was `GoogleDev.svg`).
+- Both new image assets added to the repo.
+
+### Search discoverability
+
+- The header search trigger is now a labeled pill (magnifier + "Search"
+  + `/` key hint) instead of an icon-only button — collapses back to an
+  icon under 600 px. (The overlay + `/` hotkey were already there since
+  Phase 8; they just weren't obvious.)
+
+### Contact
+
+- Updated affiliation across EN / JA / PL: title **Ph.D., Professor**;
+  **Text Information Processing Laboratory**; **Division of Information
+  and Communication Engineering, Faculty of Engineering**; phone
+  normalized to `+81-157-26-9327` (JA: `0157-26-9327`).
+
+### Decided against
+
+- **Impact-factor refresh** — declined to touch; current IF values are
+  embedded inline in venue strings and can't be verified without
+  fabricating numbers. Left as-is per the user's call.
+- **Google Programmable Search** — kept the built-in offline overlay
+  (no Google dependency / tracking); made its trigger more visible
+  instead.
+
+---
+
 ## 2026-05-19 — Phase 8: Slim pages, hover BibTeX, search, RSS, JA/PL expansion
 
 ### Slim down across all pages
