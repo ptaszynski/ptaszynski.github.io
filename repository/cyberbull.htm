@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>Michal Ptaszynski / Research</title>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	<meta name="Author" content="Michal Ptaszynski" />
+	<meta name="Robots" content="index,follow" />
+	<meta name="Description" content="This is a homepage of Michal Ptaszynski" />
+	<meta name="Keywords" content="Affect Analysis, Affect Recognition, Sentiment Analysis, Emotions, Emotional Intelligence, Affect sensing from text, Emoticons, Emotions in language" />
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+	<link rel="shortcut icon" href="../images/favico.ico" type="image/x-icon"> 
+</head>
+
+<body>
+     <div id="blogtitle"><div id="small">"I understand a fury in your words, but not your words." (- William Shakespeare, <i>Othello</i>, 4.2)  |  <a href="#">English <img src="../flags/usa.gif" style="width: 13px" border="0"></a>  |  <a href="#">&#26085;&#26412;&#35486; <img src="../flags/japan.gif" style="width: 13px" border="0"></a>  | <a href="#">Polski <img src="../flags/polska.gif" style="width: 13px" border="0"></a> </div></div>
+<div id="border">
+	<div id="container">
+		<div id="content">
+		<h2>Michal Ptaszynski / Research</h2>
+		  <div id="topmenu">
+     <ul>
+    <li><a href="../index.html" title="Home"><span>Home</span></a></li>
+    <li><a href="../profile.htm" title="Profile"><span>Profile</span></a></li>
+	<li><a href="../research.htm" title="Research"><span>Research</span></a></li>
+	<li><a href="../publications.htm" title="Publications"><span>Publications</span></a></li>
+	<li><a href="../links.htm" title="Links"><span>Links</span></a></li>
+	<li><a href="../contact.htm" title="Contact"><span>Contact</span></a></li>
+	<li><a href="../photos.htm" title="Photos"><span>Photos</span></a></li>
+	</ul>
+</div>
+		  <div id="introduction">
+				<h3>Page Navigation</h3>
+				<ul>
+					<li><a href="#about">&#8594; System Description</a></li>
+					<li><a href="#files">&#8594; Released Files</a></li>
+					<li><a href="#cao">&#8594; Development History</a></li>
+					<li><a href="#evaluation">&#8594; Main References</a></li>
+				</ul>
+	 </div>
+	   <br />
+
+               
+			  <div class="maintext">
+			
+			 <p>
+  			 <h1>Cyberbullying Detection</h1>
+
+			 This page contains some general information about my research in cyberbullying detection. The research began for me around autumn 2009. Actually it was most probably the 3rd of September around 20:00 or 21:00, during a banquet of PACLING 2009. I, still being a Ph.D. student, had a luck to talk to Prof. Fumito Masui, who has started the research in the first place. 
+He proposed I process his data with ML-Ask to see if there are any emotional hints in cyberbullying sentences. Here is where my contribution in the research begins.
+			 <p>
+			 
+			 <a name="about"></a>
+			 <h2>Research Description</h2>
+			 <br />
+			 
+<!--...-->
+<!-- We are in a bit privileged position because  -->
+We got the actual cyberbullying data
+containing cyberbullying gathered by Human Rights Center in Mie
+Prefecture, Japan. <br /><br />
+<!--
+% Most of our colleagues working on cyberbullying,
+% had to gather the data themselves, which always adds a little bit of doubt to 
+% the research. This is why one of the
+% things we have been working on recently is to release the data we have for
+% other people. We cannot do that in the form we got them, because they
+% contain personal information, and other information by which one could
+% trace the victims. Right now, except figuring out the best method for the
+% data, we are trying to prepare a preprocessed version (hide personal
+% information, etc.) of the corpus we have and release it. This could happen
+% this year if the Center agrees.
+
+% Now about the research on the methods.
+-->
+
+
+(1) We firstly analyzed the data with my affect analysis system ML-Ask
+(Open Source Affect Analysis System for Japanese), and found out
+that vulgar and violent words were the most distinguishable for
+cyberbullying.<br />
+(2) Then we separately created a vulgar and violent word dictionary and used it in training SVM classifier. 
+<br /><br />
+
+The first publishable results were containing part of the above results from 
+(2) and are in this paper:<br />
+Tatsuaki Matsuba, Fumito Masui, Atsuo Kawai, Naoki Isu. 2010. <b><i>Gakkou
+hikoushiki saito ni okeru yuugai jouhou kenshutsu</i> [Detection of harmful
+information on informal school websites]</b> (In Japanese). In <i>Proceedings of
+The 16th Annual Meeting of The Association for Natural Language Processing
+(NLP2010)</i>.
+<br /><br />
+ 
+A conference paper containing both (1) and (2) appeared slightly later:<br />
+Michal Ptaszynski, Pawel Dybala, Tatsuaki Matsuba, Fumito Masui, Rafal
+Rzepka and Kenji Araki. 2010. <b>Machine Learning and Affect Analysis Against
+Cyber-Bullying</b>. In <i>Proceedings of The Thirty Sixth Annual Convention of
+the Society for the Study of Artificial Intelligence and Simulation of
+Behaviour (AISB’10)</i>, 29th March – 1st April 2010, De Montfort University,
+Leicester, UK, pp. 7-16, 2010.<br /><br />
+ 
+Then we refined the SVM a bit and described it here:<br />
+Michal Ptaszynski, Pawel Dybala, Tatsuaki Matsuba, Fumito Masui, Rafal
+Rzepka, Kenji Araki, and Yoshio Momouchi. 2010. <b>In the Service of Online
+Order: Tackling Cyber-Bullying with Machine Learning and Affect Analysis</b>.
+<i>International Journal of Computational Linguistics Research</i>, Vol. 1, Issue 3, pp. 135-154, 2010.<br /><br />
+ 
+Eventually we found out that SVMs are in fact not ideal for the task
+because they cannot deal with many ambiguities in the language. We could
+improve the results a bit, but it seemed there was a border which SVMs
+could not overcome. So we turned to other methods.<br /><br />
+ 
+(3) We tried the SO-PMI-IR. But the original version of the method,
+working on words, did not achieve good results because in Japanese words
+by themselves are often not effective - one needs to look at a wider
+context. So we modified the Turney's method a bit so it would work not on
+words, but on phrases - this pretty much dealt with much of the
+ambiguities and the results were much better. The first paper with PMI-IR
+on cyberbullying is here:<br />
+Tatsuaki Matsuba, Fumito Masui, Atsuo Kawai, Naoki Isu. 2011. <b><i>Gakkou
+hi-koushiki saito ni okeru yugai jouhou kenshutsu wo mokuteki to shita
+kyokusei hantei moderu ni kansuru kenkyuu</i> [Study on the polarity
+classification model for the purpose of detecting harmful information on
+informal school sites]</b> (in Japanese), In <i>Proceedings of The Seventeenth
+Annual Meeting of The Association for Natural Language Processing
+(NLP2011)</i>, pp. 388-391.<br /><br />
+
+Then we improved the PMI method quite a bit more by grouping the seed words. The
+results for that are here:<br />
+Taisei Nitta, Fumito Masui, Michal Ptaszynski, Yasutomo Kimura, Rafal
+Rzepka, Kenji Araki. 2013. <b>Detecting Cyberbullying Entries on Informal
+School Websites Based on Category Relevance Maximization</b>. In <i>Proceedings
+of the 6th International Joint Conference on Natural Language Processing
+(IJCNLP 2013)</i>, pp. 579-586, Nagoya, Japan, October 14-18, 2013.<br /><br />
+ 
+We also did a demo once and made a poster describing the whole process in
+a concise way:<br />
+Taisei Nitta, Fumito Masui, Michal Ptaszynski, Yasutomo Kimura, Rafal
+Rzepka, Kenji Araki. 2013. <b>Cyberbullying Detection Based on Category
+Relevance Maximization</b>. In <i>Demo Session of 20th International Conference
+on Language Processing and Intelligent Information Systems (LP&IIS 2013)</i>,
+Warsaw, Poland, June 17-18, 2013.
+
+The method based on SO-PMI-IR was so good we <a href="http://astamuse.com/ja/published/JP/No/2015103210">patented it</a> (Patent No.: 2015-103210).<br /><br />
+ 
+Now we are doing three things with the cyberbullying data:<br />
+1. Looking for a good way of preprocessing the data to make it possible
+for release.<br />
+2. Further improving the PMI method.<br />
+3. Looking for a new method.<br /><br />
+
+The first point is more political than scientific - we need to find the
+best way to cover the personal information and still keep the data usable
+in research.
+As for the point 2 - there are two students working on it right now - one
+is trying to expand the dictionary, second is trying to further modify and optimize the
+PMI method.
+As for the last point, I am doing experiments with my Language
+Combinatorics method to find if there are any frequent language patterns in cyberbullying 
+taht could be extracted automatically.
+
+<br /><br />
+			 See the online presentation from AISB 2010:
+<br /><br />
+			 
+			 <iframe src="http://www.slideshare.net/slideshow/embed_code/13985431" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe> <div style="margin-bottom:5px"></div>
+			 <br /><br />
+			 Another presentation from IJCAI 2015 IP Workshop:
+ <br /><br />
+<iframe src="http://www.slideshare.net/ptaszynski/slideshelf" width="490px" height="470px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+ 
+			 
+			 <br /><br />
+			<b>Parties that expressed interest in this research:</b><br />
+<li><b>Parental Options.</b>
+<img src="../images/parentaloptions_logo_lg.png" align="left" alt="spec" / border="0" style="width: 80px">
+A company providing solutions that help parents protect their children from dangers of the Internet. Paretal Options was formed by a group of FBI Agents, child advocates and other professionals.<br />
+</li>
+			 <br /><a href="#top"><p align="right">back to top</p></a>
+
+			 <a name="files"></a>
+			 <h2>Released Files</h2>
+			 <br />
+			 Released files related to the system.
+
+
+			 <br /><a href="#top"><p align="right">back to top</p></a>
+			 
+			 <a name="history"></a>
+			 <h2>Development History</h2>
+			 <br />
+			 This paragraph contains development history of the system
+
+			 <br /><a href="#top"><p align="right">back to top</p></a>
+
+			 <a name="references"></a>
+			 <h2>Main References</h2>
+			 <br />
+			 
+			 <ul>
+		<li>Michal Ptaszynski, Fumito Masui, Yasutomo Kimura, Rafal Rzepka, Kenji Araki, <b>"Brute Force Works Best Against Bullying"</b>, <i>IJCAI 2015 Workshop on Intelligent Personalization (IP 2015)</a></i>, Buenos Aires, July 25-31, 2015. <a href="../data/Brute_Force_Works_Best.pdf">paper</a>, <a href="../data/IJCAI-IP-2015_Cyberbullying-final.pdf">slides</a></li>
+		</ul>
+			 		<ul>
+		<li>Taisei Nitta, Fumito Masui, Michal Ptaszynski, Yasutomo Kimura, Rafal Rzepka, Kenji Araki, <b>"Detecting Cyberbullying Entries on Informal School
+ Websites Based on Category Relevance Maximization"</b>, In <i>Proceedings of the 6th International Joint Conference on Natural Language Processing (IJCNLP 2013)</i>, pp. 579-586, Nagoya, Japan, October 14-18, 2013. <a href="http://aclweb.org/anthology/I/I13/I13-1066.pdf">paper</a></li>
+		</ul>
+			 
+		<ul><li>Michal Ptaszynski, Pawel Dybala, Tatsuaki Matsuba, Fumito Masui, Rafal Rzepka, Kenji Araki, and Yoshio Momouchi, <b>"In the Service of Online Order: Tackling Cyber-Bullying with Machine Learning and Affect Analysis"</b>, <i>International Journal of Computational Linguistics Research</i>, Vol. 1, Issue 3, pp. 135-154, 2010. <a href="http://www.dline.info/jcl/v1n3.php">paper</a> or <a href="../data/Ptaszynski_IJCLR2010-Cyberbullying_2011.02.23.pdf">pre-edited version</a></li></ul>
+		
+			 <br /><a href="#top"><p align="right">back to top</p></a>
+			 
+	  </div>
+	  </div>
+	  </div>
+
+		<div id="footer">&copy; Copyright 2010 &#8213; <script type="text/javascript">
+var d = new Date(); document.write(d.getFullYear()); </script> &nbsp;&nbsp;  Michal Ptaszynski</div>
+
+       </div>
+    </body>
+
+</html>

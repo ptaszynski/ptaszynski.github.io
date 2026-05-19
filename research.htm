@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Michal Ptaszynski / Research</title>
+	<meta name="author" content="Michal Ptaszynski">
+	<meta name="description" content="Research projects and tools by Michal Ptaszynski — ML-Ask, CAO, SPEC, POST-AL, YACIS, cyberbullying detection, and more.">
+	<link rel="icon" href="images/favico.ico" type="image/x-icon">
+	<link rel="stylesheet" href="assets/site.css">
+	<script src="assets/site.js" defer></script>
+</head>
+<body>
+
+<div data-include="header"></div>
+
+<main id="main" class="page">
+
+	<h1 class="page-title">Research</h1>
+	<p class="page-lede">Projects, systems and tools — past and present.</p>
+
+	<p>
+		This page lists general information about my research and the systems, tools and methods
+		I have developed or contributed to. Each entry links to a deeper sub-page in
+		<a href="repository/">/repository</a>.
+	</p>
+
+	<nav aria-label="Page contents" style="margin:1.5rem 0; padding:1rem 1.25rem; border:1px solid var(--line); border-radius:var(--radius); background:var(--accent-bg);">
+		<strong style="font-family:var(--font-sans); font-size:.8rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted);">On this page</strong>
+		<ul style="list-style:none; padding:0; margin:.5rem 0 0; columns: 2; column-gap: 1.5rem;">
+			<li><a href="#mlask">ML-Ask · affect analysis</a></li>
+			<li><a href="#cao">CAO · emoticon analysis</a></li>
+			<li><a href="#evaluation">Evaluation of conversational agents</a></li>
+			<li><a href="#appropriateness">Contextual appropriateness of emotions</a></li>
+			<li><a href="#cyberbullying">Cyberbullying detection</a></li>
+			<li><a href="#spec">SPEC · sentence-pattern extraction</a></li>
+			<li><a href="#postal">POST-AL · POS tagger for Ainu</a></li>
+			<li><a href="#yacis">YACIS · Yet Another Corpus of Internet Sentences</a></li>
+		</ul>
+	</nav>
+
+	<section id="mlask">
+		<h2>ML-Ask · Affect Analysis System</h2>
+		<p>
+			ML-Ask is a system for affect analysis of textual input in Japanese. It is based on a linguistic assumption
+			that emotional states of a speaker are conveyed by emotional expressions used in emotive utterances.
+			ML-Ask first separates emotive utterances from non-emotive ones, then within the emotive utterances seeks
+			expressions of specific emotion types.
+			<a href="repository/mlask.htm">Read more →</a>
+		</p>
+	</section>
+
+	<section id="cao">
+		<h2>CAO · Emoticon Analysis System</h2>
+		<p>
+			CAO is a system for analysis of emoticons in Japanese online communication. It extracts emoticons from
+			input and determines the specific emotion types they express. It first matches extracted emoticons against
+			a database of over ten thousand samples; emoticons for which emotion types cannot be determined this way
+			are automatically decomposed into semantic areas representing “mouths” or “eyes”, then annotated according
+			to their co-occurrence in the database.
+			<a href="repository/cao.htm">Read more →</a>
+		</p>
+	</section>
+
+	<section id="evaluation">
+		<h2>Automatic Evaluation of Conversational Agents</h2>
+		<p>
+			The two systems above are used in further research on enhancing human–computer interaction. This method
+			uses affect analysis as a background procedure during conversations with Japanese-speaking conversational
+			agents; users’ emotional engagement during conversation is reinterpreted as general attitudes toward the
+			agent. Tendencies obtained this way were comparable to results of a post-conversation questionnaire,
+			showing that the method is applicable to automatic evaluation of Japanese-speaking conversational agents.
+			<a href="repository/evalmethod.htm">Read more →</a>
+		</p>
+	</section>
+
+	<section id="appropriateness">
+		<h2>Contextual Appropriateness of Emotions</h2>
+		<p>
+			A novel approach to the analysis of emotional states that determines not only what emotion was expressed,
+			but also whether it was appropriate for the context of the conversation. An affect analysis system
+			estimates the speaker’s affective states and a web-mining technique gathers from the Internet a list of
+			emotions that should be expressed at that moment. Implemented in a conversational agent, this method
+			could differentiate sincere/appropriate expressions from insincere/inappropriate ones (irony, harassment,
+			etc.) and choose appropriate conversational procedures.
+			<a href="repository/approp.htm">Read more →</a>
+		</p>
+	</section>
+
+	<section id="cyberbullying">
+		<h2>Automatic Detection of Cyberbullying Activities</h2>
+		<p>
+			Online slandering and bullying have been an urgent problem on unofficial websites of Japanese schools.
+			School personnel and members of Parent-Teacher Associations have started Online Patrol to spot websites
+			and blogs containing such inappropriate content; however, the countless number of such pages makes the job
+			an uphill task. This research develops a systematic approach to Online Patrol by automatically spotting
+			suspicious entries and reporting them to PTA members. The analysis combines SVM-based machine learning
+			with ML-Ask-driven feature analysis to improve the model.
+			<a href="repository/cyberbull.htm">Read more →</a>
+		</p>
+	</section>
+
+	<section id="spec">
+		<h2>SPEC · Sentence Pattern Extraction Architecture</h2>
+		<p>
+			SPEC is a language-independent architecture for extracting from sentences more sophisticated patterns than
+			n-grams. A “sentence pattern” here is an <i>n</i>-element ordered combination of sentence elements.
+			<a href="repository/spec.htm">Read more →</a>
+		</p>
+	</section>
+
+	<section id="postal">
+		<h2>POST-AL · Part-of-Speech Tagger for Ainu Language</h2>
+		<p>
+			A POS tagger for the Ainu language, a critically endangered language of northern Japan.
+			<a href="repository/postal.htm">Read more →</a>
+		</p>
+	</section>
+
+	<section id="yacis">
+		<h2>YACIS · Yet Another Corpus of Internet Sentences</h2>
+		<p>
+			A large-scale corpus of Japanese blog sentences, collected and annotated for use in NLP and affect-analysis
+			research.
+			<a href="repository/yacis.htm">Read more →</a>
+		</p>
+	</section>
+
+</main>
+
+<div data-include="footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+Two benchmarks of different verions of ML-Ask.
+Each benchmark performed on a test set containing 42 emotive sentences and 43 non-emotive sentences.
+Each benchmark represents average results for 20 iterations. 
+Summary: ML-Ask-4.3-noregex is about 12 times faster than ML-Ask-4.0. 
+ML-Ask-simple (all versions) is slower than ML-Ask (all versions) because -simple processes all sen-
+tences without exception, while ML-Ask first performs pre-selection of sentences for further processing.
+=========================================================================================
+                         s/iter mlask-4.0 mlask-4.2 mlask-4.2 mlask-4.3-simple  mlask-4.3
+                                            -simple    -regex         -noregex   -noregex
+mlask-4.0                  7.18        --      -49%      -57%              -89%      -92%
+mlask-4.2-simple           3.65       97%        --      -15%              -79%      -84%
+mlask-4.2-regex            3.09      132%       18%        --              -75%      -81%
+mlask-4.3-simple-noregex  0.772      830%      373%      301%                --      -23%
+mlask-4.3-noregex         0.591     1115%      517%      423%               31%        --
+=========================================================================================
+                         s/iter mlask-4.0 mlask-4.2 mlask-4.2 mlask-4.3-simple  mlask-4.3
+                                            -simple    -regex         -noregex   -noregex
+mlask-4.0                  6.59        --      -45%      -48%             -89%       -91%
+mlask-4.2-simple           3.62       82%        --       -4%             -79%       -84%
+mlask-4.2-regex            3.46       91%        5%        --             -78%       -83%
+mlask-4.3-simple-noregex  0.753      776%      381%      359%               --       -21%
+mlask-4.3-noregex         0.593     1012%      510%      483%              27%         --
+=========================================================================================

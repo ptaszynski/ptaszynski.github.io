@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Michal Ptaszynski / Publications</title>
+
+	<meta name="author" content="Michal Ptaszynski">
+	<meta name="description" content="Publications by Michal Ptaszynski — books, journals, conference and workshop papers. Searchable and filterable.">
+
+	<link rel="icon" href="images/favico.ico" type="image/x-icon">
+	<link rel="stylesheet" href="assets/site.css">
+	<script src="assets/site.js" defer></script>
+
+	<style>
+		/* Publications-specific UI */
+		.pubs-toolbar {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			gap: 1rem;
+			align-items: center;
+			margin: 1.5rem 0 1rem;
+			padding: 1rem 1.1rem;
+			background: var(--surface);
+			border: 1px solid var(--line);
+			border-radius: var(--radius-lg);
+			position: sticky;
+			top: 64px;
+			z-index: 10;
+		}
+		.pubs-search {
+			display: flex;
+			gap: .5rem;
+			align-items: center;
+		}
+		.pubs-search input {
+			width: 100%;
+			padding: .55rem .8rem;
+			font-family: var(--font-sans);
+			font-size: .95rem;
+			color: var(--ink);
+			background: var(--bg);
+			border: 1px solid var(--line-strong);
+			border-radius: var(--radius);
+		}
+		.pubs-search input:focus {
+			outline: 2px solid var(--accent);
+			outline-offset: 1px;
+			border-color: var(--accent);
+		}
+		.pubs-count {
+			font-family: var(--font-sans);
+			font-size: .85rem;
+			color: var(--muted);
+			white-space: nowrap;
+		}
+		.pubs-filters {
+			grid-column: 1 / -1;
+			display: flex;
+			flex-wrap: wrap;
+			gap: .35rem;
+			margin-top: .25rem;
+		}
+		.filter-btn {
+			font-family: var(--font-sans);
+			font-size: .8rem;
+			padding: .3rem .7rem;
+			background: var(--bg);
+			color: var(--ink-soft);
+			border: 1px solid var(--line);
+			border-radius: 999px;
+			cursor: pointer;
+			transition: background .15s ease, color .15s ease, border-color .15s ease;
+		}
+		.filter-btn:hover { color: var(--accent); border-color: var(--accent-soft); }
+		.filter-btn.is-active {
+			background: var(--accent);
+			color: #fff;
+			border-color: var(--accent);
+		}
+		:root[data-theme="dark"] .filter-btn.is-active { color: var(--bg); }
+
+		.pub-section {
+			margin: 2.5rem 0 1rem;
+			font-family: var(--font-sans);
+			font-size: .82rem;
+			text-transform: uppercase;
+			letter-spacing: .12em;
+			color: var(--muted);
+			padding-bottom: .5rem;
+			border-bottom: 1px solid var(--line);
+			scroll-margin-top: 9rem;
+		}
+
+		.pub {
+			display: grid;
+			grid-template-columns: 70px 1fr;
+			gap: 1.1rem;
+			padding: 1.1rem 0;
+			border-bottom: 1px dashed var(--line);
+		}
+		.pub:last-child { border-bottom: 0; }
+		.pub__cover {
+			width: 70px;
+			min-height: 1px;
+		}
+		.pub__cover img {
+			width: 100%;
+			height: auto;
+			border-radius: 3px;
+			box-shadow: var(--shadow);
+		}
+		.pub__cover--empty {
+			height: 90px;
+			background: var(--accent-bg);
+			border-radius: 3px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: var(--accent);
+			font-family: var(--font-sans);
+			font-size: .7rem;
+			text-transform: uppercase;
+			letter-spacing: .1em;
+			opacity: .55;
+		}
+		.pub__body { min-width: 0; }
+		.pub__title {
+			font-family: var(--font-sans);
+			font-weight: 600;
+			color: var(--ink);
+			font-size: 1rem;
+			margin: 0 0 .25rem;
+			line-height: 1.4;
+		}
+		.pub__title em { font-style: italic; font-weight: 600; }
+		.pub__authors {
+			font-size: .92rem;
+			color: var(--ink-soft);
+			margin: 0 0 .25rem;
+		}
+		.pub__authors strong {
+			color: var(--ink);
+			background: var(--accent-bg);
+			padding: 0 3px;
+			border-radius: 2px;
+		}
+		.pub__venue {
+			font-size: .88rem;
+			color: var(--muted);
+			margin: 0 0 .4rem;
+			font-style: italic;
+		}
+		.pub__meta {
+			display: flex;
+			flex-wrap: wrap;
+			gap: .4rem .8rem;
+			font-family: var(--font-sans);
+			font-size: .8rem;
+		}
+		.pub__year {
+			color: var(--muted);
+			padding: .15rem .55rem;
+			background: var(--accent-bg);
+			border-radius: 999px;
+		}
+		.pub__link {
+			color: var(--accent);
+			border: 0;
+			padding: .15rem 0;
+		}
+		.pub__link:hover { color: var(--accent-soft); }
+
+		.pubs-empty {
+			text-align: center;
+			padding: 3rem 1rem;
+			color: var(--muted);
+			font-style: italic;
+		}
+
+		@media (max-width: 600px) {
+			.pubs-toolbar { grid-template-columns: 1fr; }
+			.pub { grid-template-columns: 50px 1fr; gap: .8rem; }
+			.pub__cover { width: 50px; }
+		}
+	</style>
+</head>
+
+<body>
+
+<div data-include="header"></div>
+
+<main id="main" class="page page--wide">
+
+	<h1 class="page-title">Publications</h1>
+	<p class="page-lede">
+		Books, journals, conference and workshop papers — search by keyword, filter by type or year.
+		<span id="pubs-status" class="muted small"></span>
+	</p>
+
+	<div class="pubs-toolbar" role="search">
+		<div class="pubs-search">
+			<input type="search" id="pubs-q" placeholder="Search title, author, venue…" aria-label="Search publications">
+		</div>
+		<div class="pubs-count"><span id="pubs-shown">…</span> shown</div>
+		<div class="pubs-filters" id="pubs-filters" role="group" aria-label="Filter by type">
+			<!-- Filled by JS -->
+		</div>
+	</div>
+
+	<div id="pubs-list" aria-live="polite">
+		<p class="pubs-empty" id="pubs-loading">Loading publications…</p>
+	</div>
+
+</main>
+
+<div data-include="footer"></div>
+
+<script>
+(function () {
+	"use strict";
+
+	const TYPE_META = {
+		book:         { label: "Books & Chapters",         emoji: "📚" },
+		journal:      { label: "Journals",                 emoji: "📰" },
+		conference:   { label: "International Conferences", emoji: "🌐" },
+		local:        { label: "Local / Workshops",        emoji: "🏛" },
+		patent:       { label: "Patents & Standards",      emoji: "📜" },
+		dissertation: { label: "Dissertations",            emoji: "🎓" },
+		other:        { label: "Other",                    emoji: "✦" },
+	};
+	const TYPE_ORDER = ["book", "journal", "conference", "local", "patent", "dissertation", "other"];
+
+	const state = {
+		all: [],
+		filter: "all",   // "all" or one of TYPE_ORDER
+		query: "",
+	};
+
+	const el = (sel) => document.querySelector(sel);
+	const fmt = (s) => (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+	function highlightSelf(authors) {
+		if (!authors) return "";
+		return fmt(authors).replace(/(Michal[ae]? Pta[sz][zh]y[nń]ski|Michał Ptaszyński|Michal E\. Ptaszynski)/g,
+			"<strong>$1</strong>");
+	}
+
+	function renderPub(p) {
+		const cover = p.image
+			? `<div class="pub__cover"><img src="${fmt(p.image)}" alt="" loading="lazy" onerror="this.parentNode.classList.add('pub__cover--empty');this.remove();this.parentNode.textContent=this.parentNode.dataset.fallback||''" data-fallback="${(TYPE_META[p.type]||{}).emoji||''}"></div>`
+			: `<div class="pub__cover pub__cover--empty">${(TYPE_META[p.type]||{}).emoji||""}</div>`;
+
+		const links = (p.links || []).map(l =>
+			`<a class="pub__link" href="${fmt(l.url)}" rel="noopener">${fmt(l.label)} ↗</a>`
+		).join("");
+
+		const year = p.year ? `<span class="pub__year">${p.year}</span>` : "";
+
+		return `
+			<article class="pub" data-type="${p.type}" data-year="${p.year || ''}">
+				${cover}
+				<div class="pub__body">
+					<h3 class="pub__title">${fmt(p.title)}</h3>
+					<p class="pub__authors">${highlightSelf(p.authors)}</p>
+					${p.venue ? `<p class="pub__venue">${fmt(p.venue)}</p>` : ""}
+					<div class="pub__meta">${year}${links}</div>
+				</div>
+			</article>
+		`;
+	}
+
+	function matchQuery(p, q) {
+		if (!q) return true;
+		const hay = (p.title + " " + p.authors + " " + p.venue + " " + (p.year || ""))
+			.toLowerCase();
+		return q.toLowerCase().split(/\s+/).every(tok => hay.includes(tok));
+	}
+
+	function render() {
+		const list = el("#pubs-list");
+		const filtered = state.all.filter(p =>
+			(state.filter === "all" || p.type === state.filter) && matchQuery(p, state.query)
+		);
+
+		if (!filtered.length) {
+			list.innerHTML = `<p class="pubs-empty">No publications match your filters.</p>`;
+			el("#pubs-shown").textContent = "0";
+			return;
+		}
+
+		// Group by type for headings; respect TYPE_ORDER
+		const groups = {};
+		filtered.forEach(p => { (groups[p.type] = groups[p.type] || []).push(p); });
+
+		let html = "";
+		TYPE_ORDER.forEach(t => {
+			if (!groups[t] || !groups[t].length) return;
+			html += `<h2 class="pub-section" id="t-${t}">${TYPE_META[t].emoji} ${TYPE_META[t].label} <span style="font-weight:400; color:var(--muted); text-transform:none; letter-spacing:0;">· ${groups[t].length}</span></h2>`;
+			groups[t].forEach(p => { html += renderPub(p); });
+		});
+
+		list.innerHTML = html;
+		el("#pubs-shown").textContent = filtered.length;
+	}
+
+	function buildFilters() {
+		const counts = { all: state.all.length };
+		state.all.forEach(p => { counts[p.type] = (counts[p.type] || 0) + 1; });
+		const wrap = el("#pubs-filters");
+		const all = `<button class="filter-btn is-active" data-type="all" type="button">All · ${counts.all}</button>`;
+		const typed = TYPE_ORDER.filter(t => counts[t]).map(t =>
+			`<button class="filter-btn" data-type="${t}" type="button">${TYPE_META[t].label} · ${counts[t]}</button>`
+		).join("");
+		wrap.innerHTML = all + typed;
+
+		wrap.addEventListener("click", (e) => {
+			const btn = e.target.closest(".filter-btn");
+			if (!btn) return;
+			wrap.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("is-active"));
+			btn.classList.add("is-active");
+			state.filter = btn.dataset.type;
+			render();
+		});
+	}
+
+	function bindSearch() {
+		let t;
+		el("#pubs-q").addEventListener("input", (e) => {
+			clearTimeout(t);
+			t = setTimeout(() => {
+				state.query = e.target.value.trim();
+				render();
+			}, 120);
+		});
+	}
+
+	async function init() {
+		try {
+			const r = await fetch("assets/publications.json", { cache: "no-cache" });
+			if (!r.ok) throw new Error("HTTP " + r.status);
+			const data = await r.json();
+			state.all = data.publications || [];
+			el("#pubs-status").textContent = ` ${state.all.length} entries total.`;
+			buildFilters();
+			bindSearch();
+			render();
+		} catch (e) {
+			el("#pubs-list").innerHTML =
+				`<p class="pubs-empty">Couldn’t load publications data. ` +
+				`(If you are viewing this file directly with <code>file://</code>, ` +
+				`run a local server: <code>python3 -m http.server</code> in the site folder.)</p>`;
+			console.error(e);
+		}
+	}
+
+	init();
+})();
+</script>
+
+</body>
+</html>

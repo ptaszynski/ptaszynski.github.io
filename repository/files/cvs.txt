@@ -1,0 +1,79 @@
+CVS structures used in negation processing in ML-Ask. Covers most cases, but not all. For the below structures to work a sentence should be lemmatized (e.g. by MeCab).
+
+1) CVS beginnings suggesting negation on the end of a sentence (actual negations is either only ない or other ending from the below group "2)" or "3)"). Use as a regex like: (CVS-beginning)(.*?)(emotive_expression)(.*?)(CVS-ending)
+あまり		ない
+そんなに		ない
+ぜったい		ない
+まったく		ない
+すこしも		ない
+いまひとつ		ない
+いまひとつも	ない
+ちょっとも		ない
+ちっとも		ない
+いまいち		ない
+まさか		ない
+そんな		ない
+ぜんぜん		ない
+そもそも		ない
+すら		ない
+とても		ない
+
+2) Separate CVS. Use as a regex like: (emotive_expression)(.*?)は(CVS)
+あまりない
+そんなにない
+ぜったいない
+まったくない
+すこしもない
+いまひとつない
+いまひとつもない
+ちょっともない
+ちっともない
+いまいちない
+ぜんぜんない
+そもそもない
+
+3) CVS endings. Use as a regex like: (emotive_expression)(.*?)(CVS)
+〜といえない
+〜とはいえない
+〜と思わない
+〜とは思わない
+〜と思えない
+〜とは思えない
+〜とすら思えない
+〜てはいけない
+〜ちゃいけない
+〜じゃいけない
+〜てはだめ
+〜ちゃだめ
+〜じゃだめ
+〜てはいかん
+〜てはあかん
+〜ちゃいかん
+〜じゃいかん
+〜じゃあかん
+〜ちゃあかん
+〜なくていい
+〜なくてOK
+〜なくてＯＫ
+〜なくて大丈夫
+〜なくて問題ない
+〜なくて結構
+〜なくてもいい
+〜なくてもOK
+〜なくても大丈夫
+〜なくても問題ない
+〜なくても結構
+〜く思わない
+〜く思えない
+〜もんか
+〜ものか
+〜わけではない
+〜わけじゃない
+〜わけない
+〜わけがない
+〜わけはない
+〜わけもない
+〜わけか
+〜わけにはいかない
+〜わけにはいくまい
+〜わけにもいかない

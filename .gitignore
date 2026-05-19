@@ -1,0 +1,49 @@
+# =============================================================
+# .gitignore — what NOT to publish to GitHub Pages
+# =============================================================
+
+# macOS junk
+.DS_Store
+._*
+
+# Editor / IDE / AI agents
+.vscode/
+.idea/
+.claude/
+
+# Python venv (for the parser scripts)
+.venv/
+__pycache__/
+*.pyc
+
+# =============================================================
+# Heavy or unused content folders
+# =============================================================
+
+# 526 MB of paper PDFs — host on Zenodo / OSF / arXiv / Drive and
+# update links in assets/publications.json to absolute URLs.
+data/
+
+# 138 MB of conference photos — too large for GitHub Pages.
+# Host on Google Photos / Flickr / Drive and link out from photos.htm.
+photos/
+
+# Old web-template downloads — unused.
+templety/
+
+# PHP click counter — won't run on Pages anyway.
+ccount/
+
+# =============================================================
+# Legacy backup files — keep on disk, don't deploy
+# =============================================================
+
+index_backup.html
+index_stary.html
+profile_backup.htm
+profile_utf.htm
+publications_backup.htm
+stylesheet.css
+stylesheet_backup.css
+stylesheet_grey.css
+co\ powinno\ byc\ na\ stronie.txt
