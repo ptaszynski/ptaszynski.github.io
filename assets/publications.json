@@ -206,7 +206,7 @@
     {
       "type": "book",
       "year": 2015,
-      "authors": "Fumito Masui, Michal Ptaszynski, Ryotaro Kawaishi, Yasunari Maeda, Fumitaro Goto, and Hiroshi Masui",
+      "authors": "Fumito Masui, Michal Ptaszynski, Ryotaro Kawaishi, Yasunari Maeda, Fumitaro Goto, Hiroshi Masui",
       "title": "A System for Recommendation of Accommodation Facilities Adaptable to User Interest",
       "venue": "Chapter in Tourism Informatics: Towards Novel Knowledge Based Approaches , Series of Intelligent Systems Reference Library , Eds. Tokuro Matsuo, Kiyota Hashimoto, Hidekazu Iwamoto, publ. Springer-Verlag, 2015.07.14. ISBN: 978-3-662-47227-9. Available at Springer and Amazon . ||",
       "image": "images/tibook.jpg",
@@ -225,7 +225,7 @@
     {
       "type": "book",
       "year": 2014,
-      "authors": "Michal Ptaszynski, Yoshio Momouchi, Jacek Maciejewski, Pawel Dybala, Rafal Rzepka, and Kenji Araki",
+      "authors": "Michal Ptaszynski, Yoshio Momouchi, Jacek Maciejewski, Pawel Dybala, Rafal Rzepka, Kenji Araki",
       "title": "Annotating Japanese Blogs with Syntactic and Affective Information",
       "venue": "Chapter in Mining of User Generated Content and Its Applications , Ed. Marie-Francine Moens, Juanzi Li, Tat-Seng Chua, publ. Tailor & Francis (CRC Press), January 28, 2014. ISBN: 9781466557406. || Availbale at Taylor and Francis and CRC Press . ||",
       "image": "http://images.tandf.co.uk/common/jackets/crclarge/978146655/9781466557406.jpg",
@@ -1272,7 +1272,7 @@
     {
       "type": "journal",
       "year": 2019,
-      "authors": "Akinori Abe, Rafal Rzepka, and Michal Ptaszynski",
+      "authors": "Akinori Abe, Rafal Rzepka, Michal Ptaszynski",
       "title": "Language Sense and Communication on Computer",
       "venue": "Advances in Human-Computer Interaction (AHCI) , Vol. 2019, Article ID 3081602, 2019. (Impact factor 2.9)",
       "image": null,
@@ -1729,7 +1729,7 @@
     {
       "type": "journal",
       "year": 2010,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Tatsuaki Matsuba, Fumito Masui, Rafal Rzepka, Kenji Araki, and Yoshio Momouchi",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Tatsuaki Matsuba, Fumito Masui, Rafal Rzepka, Kenji Araki, Yoshio Momouchi",
       "title": "In the Service of Online Order: Tackling Cyber-Bullying with Machine Learning and Affect Analysis",
       "venue": "International Journal of Computational Linguistics Research , Vol. 1, Issue 3, pp. 135-154, 2010. paper or",
       "image": null,
@@ -1756,7 +1756,7 @@
     {
       "type": "journal",
       "year": 2010,
-      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, and Kenji Araki",
+      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki",
       "title": "Extending the Chain: Humor and Emotions in Human Computer Interaction",
       "venue": "International Journal of Computational Linguistics Research , Vol. 1, Issue 3, pp. 116-125, 2010",
       "image": null,
@@ -1771,7 +1771,7 @@
     {
       "type": "journal",
       "year": 2010,
-      "authors": "Radoslaw Komuda, Michal Ptaszynski, Yoshio Momouchi, Rafal Rzepka, and Kenji Araki",
+      "authors": "Radoslaw Komuda, Michal Ptaszynski, Yoshio Momouchi, Rafal Rzepka, Kenji Araki",
       "title": "Machine Moral Development: Moral Reasoning Agent Based on Wisdom of Web-Crowd and Emotions",
       "venue": "International Journal of Computational Linguistics Research , Vol. 1, Issue 3, pp. 155-163, 2010",
       "image": null,
@@ -1786,7 +1786,7 @@
     {
       "type": "journal",
       "year": 2010,
-      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, and Kenji Araki",
+      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki",
       "title": "Evaluating Subjective Aspects of HCI on an Example of a Non-Task Oriented Conversational System",
       "venue": "International Journal on Artificial Intelligence Tools , Vol. 19, No. 6 (2010), pp. 819-856, World Scientific Publishing Company. (Impact factor 1.059)",
       "image": null,
@@ -1805,7 +1805,7 @@
     {
       "type": "journal",
       "year": 2010,
-      "authors": "Michal Ptaszynski, Jacek Maciejewski, Pawel Dybala, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Jacek Maciejewski, Pawel Dybala, Rafal Rzepka and Kenji Araki",
       "title": "CAO: A Fully Automatic Emoticon Analysis System Based on Theory of Kinesics",
       "venue": "In IEEE Transactions on Affective Computing , vol. 1, no. 1, pp. 46-59, Jan.-June 2010 (Impact factor 11.2) [2011 IEEE SAPPORO SECTION ENCOURAGEMENT AWARD]",
       "image": "images/best.png",
@@ -3113,7 +3113,7 @@
     {
       "type": "conference",
       "year": 2016,
-      "authors": "Radoslaw Komuda, Michal Ptaszynski, Rafal Rzepka, and Kenji Araki",
+      "authors": "Radoslaw Komuda, Michal Ptaszynski, Rafal Rzepka, Kenji Araki",
       "title": "Recognizing and Converting Cockney Rhyming Slang for Cyberbullying And Crime Detection",
       "venue": "IJCAI 2016 International Workshop on Language Sense on Computer , pp. ??-??, July 9th-15th, 2016, New York, USA",
       "image": null,
@@ -3332,7 +3332,7 @@
     {
       "type": "conference",
       "year": 2015,
-      "authors": "Yoko Nakajima (Advisors: Fumito Masui, Hiroshi Yamada, Michal Ptaszynski, Hirotoshi Honma)",
+      "authors": "Yoko Nakajima (Advisors Fumito Masui, Hiroshi Yamada, Michal Ptaszynski, Hirotoshi Honma)",
       "title": "Automatic Extraction of References to Future Events from News Articles Using Semantic and Morphological Information",
       "venue": "IJCAI 2015 Doctoral Consrtium , Buenos Aires, July 25-31, 2015",
       "image": null,
@@ -3901,7 +3901,7 @@
     {
       "type": "conference",
       "year": 2010,
-      "authors": "Michal Ptaszynski, Jacek Maciejewski, Pawel Dybala, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Jacek Maciejewski, Pawel Dybala, Rafal Rzepka and Kenji Araki",
       "title": "CAO: A Fully Automatic Emoticon Analysis System",
       "venue": "In Proceedings of The Twenty-Fourth AAAI Conference on Artificial Intelligence (AAAI-10) , pp. 1026-1032, July 11 - 15, 2010, Atlanta, Georgia, USA",
       "image": null,
@@ -3924,7 +3924,7 @@
     {
       "type": "conference",
       "year": 2010,
-      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki：",
+      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki",
       "title": "Multi-humoroid: Joking System That Reacts With Humor To Humans' Bad Moods",
       "venue": "In Proceedings of The Ninth International Conference on Autonomous Agents and Multiagent Systems (AAMAS 2010) , Toronto, Canada, pp. 1433-1434",
       "image": null,
@@ -3947,7 +3947,7 @@
     {
       "type": "conference",
       "year": 2010,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Tatsuaki Matsuba, Fumito Masui, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Tatsuaki Matsuba, Fumito Masui, Rafal Rzepka and Kenji Araki",
       "title": "Machine Learning and Affect Analysis Against Cyber-Bullying",
       "venue": "In Proceedings of The Thirty Sixth Annual Convention of the Society for the Study of Artificial Intelligence and Simulation of Behaviour (AISB-10) , 29th March - 1st April 2010, De Montfort University, Leicester, UK, pp. 7-16, 2010",
       "image": null,
@@ -3970,7 +3970,7 @@
     {
       "type": "conference",
       "year": 2010,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Rafal Rzepka and Kenji Araki",
       "title": "Forgetful and Emotional: Recent Progress in Development of Dynamic Memory Management System for Conversational Agents",
       "venue": "In Proceedings of The Thirty Sixth Annual Convention of the Society for the Study of Artificial Intelligence and Simulation of Behaviour (AISB-10) , 29th March - 1st April 2010, De Montfort University, Leicester, UK, pp. 32-38, 2010",
       "image": null,
@@ -3989,7 +3989,7 @@
     {
       "type": "conference",
       "year": 2010,
-      "authors": "Radoslaw Komuda, Michal Ptaszynski, Rafal Rzepka and Kenji Araki：",
+      "authors": "Radoslaw Komuda, Michal Ptaszynski, Rafal Rzepka and Kenji Araki",
       "title": "An idea of a web-crowd based moral reasoning agent",
       "venue": "In Proceedings of The Thirty Sixth Annual Convention of the Society for the Study of Artificial Intelligence and Simulation of Behaviour (AISB-10) , Symposium on Linguistic and Cognitive Approaches to Dialog Agents, March 29 - April 1, 2010, Leicester, UK, pp. 17-19",
       "image": null,
@@ -4008,7 +4008,7 @@
     {
       "type": "conference",
       "year": 2010,
-      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki：",
+      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki",
       "title": "Chain of Events: Multi-stage Approach to Humor and Emotions in HCI",
       "venue": "In Proceedings of The Thirty Sixth Annual Convention of the Society for the Study of Artificial Intelligence and Simulation of Behaviour (AISB-10) , Symposium on Linguistic and Cognitive Approaches to Dialog Agents, March 29 - April 1, 2010, Leicester, UK, pp. 53-58",
       "image": null,
@@ -4018,7 +4018,7 @@
     {
       "type": "conference",
       "year": 2010,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Radoslaw Komuda, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Radoslaw Komuda, Rafal Rzepka and Kenji Araki",
       "title": "Development of Emoticon Database for Affect Analysis in Japanese",
       "venue": "In Proceedings of The 2010 International Symposium on Global COE Program of Center for Next-Generation Information Technology Based on Knowledge Discovery and Knowledge Federation (GCOE-NGIT 2010) , Hokkaido University, Sapporo, Japan, January 18-20, pp. 203-204, 2010",
       "image": null,
@@ -4037,7 +4037,7 @@
     {
       "type": "conference",
       "year": 2010,
-      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki：",
+      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki",
       "title": "Computers with personalized sense of humor",
       "venue": "In Proceedings of The 2010 International Symposium on Global COE Program of Center for Next-Generation Information Technology Based on Knowledge Discovery and Knowledge Federation (GCOE-NGIT 2010) , Hokkaido University, Sapporo, Japan, January 18-20, pp. 205-206, 2010",
       "image": null,
@@ -4204,7 +4204,7 @@
     {
       "type": "conference",
       "year": 2009,
-      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki：",
+      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki",
       "title": "Humoroids - Conversational Agents That Induce Positive Emotions with Humor",
       "venue": "In Proc. of 8th Int. Conf. on Autonomous Agents and Multiagent Systems (AAMAS 2009) , Decker, Sichman, Sierra, and Castelfranchi (eds.), May, 10-15., 2009, Budapest, Hungary, pp. 1171-1172",
       "image": null,
@@ -4219,7 +4219,7 @@
     {
       "type": "conference",
       "year": 2009,
-      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki：",
+      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki",
       "title": "Humorized Computational Intelligence: Towards User-Adapted Systems with a Sense of Humor",
       "venue": "In M. Giacobini et al. (Eds.): EvoWorkshops 2009, LNCS 5484 , pp. 452-461, Springer-Verlag Berlin Heidelberg, 2009",
       "image": null,
@@ -4238,7 +4238,7 @@
     {
       "type": "conference",
       "year": 2009,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Rafal Rzepka and Kenji Araki",
       "title": "Development of Corpus for Affect Analysis in Japanese",
       "venue": "In Proceedings of The 2nd International Symposium on Global COE Program of Center for Next-Generation Information Technology Based on Knowledge Discovery and Knowledge Federation (GCOE-NGIT 2009) , Hokkaido University, Sapporo, Japan, January 20-21, 2009",
       "image": null,
@@ -4261,7 +4261,7 @@
     {
       "type": "conference",
       "year": 2009,
-      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki：",
+      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki",
       "title": "Conversational Agents Can Joke",
       "venue": "In Proceedings of The 2nd International Symposium on Global COE Program of Center for Next-Generation Information Technology Based on Knowledge Discovery and Knowledge Federation (GCOE-NGIT 2009) , Hokkaido University, Sapporo, Japan, January 20-21, 2009",
       "image": null,
@@ -4280,7 +4280,7 @@
     {
       "type": "conference",
       "year": 2008,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Wenhan Shi, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Wenhan Shi, Rafal Rzepka and Kenji Araki",
       "title": "How to find love in the Internet? Applying Web mining to affect recognition from textual input",
       "venue": "Proceedings of the 2008 Empirical Methods for Asian Languages Processing Workshop (EMALP'08) || at The Tenth Pacific Rim International Conference on Artificial Intelligence (PRICAI'08), pp. 67-79, Hanoi, Vietnam, December 2008",
       "image": null,
@@ -4295,7 +4295,7 @@
     {
       "type": "conference",
       "year": 2008,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Michal Ptaszynski, Shinsuke Higuchi, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Michal Ptaszynski, Shinsuke Higuchi, Rafal Rzepka and Kenji Araki",
       "title": "Affect-as-Information Approach to a Sentiment Analysis Based Evaluation of Conversational Agents",
       "venue": "Proceedings of the 2008 International Conference on Intelligent Agents, Web Technologies & Internet Commerce (IAWTIC'08) , pp. 896-901, Vienna, Austria, December 2008",
       "image": null,
@@ -4314,7 +4314,7 @@
     {
       "type": "conference",
       "year": 2008,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Shinsuke Higuchi, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Shinsuke Higuchi, Rafal Rzepka and Kenji Araki",
       "title": "Affect as Information about Users' Attitudes to Conversational Agents",
       "venue": "Second International Workshop on Human Aspects in Ambient Intelligence (HAI'08) in Proceedings of the 2008 IEEE/WIC/ACM International Conference on Web Intelligence and Intelligent Agent Technology (WI-IAT'08) , pp. 459-500, Sydney, Australia, December 2008",
       "image": null,
@@ -4333,7 +4333,7 @@
     {
       "type": "conference",
       "year": 2008,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Wenhan Shi, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Wenhan Shi, Rafal Rzepka and Kenji Araki",
       "title": "Disentangling emotions from the Web. Internet in the service of affect analysis",
       "venue": "Proceedings of the Second International Conference on Kansei Engineering & Affective Systems (KEAS'08) , pp 51-56, Nagaoka, Japan, November 2008. [BEST STUDENT PAPER AWARD]",
       "image": "images/best.png",
@@ -4348,7 +4348,7 @@
     {
       "type": "conference",
       "year": 2008,
-      "authors": "Pawel Dybala, Michal Ptaszynski, Shinsuke Higuchi, Rafal Rzepka and Kenji Araki：",
+      "authors": "Pawel Dybala, Michal Ptaszynski, Shinsuke Higuchi, Rafal Rzepka and Kenji Araki",
       "title": "Humor Prevails! - Implementing a Joke Generator into a Conversational System",
       "venue": "In: Springer-Verlag Lecture Notes in Artificial Intelligence (LNAI) , Vol. 5360, pp. 214-225, Berlin-Heidelberg, 2008",
       "image": "images/best.png",
@@ -4367,7 +4367,7 @@
     {
       "type": "conference",
       "year": 2008,
-      "authors": "Rafal RZEPKA, Shinsuke HIGUCHI, Michal PTASZYNSKI, Kenji ARAKI：",
+      "authors": "Rafal RZEPKA, Shinsuke HIGUCHI, Michal PTASZYNSKI, Kenji ARAKI",
       "title": "Straight Thinking Straight from the Net - On the Web-based Intelligent Talking Toy Development",
       "venue": "The Proceedings of the IEEE International Conference on Systems, Man and Cybernetics (SMC'08) , pp. 2172-2176, Singapore, October 2008",
       "image": null,
@@ -4392,7 +4392,7 @@
     {
       "type": "conference",
       "year": null,
-      "authors": "Rafal Rzepka, Pawel Dybala, Wenhan Shi, Shinsuke Higuchi, Michal Ptaszynski and Kenji Araki：",
+      "authors": "Rafal Rzepka, Pawel Dybala, Wenhan Shi, Shinsuke Higuchi, Michal Ptaszynski and Kenji Araki",
       "title": "Serious Processing for Frivolous Purpose - A Chatbot Using Web-mining Supported Affect Analysis and Pun Generation",
       "venue": "Proceedings of IUI'09 - International Conference on Intelligent User Interfaces , pp 487-488, Sanibel Island, FL, USA. (ACM Press)",
       "image": null,
@@ -5946,7 +5946,7 @@
     {
       "type": "local",
       "year": 2012,
-      "authors": "Michal Ptaszynski, Rafal Rzepka, Kenji Araki and Yoshio Momouchi：",
+      "authors": "Michal Ptaszynski, Rafal Rzepka, Kenji Araki and Yoshio Momouchi",
       "title": "Annotating Syntactic Information on 5.5 Billion Word Corpus of Japanese Blogs",
       "venue": "In Proceedings of The Eighteenth Annual Meeting of The Association for Natural Language Processing (NLP-2012) , pp. 385-388, Hiroshima, Japan, March 14-16, 2012",
       "image": "images/invited.png",
@@ -5973,7 +5973,7 @@
     {
       "type": "local",
       "year": 2012,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Rafal Rzepka, Kenji Araki and Yoshio Momouchi：",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Rafal Rzepka, Kenji Araki and Yoshio Momouchi",
       "title": "Annotating Affective Information on 5.5 Billion Word Corpus of Japanese Blogs",
       "venue": "In Proceedings of The Eighteenth Annual Meeting of The Association for Natural Language Processing (NLP-2012) , pp. 405-408, Hiroshima, Japan, March 14-16, 2012",
       "image": null,
@@ -5996,7 +5996,7 @@
     {
       "type": "local",
       "year": 2012,
-      "authors": "Michal Ptaszynski, Rafal Rzepka, Kenji Araki and Yoshio Momouchi：",
+      "authors": "Michal Ptaszynski, Rafal Rzepka, Kenji Araki and Yoshio Momouchi",
       "title": "A Robust Ontology of Emotion Objects",
       "venue": "In Proceedings of The Eighteenth Annual Meeting of The Association for Natural Language Processing (NLP-2012) , pp. 719-722, Hiroshima, Japan, March 14-16, 2012",
       "image": null,
@@ -6019,7 +6019,7 @@
     {
       "type": "local",
       "year": 2012,
-      "authors": "Michal Ptaszynski and Yoshio Momouchi：",
+      "authors": "Michal Ptaszynski and Yoshio Momouchi",
       "title": "POST-AL: Part-of-Speech Tagger for Ainu Language",
       "venue": "In Proceedings of The Eighteenth Annual Meeting of The Association for Natural Language Processing (NLP-2012) , pp. 763-766, Hiroshima, Japan, March 14-16, 2012",
       "image": null,
@@ -6042,7 +6042,7 @@
     {
       "type": "local",
       "year": 2012,
-      "authors": "Michal Ptaszynski, Rafal Rzepka, Kenji Araki and Yoshio Momouchi：",
+      "authors": "Michal Ptaszynski, Rafal Rzepka, Kenji Araki and Yoshio Momouchi",
       "title": "A Survey on Large Scale Web Based Corpora",
       "venue": "In Proceedings of The Eighteenth Annual Meeting of The Association for Natural Language Processing (NLP-2012) , pp. 1240-1243, Hiroshima, Japan, March 14-16, 2012",
       "image": null,
@@ -6069,7 +6069,7 @@
     {
       "type": "local",
       "year": 2011,
-      "authors": "Hiroaki Dokoshi, Satoshi Oyama, Masahito Kurihara, Michal Ptaszynski, Rafal Rzepka, Kenji Araki：",
+      "authors": "Hiroaki Dokoshi, Satoshi Oyama, Masahito Kurihara, Michal Ptaszynski, Rafal Rzepka, Kenji Araki",
       "title": "Webマイニングを用いた文章中の行為者及び被行為者の感情推定 (\"Emotion Estimation of Actors and Non-actors in Text Using Web Mining\") [in Japanese]",
       "venue": "|| (\"Emotion Estimation of Actors and Non-actors in Text Using Web Mining\") [in Japanese] || In Proceedings of the Hokkaido Symposium on Information Processing , Kitami, Japan, 2011",
       "image": null,
@@ -6088,7 +6088,7 @@
     {
       "type": "local",
       "year": 2011,
-      "authors": "Michal Ptaszynski, Rafal Rzepka, Kenji Araki and Yoshio Momouchi：",
+      "authors": "Michal Ptaszynski, Rafal Rzepka, Kenji Araki and Yoshio Momouchi",
       "title": "SPEC - Sentence Pattern Extraction and Analysis Architecture",
       "venue": "In Proceedings of The Seventeenth Annual Meeting of The Association for Natural Language Processing (NLP-2011) , pp. 667-670, Toyohashi, Japan, March 7-11, 2011",
       "image": null,
@@ -6111,7 +6111,7 @@
     {
       "type": "local",
       "year": 2011,
-      "authors": "Michal Ptaszynski, Rafal Rzepka, Kenji Araki and Yoshio Momouchi：",
+      "authors": "Michal Ptaszynski, Rafal Rzepka, Kenji Araki and Yoshio Momouchi",
       "title": "Research on Emoticons: Review of the Field and Proposal of Research Framework",
       "venue": "In Proceedings of The Seventeenth Annual Meeting of The Association for Natural Language Processing (NLP-2011) , Organized Session on Un-Natural Language Processing, pp. 1159-1162, Toyohashi, Japan, March 7-11, 2011",
       "image": null,
@@ -6138,7 +6138,7 @@
     {
       "type": "local",
       "year": 2011,
-      "authors": "Michal Ptaszynski：",
+      "authors": "Michal Ptaszynski",
       "title": "テキスト入力の感情解析とその多面的応用 (\"Affect Analysis of Textual Input and its Multi‐faceted Applications\") [in Japanese]",
       "venue": "(\"Affect Analysis of Textual Input and its Multi‐faceted Applications\") [in Japanese] || Hokkai-Gakuen University High-Tech Research Center Symposium (HGU-HRC 2011), Sapporo, Japan, February 24, 2011",
       "image": null,
@@ -6161,7 +6161,7 @@
     {
       "type": "local",
       "year": 2010,
-      "authors": "Michal Ptaszynski, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Rafal Rzepka and Kenji Araki",
       "title": "On the Need for Context Processing in Affective Computing",
       "venue": "In Proceedings of the 26th Fuzzy System Symposium (FSS2010) , Organized Session on Emotions, pp.920-924, Hiroshima, Japan, September 13-15, 2010",
       "image": null,
@@ -6184,7 +6184,7 @@
     {
       "type": "local",
       "year": 2010,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Rafal Rzepka and Kenji Araki",
       "title": "Towards Fully Automatic Emoticon Analysis System (^o^)",
       "venue": "In Proceedings of The Sixteenth Annual Meeting of The Association for Natural Language Processing (NLP-2010) , pp. 583-586, 2010",
       "image": null,
@@ -6211,7 +6211,7 @@
     {
       "type": "local",
       "year": 2010,
-      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki：",
+      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki",
       "title": "PUNDA Numbears: Proposal of Goroawase Generating System for Japanese",
       "venue": "In Proceedings of The Sixteenth Annual Meeting of The Association for Natural Language Processing (NLP-2010) , pp.345-348, 2010",
       "image": null,
@@ -6287,7 +6287,7 @@
     {
       "type": "local",
       "year": 2009,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Rafal Rzepka and Kenji Araki",
       "title": "Contextual Valence Shifters Supporting Affect Analysis of Utterances in Japanese",
       "venue": "In Proceedings of The Fifteenth Annual Meeting of The Association for Natural Language Processing (NLP-2009) , pp.825-828, 2009",
       "image": null,
@@ -6314,7 +6314,7 @@
     {
       "type": "local",
       "year": 2009,
-      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki：",
+      "authors": "Pawel Dybala, Michal Ptaszynski, Rafal Rzepka, Kenji Araki",
       "title": "When Should Computers Joke? - Concept of Emotiveness Analysis Based Timing Algorithm for Humor-Equipped Conversational Systems",
       "venue": "In Proceedings of The Fifteenth Annual Meeting of The Association for Natural Language Processing (NLP-2009) , pp.542-545, 2009",
       "image": null,
@@ -6333,7 +6333,7 @@
     {
       "type": "local",
       "year": 2008,
-      "authors": "Shi Wenhan, Michal Ptaszynski, Rafal Rzepka, Kenji Araki：",
+      "authors": "Shi Wenhan, Michal Ptaszynski, Rafal Rzepka, Kenji Araki",
       "title": "Emotive Information Discovery from User Textual Input Using Emotion Expression Element and Web Mining",
       "venue": "(\"感情表現要素認識とウェブマイニングを用いたユーザ発話感情の推測\") || Technical report of IEICE , Thought and language (\"電子情報通信学会技術研究報告. TL, 思考と言語\"), 108(353), pp.31-34, 2008, The Institute of Electronics, Information and Communication Engineers ||",
       "image": null,
@@ -6343,7 +6343,7 @@
     {
       "type": "local",
       "year": 2008,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Rafal Rzepka and Kenji Araki",
       "title": "Double Standpoint Evaluation Method for Affect Analysis System",
       "venue": "人工知能学会第22回全国大会(JSAI2008) , CD-ROM Proceedings, Paper No. 2P2-07, 2008. ||",
       "image": null,
@@ -6362,7 +6362,7 @@
     {
       "type": "local",
       "year": 2008,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Rafal Rzepka and Kenji Araki：",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Rafal Rzepka and Kenji Araki",
       "title": "Effective Analysis of Emotiveness in Utterances based on Features of Lexical and Non-Lexical Layer of Speech",
       "venue": "言語処理学会第14回年次大会(NLP2008)発表論文集CD-ROM , pp 171-174, 2008. ||",
       "image": null,
@@ -6385,7 +6385,7 @@
     {
       "type": "local",
       "year": 2007,
-      "authors": "Michal Ptaszynski, Koichi Sayama, Rafal Rzepka, Kenji Araki：",
+      "authors": "Michal Ptaszynski, Koichi Sayama, Rafal Rzepka, Kenji Araki",
       "title": "A dynamic memory management system based on forgetting and recalling.",
       "venue": "平成１９年度 電気・情報関係学会北海道支部連合大会講演論文集 , pp.295-296, 2007. ||",
       "image": null,
@@ -6408,7 +6408,7 @@
     {
       "type": "local",
       "year": 2007,
-      "authors": "Michal Ptaszynski, Pawel Dybala, Wen Han Shi, Rafal Rzepka, Kenji Araki：",
+      "authors": "Michal Ptaszynski, Pawel Dybala, Wen Han Shi, Rafal Rzepka, Kenji Araki",
       "title": "Lexical Analysis of Emotiveness in Utterances for Automatic Joke Generation",
       "venue": "社団法人映像情報メディア学会技術報告 ITE Technical Report , Vol. 31, No.47, pp.39-42 ME2007-204, 2007. ||",
       "image": null,
@@ -6431,7 +6431,7 @@
     {
       "type": "local",
       "year": 2007,
-      "authors": "Michal Ptaszynski, Koichi Sayama：",
+      "authors": "Michal Ptaszynski, Koichi Sayama",
       "title": "The idea of dynamic memory management system based on a forgetting-recalling algorithm with emotive analysis.",
       "venue": "Language Acquisition and Understanding Research Group (LAU) Technical Reports , Summer 2007, pp. 12-15, Sapporo, August 2007. || paper (PDF, 459kB), slides (PDF, 914kB) ||",
       "image": null,
@@ -6563,7 +6563,7 @@
     {
       "type": "patent",
       "year": 2021,
-      "authors": "発明者： プタシンスキ ミハウ エドムンド, 谷川原 綾子",
+      "authors": "発明者 プタシンスキ ミハウ エドムンド, 谷川原 綾子",
       "title": "発明の名称： 専門用語抽出装置、専門用語抽出方法及びプログラム",
       "venue": "特許権者：国立大学法人北海道国立大学機構 || 特許番号： 特許 第7557770号 || 公開番号： 特開 2021-192212 || 出願番号： 特願 2020-186260 || 出願日： 2020/11/09 || 登録日： 2024/09/19 ||",
       "image": "images/googlepatentslogo.png",
@@ -6590,7 +6590,7 @@
     {
       "type": "patent",
       "year": 2015,
-      "authors": "発明者： 桝井 文人, ミハウ プタシンスキ, 新田 大征",
+      "authors": "発明者 桝井 文人, ミハウ プタシンスキ, 新田 大征",
       "title": "発明の名称： インターネット上の有害書き込み検出装置及び検出方法",
       "venue": "特許権者：国立大学法人北海道国立大学機構 || 特許番号： 特許 第6301119号 || 公開番号： 特開 2015-103210 || 出願番号： 特願 2013-245813 || 出願日： 2013/11/28 || 登録日： 2018/03/09 ||",
       "image": "images/googlepatentslogo.png",
@@ -6625,7 +6625,7 @@
     {
       "type": "dissertation",
       "year": 2010,
-      "authors": "Michal Ptaszynski：",
+      "authors": "Michal Ptaszynski",
       "title": "Affect Analysis of Textual Input Utterance in Japanese and its Application in Human-Computer Interaction",
       "venue": "(日本語のテキスト入力文の感情解析及びヒューマンコンピュータインタラクションへの応用) || Doctoral Dissertation, Hokkaido University, Sapporo, Japan, September 2010. dissertation (PDF, 8.53MB)",
       "image": null,
@@ -6644,7 +6644,7 @@
     {
       "type": "dissertation",
       "year": 2006,
-      "authors": "Michal Ptaszynski：",
+      "authors": "Michal Ptaszynski",
       "title": "萌える言語 ― インターネット掲示板の上の日本語会話における感情表現の構造と記号論的機能の分析・「２ちゃんねる」電子掲示板を例として・",
       "venue": "(\"Boisterous language - Analysis of structures and semiotic functions of emotive expressions in conversation on Japanese Internet bulletin board forum - 2channel -\") || Master Thesis, Adam Mickiewicz University, Poznan, Poland, 2006. || アダム・ミツキエヴィッチ大学(UAM)新文献学部東洋研究所日本研究科，修士論文，ポズナン 2006. thesis (PDF, 2.91 MB)",
       "image": null,
@@ -7045,7 +7045,7 @@
     {
       "type": "other",
       "year": 2012,
-      "authors": "Michal Ptaszynski：",
+      "authors": "Michal Ptaszynski",
       "title": "不自然言語処理 -枠に収まらない「リアルな」言語処理-：1.顔文字処理-取るに足らない表現をコンピュータに理解させるに足るには- (Robust NLP for Real-world Data: 1. Emoticon Processing - How to Non-trivially Make a Computer Understand Trivial Expressions -)",
       "venue": "(Robust NLP for Real-world Data: 1. Emoticon Processing - How to Non-trivially Make a Computer Understand Trivial Expressions -) || 情報処理 ( Joho Shori ), Vol.53 No.3 Mar. 2012, p. 204-210. (PDF, 1.37 MB) ||",
       "image": "images/hyoshi5301.jpg",
@@ -7064,7 +7064,7 @@
     {
       "type": "other",
       "year": 2012,
-      "authors": "Michal Ptaszynski：",
+      "authors": "Michal Ptaszynski",
       "title": "Quick Report on Doctoral Theses Recommended by IPSJ SIGs （特集研究会推薦博士論文速報）: Affect Analysis of Textual Input Utterance in Japanese and Its Application in Human-Computer Interaction （邦訳：日本語のテキスト入力文の感情解析及びヒューマンコンピュータインタラクションへの応用）",
       "venue": "|| Affect Analysis of Textual Input Utterance in Japanese and Its Application in Human-Computer Interaction || （邦訳：日本語のテキスト入力文の感情解析及びヒューマンコンピュータインタラクションへの応用） || 情報処理 ( Joho Shori ), Vol.53 No.3 Mar. 2012, p. 288. (PDF, 5.59 MB) ||",
       "image": "images/hyoshi5301.jpg",
@@ -7083,7 +7083,7 @@
     {
       "type": "other",
       "year": 2011,
-      "authors": "Michal Ptaszynski：",
+      "authors": "Michal Ptaszynski",
       "title": "Maszyny i Emocje: dążenie do niemożliwego czy nieuchronna konieczność?",
       "venue": "(\"Machines and Emotions: Reaching the Unreachable or Inevitable Necessity?\") [in Polish] || Synchronized Lectures: \"When Man Meets Machine\", Nicolaus Copernicus University, Torun, Poland, April 27, 2011. (PDF, 2.71 MB) ||",
       "image": null,
@@ -7102,7 +7102,7 @@
     {
       "type": "other",
       "year": 2011,
-      "authors": "Michal Ptaszynski：",
+      "authors": "Michal Ptaszynski",
       "title": "Presentation of Doctoral Dissertation （博士論文紹介）: \"Affect Analysis of Textual Input Utterance in Japanese and its Application in Human-Computer Interaction\"",
       "venue": "\"Affect Analysis of Textual Input Utterance in Japanese and its Application in Human-Computer Interaction\" || Journal of the Japanese Society for Artificial Intelligence , Vol. 26 No. 1 (Jan. 2011), Special Issue: \"Doctorial Theses on Aritifical Intelligence\" / Natural Language Processing. || 人工知能学会誌, Vol. 26 No. 1 ( 2011 年1 月), 特集：「人工知能分野における博士論文」／自然言語処理. ||",
       "image": "images/jsaihyousi.JPG",
@@ -7117,7 +7117,7 @@
     {
       "type": "other",
       "year": 2005,
-      "authors": "Michal Ptaszynski：",
+      "authors": "Michal Ptaszynski",
       "title": "萌える言語 ― 文字システムに基づくインターネット感情表現がどのようにストレス解消になりえるかについての一つの提案 ―",
       "venue": "日本語・日本文化研修コース研究レポート集2005年8月, 札幌：北海道大学留学生センター, 2005. (PDF, 3.13MB) ||",
       "image": "images/jsaihyousi.JPG",
