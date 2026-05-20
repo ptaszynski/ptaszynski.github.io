@@ -2,6 +2,19 @@
 
 All notable changes to the personal homepage.
 
+## 2026-05-20 — Phase 8.5: Icon fixes (Bluesky swap, Reddit/GitHub theming)
+
+- **Bluesky theme variants swapped** — they were inverted on screen.
+  Light theme now uses `bluesky-social-white.png`, dark theme uses
+  `bluesky-social-dark.png` (re-copied the updated `bluesky-social-white.png`).
+- **Reddit** now theme-aware: light theme `reddit-logo-dark.webp`,
+  dark theme `Reddit_light.webp` (new).
+- **GitHub** now theme-aware: light theme `github-logo-square.webp`,
+  dark theme `github-light.png` (new).
+- Applied across all three home pages; two new image assets added.
+
+---
+
 ## 2026-05-20 — Phase 8.4: Profile refresh from 2025 CV
 
 Refreshed `profile.htm` (+ JA/PL) from `Ptaszynski_CV_academic-official_2025.pdf`,
