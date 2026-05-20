@@ -486,7 +486,8 @@ a:focus-visible {
 	height: 34px;
 	padding: 6px;
 	background: var(--surface);
-	border: 1px solid var(--line);
+	/* Thin, low-contrast hairline (mixes the line color toward the surface) */
+	border: 1px solid color-mix(in srgb, var(--line) 55%, var(--surface));
 	border-radius: var(--radius);
 	transition: transform .18s cubic-bezier(.2,.7,.3,1), border-color .18s ease, background .18s ease, box-shadow .18s ease;
 }
@@ -501,6 +502,12 @@ a:focus-visible {
 	max-height: 100%;
 	object-fit: contain;
 }
+
+/* Theme-aware icon variants: show the light-theme image by default,
+   swap to the dark-theme image when the dark palette is active. */
+.theme-img-dark { display: none; }
+:root[data-theme="dark"] .theme-img-light { display: none; }
+:root[data-theme="dark"] .theme-img-dark { display: inline-block; }
 
 /* ============================================================
    Split content (e.g. contact: English / Japanese side by side)
