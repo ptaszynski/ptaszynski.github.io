@@ -2,6 +2,40 @@
 
 All notable changes to the personal homepage.
 
+## 2026-05-20 — Phase 8.3: Icon theming, eYou, profile bullet cleanup
+
+### "Find me on" icons
+
+- **Thinner border**: the icon tiles' hairline now mixes the line color
+  ~55% toward the surface (`color-mix`), so it reads as a lighter, thinner
+  edge in both themes.
+- **Theme-aware variants**: seven icons now swap light/dark with the
+  palette via paired `<img class="theme-img-light/​dark">` + a small CSS
+  toggle. Mapping (light theme → dark theme):
+  - Semantic Scholar: `Semantic_scholar_logo-square.jpeg` → `semantic-scholar-icon-dark.png`
+  - DBLP: `dblp-300x300.png` → `dblp-300x300-dark.png`
+  - researchmap: `icon_researchmap.png` → `icon_researchmap-dark.png`
+  - Scopus: `scopus.png` → `scopus-dark.png`
+  - X / Twitter: `twitterlogo.png` → `twitterlogo-dark.avif`
+  - Bluesky: `bluesky-social-dark.png` → `bluesky-social-white.png`
+  - ResearchGate: `rg-dark.avif` → `rg-white.png`
+  - (`twitterlogo-light` and `rg-dark.png` from the request didn't exist;
+    used the real files `twitterlogo-dark.avif` and `rg-dark.avif`.)
+  - Ten new image assets added to the repo.
+- **New eYou (fediverse) icon** added to the Social group on all three
+  home pages: `eYou-logo-neutral.png` → `https://eyou.social/u/ptaszynski`
+  (`rel="me"`).
+
+### Profile
+
+- Removed the redundant leading `・` from list items (research interests
+  had a double bullet against the CSS `::before "•"`; the activities rows
+  had inconsistent `・` prefixes already marked by their left border).
+  ~166 per language. Internal `・` (names like ミハウ・プタシンスキ,
+  compounds like 攻撃的・暴言的) preserved.
+
+---
+
 ## 2026-05-20 — Phase 8.2: Header fit + smartphone pass
 
 ### Header / search
