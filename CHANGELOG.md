@@ -2,6 +2,33 @@
 
 All notable changes to the personal homepage.
 
+## 2026-05-20 — Phase 8.4: Profile refresh from 2025 CV
+
+Refreshed `profile.htm` (+ JA/PL) from `Ptaszynski_CV_academic-official_2025.pdf`,
+adding only the new entries in two sections.
+
+### Courses & Certificates
+
+- Added **2023 — IEEE Ethics Champion** (newest entry, top of the list).
+
+### Professional Activities
+
+- Added two new year sections, **2024** and **2023**, ahead of the
+  existing 2022 (kept separate per request, even though the CV's two
+  lists are near-identical ongoing roles — IEEE memberships/councils,
+  ACL/IEEE standards & ethics committees, ~50 journal reviewer/editorial
+  roles, plus that cycle's conference PCs: ACL 2023, AIGC 2023, ASEC
+  2024, AUSDM'23, BICA*AI 2023, CTIEEM 2023, EMNLP 2023, ICCIT 2023,
+  ICNLP 2024, ICON 2023, LREC-COLING 2024, LTC'23 / EDO 2023, MetaACES
+  2023, WOAH 2023, FedCSIS 2023, IEEE ICALT 2024 DIGITEL).
+- Applied to all three language profiles (entries are English proper
+  nouns, kept verbatim per the academic-CV convention). OCR artifacts
+  from the PDF cleaned (`4?6`→`4-6`, `6 ?10`→`6-10`, `17?20`→`17-20`,
+  `Pozna?`→`Poznań`, `3nd`→`3rd`); same-venue dual roles shown as
+  separate lines as in the CV.
+
+---
+
 ## 2026-05-20 — Phase 8.3: Icon theming, eYou, profile bullet cleanup
 
 ### "Find me on" icons
